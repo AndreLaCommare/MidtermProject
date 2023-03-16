@@ -8,5 +8,7 @@
 </head>
 <body>
 	<h1>Welcome to Alexandria</h1>
+	
+	<h2> User: ${SMOKETEST}</h2> <!-- DEBUG -->
 </body>
 </html>
