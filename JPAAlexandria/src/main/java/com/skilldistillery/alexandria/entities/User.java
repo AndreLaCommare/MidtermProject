@@ -2,6 +2,7 @@ package com.skilldistillery.alexandria.entities;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class User {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
 	
+	
 	private String username;
 	
 	private String password;
@@ -21,6 +23,18 @@ public class User {
 	private boolean	enabled;
 	
 	private String role;
+	
+	@Column(name="image_url")
+	private String imageUrl;
+	
+	@Column(name="first_name")
+	private String firstName;
+	
+	@Column(name="last_name")
+	private String lastName;
+	
+	@Column(name="about_me")
+	private String aboutMe;
 
 	public User() {
 		super();
@@ -66,6 +80,38 @@ public class User {
 		this.role = role;
 	}
 
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getAboutMe() {
+		return aboutMe;
+	}
+
+	public void setAboutMe(String aboutMe) {
+		this.aboutMe = aboutMe;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -85,10 +131,9 @@ public class User {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("User [id=").append(id).append(", username=").append(username).append(", password=")
-				.append(password).append(", enabled=").append(enabled).append(", role=").append(role).append("]");
-		return builder.toString();
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
+				+ ", role=" + role + ", imageUrl=" + imageUrl + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", aboutMe=" + aboutMe + "]";
 	}
 	
 	
