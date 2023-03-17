@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -45,6 +47,14 @@ public class BookComment {
 	
 	@OneToMany(mappedBy="parentComment")
 	private List<BookComment> replies;
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public BookComment() {
 		super();
@@ -107,6 +117,8 @@ public class BookComment {
 	public void setReplies(List<BookComment> replies) {
 		this.replies = replies;
 	}
+
+	
 
 	@Override
 	public int hashCode() {

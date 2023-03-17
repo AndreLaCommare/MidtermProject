@@ -12,108 +12,137 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Book {
-	
-	@Id 
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String title;
 	private String description;
 	private int pages;
 	private double price;
 	private String isbn;
-	
+
 	@ManyToOne
-	@JoinColumn(name="language_id")
+	@JoinColumn(name = "language_id")
 	private Language language;
-	
+
 	@ManyToOne
-	@JoinColumn(name="author_id")
+	@JoinColumn(name = "author_id")
 	private Author author;
-	
-	@Column(name="published_year")
+
+	@Column(name = "published_year")
 	private int publishedYear;
-	@Column(name="cover_url")
+	@Column(name = "cover_url")
 	private String coverUrl;
-	
+
 	@ManyToMany
-	@JoinTable(name="book_has_genre",
-			joinColumns=@JoinColumn(name="book_id"),
-			inverseJoinColumns=@JoinColumn(name="genre_id"))
-			private List<Genre> genres;
-	
-	@ManyToMany(mappedBy="books")
+	@JoinTable(name = "book_has_genre", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
+	private List<Genre> genres;
+
+	@ManyToMany(mappedBy = "books")
 	private List<BookList> bookLists;
+
+	@ManyToMany(mappedBy = "clubBooks")
+	private List<Club> clubsWithThisBook;
+
+	@ManyToMany(mappedBy = "favoriteBooks")
+	private List<User> usersWithFavBooks;
+
+	@OneToMany(mappedBy = "book")
+	private List<BookComment> bookComments;
 	
-	
-	public Book () {
+	@OneToMany(mappedBy="book")
+	private List<BookReview> reviews;
+
+
+	public Book() {
 		super();
 	}
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public int getPages() {
 		return pages;
 	}
+
 	public void setPages(int pages) {
 		this.pages = pages;
 	}
+
 	public double getPrice() {
 		return price;
 	}
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
 	public String getIsbn() {
 		return isbn;
 	}
+
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
+
 	public Language getLanguage() {
 		return language;
 	}
+
 	public void setLanguage(Language language) {
 		this.language = language;
 	}
+
 	public Author getAuthor() {
 		return author;
 	}
+
 	public void setAuthor(Author author) {
 		this.author = author;
 	}
+
 	public int getPublishedYear() {
 		return publishedYear;
 	}
+
 	public void setPublishedYear(int publishedYear) {
 		this.publishedYear = publishedYear;
 	}
+
 	public String getCoverUrl() {
 		return coverUrl;
 	}
+
 	public void setCoverUrl(String coverUrl) {
 		this.coverUrl = coverUrl;
 	}
-
 
 	public List<Genre> getGenres() {
 		return genres;
@@ -131,10 +160,42 @@ public class Book {
 		this.bookLists = bookLists;
 	}
 
+	public List<Club> getClubsWithThisBook() {
+		return clubsWithThisBook;
+	}
+
+	public void setClubsWithThisBook(List<Club> clubsWithThisBook) {
+		this.clubsWithThisBook = clubsWithThisBook;
+	}
+
+	public List<User> getUsersWithFavBooks() {
+		return usersWithFavBooks;
+	}
+
+	public void setUsersWithFavBooks(List<User> usersWithFavBooks) {
+		this.usersWithFavBooks = usersWithFavBooks;
+	}
+
+	public List<BookComment> getBookComments() {
+		return bookComments;
+	}
+
+	public void setBookComments(List<BookComment> bookComments) {
+		this.bookComments = bookComments;
+	}
+	public List<BookReview> getReviews() {
+		return reviews;
+	}
+	
+	public void setReviews(List<BookReview> reviews) {
+		this.reviews = reviews;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -146,12 +207,11 @@ public class Book {
 		Book other = (Book) obj;
 		return id == other.id;
 	}
+
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", description=" + description + ", pages=" + pages + ", price="
 				+ price + ", isbn=" + isbn + ", publishedYear=" + publishedYear + ", coverUrl=" + coverUrl + "]";
 	}
-	
-	
-	
+
 }

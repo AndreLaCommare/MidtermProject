@@ -45,5 +45,26 @@ class ClubTest {
 		assertNotNull(club);
 		assertEquals("Alexandria", club.getName());
 	}
+	
+	@Test
+	void test_Club_to_ListOfClubBooks_ManyToMany() {
+		assertNotNull(club);
+		assertNotNull(club.getClubBooks());
+		//assertFalse(book.getClubBooks().isEmpty());
+	}
+	@Test
+	void test_Club_to_ListOfUsers_ManyToMany() {
+		assertNotNull(club);
+		assertNotNull(club.getClubMembers());
+		//assertFalse(book.getClubBooks().isEmpty());
+	}
+	
+	@Test
+	void test_Club_has_listOfClubComments_OneToMany() {
+		assertNotNull(club);
+		assertNotNull(club.getCommentsOnClub());
+		assertNotNull("Great club!",club.getCommentsOnClub().get(0).getComment());
+	}
+	
 
 }

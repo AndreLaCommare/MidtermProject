@@ -45,5 +45,14 @@ class LanguageTest {
 		assertNotNull(language);
 		assertEquals("English", language.getName());
 	}
+	
+	@Test
+void test_Language_to_ListOfBooks_OneToMany_mapping() {
+		
+		assertNotNull(language);
+		assertNotNull(language.getBooks());
+		assertFalse(language.getBooks().isEmpty());
+
+	}
 
 }

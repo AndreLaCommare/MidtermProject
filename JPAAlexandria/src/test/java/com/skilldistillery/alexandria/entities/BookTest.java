@@ -48,5 +48,48 @@ class BookTest {
 		assertEquals(300, book.getPages());
 		assertEquals(1985, book.getPublishedYear());
 	}
+	
+	@Test
+	void test_Book_to_ListOfBooklists_ManyToMany() {
+		assertNotNull(book);
+		assertNotNull(book.getBookLists());
+		//assertFalse(book.getBookLists().isEmpty());
+	}
+	
+	@Test
+	void test_Book_to_ListOfClubs_ManyToMany() {
+		assertNotNull(book);
+		assertNotNull(book.getClubsWithThisBook());
+		//assertFalse(book.getBookLists().isEmpty());
+	}
+	
+	@Test
+	void test_Book_UsersWithFavBooks_ManyToMany() {
+		assertNotNull(book);
+		assertNotNull(book.getUsersWithFavBooks());
+		//assertFalse(book.getBookLists().isEmpty());
+	}
+	
+	@Test
+	void test_Book_ListOfBookComments_OneToMany() {
+		assertNotNull(book);
+		assertNotNull(book.getBookComments());
+	}
+	
+	@Test
+	void test_Book_hasAuthor() {
+		assertNotNull(book);
+		assertNotNull(book.getAuthor());
+		assertEquals("Orson",book.getAuthor().getFirstName());
+		assertEquals("Scott",book.getAuthor().getMiddleName());
+		assertEquals("Card",book.getAuthor().getLastName());
+	}
+	
+	@Test
+	void test_Book_to_ListOfReviews_OneToMany() {
+		assertNotNull(book);
+		assertNotNull(book.getReviews());
+		//assertFalse(book.getBookLists().isEmpty());
+	}
 
 }

@@ -48,5 +48,14 @@ class AuthorTest {
 		assertEquals("Card", author.getLastName());
 		assertEquals("Scott", author.getMiddleName());
 	}
+	
+	@Test
+	void test_Author_to_ListOfBooks_OneToMany_mapping() {
+		
+		assertNotNull(author);
+		assertNotNull(author.getBooks());
+		assertFalse(author.getBooks().isEmpty());
+
+	}
 
 }
