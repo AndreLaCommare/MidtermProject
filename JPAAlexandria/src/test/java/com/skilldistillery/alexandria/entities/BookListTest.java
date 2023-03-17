@@ -41,7 +41,7 @@ class BookListTest {
 	void test_InventoryBookList_basic_mappings() {
 		assertNotNull(bookList);
 		assertNotNull(bookList.getId());
-		assertEquals("",bookList.getName());
+		assertEquals("Ender's Game",bookList.getName());
 	}
 
 
