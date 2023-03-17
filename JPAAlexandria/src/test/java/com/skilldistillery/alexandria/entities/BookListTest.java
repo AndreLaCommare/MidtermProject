@@ -39,14 +39,22 @@ class BookListTest {
 	    bookList = null;
 	}
 	
+	
+	
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+		emf.close();
+	}
+
 	@Test
 	void test_InventoryBookList_basic_mappings() {
 		assertNotNull(bookList);
 		assertNotNull(bookList.getId());
 		assertEquals("Ender's Game",bookList.getName());
 	}
-
-
+	
+	
 	@Test
 	void test_BookList_To_Book_ManyToMany_Mapping() {
 		assertNotNull(bookList);
@@ -56,11 +64,14 @@ class BookListTest {
 //		assertTrue(bookList.getBooks().size() > 0);
 	}
 	
-	
-
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-		emf.close();
+	@Test
+	void test_BookList_has_User_ManyToOne() {
+		assertNotNull(bookList);
+		assertNotNull(bookList.getUser());
+		assertEquals("Yan",bookList.getUser().getLastName());
 	}
-
+	
+	
+	
+	
 }

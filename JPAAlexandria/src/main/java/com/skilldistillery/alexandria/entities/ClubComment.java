@@ -36,6 +36,14 @@ public class ClubComment {
 	
 	@OneToMany(mappedBy="parentComment")
 	private List<ClubComment> replies;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="club_id")
+	private Club club;
 
 
 	public int getId() {
@@ -82,6 +90,22 @@ public class ClubComment {
 	public void setReplies(List<ClubComment> replies) {
 		this.replies = replies;
 	}
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Club getClub() {
+		return club;
+	}
+
+	public void setClub(Club club) {
+		this.club = club;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

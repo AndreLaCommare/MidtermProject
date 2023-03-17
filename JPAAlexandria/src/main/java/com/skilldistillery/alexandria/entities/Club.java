@@ -1,7 +1,7 @@
 package com.skilldistillery.alexandria.entities;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,6 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Club {
@@ -29,6 +33,21 @@ public class Club {
 	
 	@Column(name="image_url")
 	private String imageURL;
+	
+	@ManyToMany
+	@JoinTable(name="club_has_book",
+			joinColumns=@JoinColumn(name="club_id"),
+			inverseJoinColumns=@JoinColumn(name="book_id"))
+			private List<Book> clubBooks;
+	
+	@ManyToMany
+	@JoinTable(name="user_has_club",
+	joinColumns=@JoinColumn(name="club_id"),
+	inverseJoinColumns=@JoinColumn(name="user_id"))
+	private List<User> clubMembers;
+	
+	@OneToMany(mappedBy="club")
+	private List<ClubComment> commentsOnClub;
 
 	public Club() {
 		super();
@@ -80,6 +99,30 @@ public class Club {
 
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
+	}
+
+	public List<Book> getClubBooks() {
+		return clubBooks;
+	}
+
+	public void setClubBooks(List<Book> clubBooks) {
+		this.clubBooks = clubBooks;
+	}
+
+	public List<User> getClubMembers() {
+		return clubMembers;
+	}
+
+	public void setClubMembers(List<User> clubMembers) {
+		this.clubMembers = clubMembers;
+	}
+
+	public List<ClubComment> getCommentsOnClub() {
+		return commentsOnClub;
+	}
+
+	public void setCommentsOnClub(List<ClubComment> commentsOnClub) {
+		this.commentsOnClub = commentsOnClub;
 	}
 
 	@Override

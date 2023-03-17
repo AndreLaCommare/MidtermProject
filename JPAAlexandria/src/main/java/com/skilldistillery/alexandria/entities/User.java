@@ -1,5 +1,6 @@
 package com.skilldistillery.alexandria.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -35,6 +40,28 @@ public class User {
 	
 	@Column(name="about_me")
 	private String aboutMe;
+	
+	@ManyToMany(mappedBy="clubMembers")
+	private List<Club> clubMemberships;
+	
+	@ManyToMany
+	@JoinTable(name="user_has_favorite_book",
+			joinColumns=@JoinColumn(name="user_id"),
+			inverseJoinColumns=@JoinColumn(name="book_id"))
+			private List<Book> favoriteBooks;
+	
+	@OneToMany(mappedBy="user")
+	private List<BookComment> userBookComments;
+	
+	@OneToMany(mappedBy="user")
+	private List<ClubComment> userClubComments;
+	
+	@OneToMany(mappedBy="user")
+	private List<BookList> userBookLists;
+	
+	
+	
+	
 
 	public User() {
 		super();
@@ -110,6 +137,46 @@ public class User {
 
 	public void setAboutMe(String aboutMe) {
 		this.aboutMe = aboutMe;
+	}
+
+	public List<Club> getClubMemberships() {
+		return clubMemberships;
+	}
+
+	public void setClubMemberships(List<Club> clubMemberships) {
+		this.clubMemberships = clubMemberships;
+	}
+
+	public List<Book> getFavoriteBooks() {
+		return favoriteBooks;
+	}
+
+	public void setFavoriteBooks(List<Book> favoriteBooks) {
+		this.favoriteBooks = favoriteBooks;
+	}
+
+	public List<BookComment> getUserBookComments() {
+		return userBookComments;
+	}
+
+	public void setUserBookComments(List<BookComment> userBookComments) {
+		this.userBookComments = userBookComments;
+	}
+
+	public List<ClubComment> getUserClubComments() {
+		return userClubComments;
+	}
+
+	public void setUserClubComments(List<ClubComment> userClubComments) {
+		this.userClubComments = userClubComments;
+	}
+
+	public List<BookList> getUserBookLists() {
+		return userBookLists;
+	}
+
+	public void setUserBookLists(List<BookList> userBookLists) {
+		this.userBookLists = userBookLists;
 	}
 
 	@Override
