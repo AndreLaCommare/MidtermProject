@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class club {
+public class Club {
 	
 	@Id 
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -20,16 +20,17 @@ public class club {
 	
 	private String description;
 	
-	private int owner_id;
+	@Column(name="owner_id")
+	private int ownerId;
 	
-	private DateTimeFormatter create_date;
+	@Column(name="create_date")
+	private DateTimeFormatter createDate;
 	
-	@Column(name="cover_url")
-	private String image_url;
+	@Column(name="image_url")
+	private String imageURL;
 
-	public club() {
+	public Club() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getId() {
@@ -56,28 +57,28 @@ public class club {
 		this.description = description;
 	}
 
-	public int getOwner_id() {
-		return owner_id;
+	public int getOwnerId() {
+		return ownerId;
 	}
 
-	public void setOwner_id(int owner_id) {
-		this.owner_id = owner_id;
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
 	}
 
-	public DateTimeFormatter getCreate_date() {
-		return create_date;
+	public DateTimeFormatter getCreateDate() {
+		return createDate;
 	}
 
-	public void setCreate_date(DateTimeFormatter create_date) {
-		this.create_date = create_date;
+	public void setCreateDate(DateTimeFormatter createDate) {
+		this.createDate = createDate;
 	}
 
-	public String getImage_url() {
-		return image_url;
+	public String getImageURL() {
+		return imageURL;
 	}
 
-	public void setImage_url(String image_url) {
-		this.image_url = image_url;
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 
 	@Override
@@ -93,16 +94,16 @@ public class club {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		club other = (club) obj;
+		Club other = (Club) obj;
 		return id == other.id;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("club [id=").append(id).append(", name=").append(name).append(", description=")
-				.append(description).append(", owner_id=").append(owner_id).append(", create_date=").append(create_date)
-				.append(", image_url=").append(image_url).append("]");
+		builder.append("Club [id=").append(id).append(", name=").append(name).append(", description=")
+				.append(description).append(", ownerId=").append(ownerId).append(", createDate=").append(createDate)
+				.append(", imageURL=").append(imageURL).append("]");
 		return builder.toString();
 	}
 	
