@@ -5,9 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Alexandria | Find your next read</title>
+  <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 </head>
 <body>
+<div class = "header">
+<h2>Alexandria</h2>
+
+</div>
 	<h1>Welcome to Alexandria</h1>
 	
 	<h2> User: ${SMOKETEST}</h2> <!-- DEBUG -->

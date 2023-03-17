@@ -14,6 +14,7 @@
  <class>com.skilldistillery.alexandria.entities.Language</class>
  <class>com.skilldistillery.alexandria.entities.Author</class>
  <class>com.skilldistillery.alexandria.entities.ClubComment</class>
+ <class>com.skilldistillery.alexandria.entities.BookReview</class>
  
  
  
