@@ -8,6 +8,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class BookReviewId implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "book_id")

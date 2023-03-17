@@ -15,6 +15,10 @@
  <class>com.skilldistillery.alexandria.entities.Author</class>
  <class>com.skilldistillery.alexandria.entities.ClubComment</class>
  <class>com.skilldistillery.alexandria.entities.BookReview</class>
+ <class>com.skilldistillery.alexandria.entities.Genre</class>
+ <class>com.skilldistillery.alexandria.entities.BookReviewId</class>
+ <class>com.skilldistillery.alexandria.entities.BookList</class>
+ 
  
  
  
