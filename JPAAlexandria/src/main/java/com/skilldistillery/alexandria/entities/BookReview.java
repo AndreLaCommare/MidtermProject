@@ -6,6 +6,9 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Table(name = "book_review")
@@ -15,8 +18,14 @@ public class BookReview {
 	@EmbeddedId
 	private BookReviewId id;
 
-	@Column(name = "user_id")
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	@MapsId(value="userId")
 	private User user;
+	@ManyToOne
+	@JoinColumn(name = "book_id")
+	@MapsId(value="bookId")
+	private Book book;
 
 	@Column(name = "rating")
 	private int rating;
@@ -29,9 +38,6 @@ public class BookReview {
 
 	@Column(name = "last_update")
 	private LocalDateTime lastUpdate;
-
-	@Column(name = "user_id")
-	private int userId;
 
 	public BookReviewId getId() {
 		return id;
@@ -81,17 +87,9 @@ public class BookReview {
 		this.lastUpdate = lastUpdate;
 	}
 
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(createDate, id, lastUpdate, rating, review, user, userId);
+		return Objects.hash(createDate, id, lastUpdate, rating, review, user);
 	}
 
 	@Override
@@ -105,12 +103,12 @@ public class BookReview {
 		BookReview other = (BookReview) obj;
 		return Objects.equals(createDate, other.createDate) && Objects.equals(id, other.id)
 				&& Objects.equals(lastUpdate, other.lastUpdate) && rating == other.rating
-				&& Objects.equals(review, other.review) && Objects.equals(user, other.user) && userId == other.userId;
+				&& Objects.equals(review, other.review) && Objects.equals(user, other.user);
 	}
 
 	@Override
 	public String toString() {
 		return "BookReview [id=" + id + ", user=" + user + ", rating=" + rating + ", review=" + review + ", createDate="
-				+ createDate + ", lastUpdate=" + lastUpdate + ", userId=" + userId + "]";
+				+ createDate + ", lastUpdate=" + lastUpdate + "]";
 	}
 }
