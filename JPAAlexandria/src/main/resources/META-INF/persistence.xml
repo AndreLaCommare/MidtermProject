@@ -10,6 +10,9 @@
  
 
  <class>com.skilldistillery.alexandria.entities.User</class>
+ <class>com.skilldistillery.alexandria.entities.Book</class>
+ <class>com.skilldistillery.alexandria.entities.Language</class>
+ <class>com.skilldistillery.alexandria.entities.Author</class>
  
  
  
