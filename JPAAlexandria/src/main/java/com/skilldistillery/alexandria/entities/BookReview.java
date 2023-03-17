@@ -38,6 +38,8 @@ public class BookReview {
 
 	@Column(name = "last_update")
 	private LocalDateTime lastUpdate;
+	
+
 
 	public BookReviewId getId() {
 		return id;
@@ -85,6 +87,15 @@ public class BookReview {
 
 	public void setLastUpdate(LocalDateTime lastUpdate) {
 		this.lastUpdate = lastUpdate;
+	}
+	
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
 	@Override
