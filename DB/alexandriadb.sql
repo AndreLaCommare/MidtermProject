@@ -372,6 +372,11 @@ SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DAT
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
 
 GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'admin'@'localhost';
+SET SQL_MODE = '';
+DROP USER IF EXISTS user1;
+SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+CREATE USER 'user1';
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -393,6 +398,7 @@ COMMIT;
 START TRANSACTION;
 USE `alexandriaDB`;
 INSERT INTO `author` (`id`, `first_name`, `middle_name`, `last_name`, `image_url`, `description`) VALUES (1, 'Orson', 'Scott', 'Card', NULL, 'Orson Scott Card is an American writer known best for his science fiction works. He is the first and only person to win both a Hugo Award and a Nebula Award in consecutive years, winning both awards for both his novel Ender\'s Game and its sequel Speaker for the Dead.');
+INSERT INTO `author` (`id`, `first_name`, `middle_name`, `last_name`, `image_url`, `description`) VALUES (2, 'Joanne', 'Kathleen', 'Rowling', NULL, 'J. K. Rowling, is a British author and philanthropist. She wrote Harry Potter, a seven-volume children\'s fantasy series.');
 
 COMMIT;
 
@@ -402,7 +408,14 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `alexandriaDB`;
-INSERT INTO `book` (`id`, `cover_url`, `title`, `description`, `pages`, `published_year`, `price`, `isbn`, `language_id`, `author_id`) VALUES (1, '', 'Ender\'s Game', 'When hostile aliens called the Formics attack Earth, only the legendary heroics of Mazer Rackham (Ben Kingsley) manage to attain a victory.', 300, 1985, 9.99, '0765337320', 1, 1);
+INSERT INTO `book` (`id`, `cover_url`, `title`, `description`, `pages`, `published_year`, `price`, `isbn`, `language_id`, `author_id`) VALUES (1, '', 'Ender\'s Game', 'When hostile aliens called the Formics attack Earth, only the legendary heroics of Mazer Rackham (Ben Kingsley) manage to attain a victory.', 300, 2013, 9.99, '0765337320', 1, 1);
+INSERT INTO `book` (`id`, `cover_url`, `title`, `description`, `pages`, `published_year`, `price`, `isbn`, `language_id`, `author_id`) VALUES (2, NULL, 'Harry Potter and the Sorcerer\'s Stone', 'An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.', 456, 1997, 29.99, '9780545582889', 1, 2);
+INSERT INTO `book` (`id`, `cover_url`, `title`, `description`, `pages`, `published_year`, `price`, `isbn`, `language_id`, `author_id`) VALUES (3, NULL, 'Harry Potter and the Chamber of Secrets', 'The Dursleys were so mean that hideous that summer that all Harry Potter wanted was to get back to the Hogwarts School for Witchcraft and Wizardry. But just as he\'s packing his bags, Harry receives a warning from a strange, impish creature named Dobby who says that if Harry Potter returns to Hogwarts, disaster will strike.', 341, 1998, 6.98, '0439064872', 1, 2);
+INSERT INTO `book` (`id`, `cover_url`, `title`, `description`, `pages`, `published_year`, `price`, `isbn`, `language_id`, `author_id`) VALUES (4, NULL, 'Harry Potter and the Prisoner of Azkaban', 'Harry Potter & The Prisoner of Azkaban is about Harry\'s 3rd year at Hogwarts. Along with friends Ron and Hermione, Harry investigates the case of Sirius Black, an escaped prisoner from Azkaban, the wizard prison.', 317, 1999, 9.99, '0-7475-4215-5', 1, 2);
+INSERT INTO `book` (`id`, `cover_url`, `title`, `description`, `pages`, `published_year`, `price`, `isbn`, `language_id`, `author_id`) VALUES (5, NULL, 'Harry Potter and the Goblet of Fire', 'Fourteen-year-old Harry Potter joins the Weasleys at the Quidditch World Cup, then enters his fourth year at Hogwarts Academy where he is mysteriously entered in an unusual contest that challenges his wizarding skills, amid signs that an old enemy is growing stronger.', 752, 2000, 11.69, '9780439139601', 1, 2);
+INSERT INTO `book` (`id`, `cover_url`, `title`, `description`, `pages`, `published_year`, `price`, `isbn`, `language_id`, `author_id`) VALUES (6, NULL, 'Harry Potter and the Order of the Phoenix', 'Harry Potter is due to start his fifth year at Hogwarts School of Witchcraft and Wizardry. He is desperate to get back to school and find out why his friends Ron and Hermione have been so secretive all summer.', 766, 2003, 14.99, '9781338299182', 1, 2);
+INSERT INTO `book` (`id`, `cover_url`, `title`, `description`, `pages`, `published_year`, `price`, `isbn`, `language_id`, `author_id`) VALUES (7, NULL, 'Harry Potter and the Half-Blood Prince', 'The war against Voldemort is not going well; even the Muggles have been affected. Dumbledore is absent from Hogwarts for long stretches of time, and the Order of the Phoenix has already suffered losses. And yet . . . As with all wars, life goes on. Sixth-year students learn to Apparate.', 607, 2005, 12.99, '0-7475-8108-8', 1, 2);
+INSERT INTO `book` (`id`, `cover_url`, `title`, `description`, `pages`, `published_year`, `price`, `isbn`, `language_id`, `author_id`) VALUES (8, NULL, 'Harry Potter and the Deathly Hallows', 'After years of battling against the evil Lord Voldemort, 17-year-old Harry Potter is finally an adult wizard, and he and his best friends Ron Weasley and Hermione Granger must set out on a dangerous mission to stop Voldemort once and for all.', 607, 2007, 9.98, '0545139708', 1, 2);
 
 COMMIT;
 
