@@ -48,6 +48,9 @@ public class Book {
 	@ManyToMany(mappedBy="books")
 	private List<BookList> bookLists;
 	
+
+	
+	
 	
 	public Book () {
 		super();
