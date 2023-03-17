@@ -1,6 +1,7 @@
 package com.skilldistillery.alexandria.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,7 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="club_comment")
@@ -23,6 +29,14 @@ public class ClubComment {
 	
 	@Column(name="comment_date")
 	private LocalDate commentDate;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="in_reply_to_id")
+	private ClubComment parentComment;
+	
+	@OneToMany(mappedBy="parentComment")
+	private List<ClubComment> replies;
+
 
 	public int getId() {
 		return id;
@@ -53,6 +67,21 @@ public class ClubComment {
 		return Objects.hash(id);
 	}
 
+	public ClubComment getParentComment() {
+		return parentComment;
+	}
+	
+	public void setParentComment(ClubComment parentComment) {
+		this.parentComment = parentComment;
+	}
+	
+	public List<ClubComment> getReplies() {
+		return replies;
+	}
+	
+	public void setReplies(List<ClubComment> replies) {
+		this.replies = replies;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -43,7 +43,7 @@ class ClubCommentTest {
 	@Test
 	void test() {
 		assertNotNull(clubComment);
-		assertEquals("FIXME", clubComment.getComment());
+		assertEquals("Great club!", clubComment.getComment());
 		assertEquals(2023, clubComment.getCommentDate().getYear());
 		assertEquals(3, clubComment.getCommentDate().getMonthValue());
 		assertEquals(17, clubComment.getCommentDate().getDayOfMonth());
