@@ -83,7 +83,6 @@ DROP TABLE IF EXISTS `genre` ;
 CREATE TABLE IF NOT EXISTS `genre` (
   `id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  `description` TEXT NULL,
   `image_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -379,11 +378,101 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
+-- Data for table `language`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `alexandriaDB`;
+INSERT INTO `language` (`id`, `name`) VALUES (1, 'English');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `author`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `alexandriaDB`;
+INSERT INTO `author` (`id`, `first_name`, `middle_name`, `last_name`, `image_url`, `description`) VALUES (1, 'Orson', 'Scott', 'Card', NULL, 'Orson Scott Card is an American writer known best for his science fiction works. He is the first and only person to win both a Hugo Award and a Nebula Award in consecutive years, winning both awards for both his novel Ender\'s Game and its sequel Speaker for the Dead.');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `book`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `alexandriaDB`;
+INSERT INTO `book` (`id`, `cover_url`, `title`, `description`, `pages`, `published_year`, `price`, `isbn`, `language_id`, `author_id`) VALUES (1, '', 'Ender\'s Game', 'When hostile aliens called the Formics attack Earth, only the legendary heroics of Mazer Rackham (Ben Kingsley) manage to attain a victory.', 300, 1985, 9.99, '0765337320', 1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `genre`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `alexandriaDB`;
+INSERT INTO `genre` (`id`, `name`, `image_url`) VALUES (1, 'sci-fi', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `alexandriaDB`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `image_url`, `first_name`, `last_name`, `about_me`) VALUES (1, 'admin', 'admin', 1, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `image_url`, `first_name`, `last_name`, `about_me`) VALUES (1, 'admin', 'admin', 1, 'admin', NULL, 'kenny', 'Yan', 'I like ramen');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `book_review`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `alexandriaDB`;
+INSERT INTO `book_review` (`rating`, `review`, `create_date`, `last_update`, `book_id`, `user_id`) VALUES (10, 'Great Book', '2023-03-17', '2023-03-17', 1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `booklist`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `alexandriaDB`;
+INSERT INTO `booklist` (`id`, `name`, `description`, `image_url`, `user_id`) VALUES (1, 'Ender\'s Game', 'User\'s favorite book\'s', NULL, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `club`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `alexandriaDB`;
+INSERT INTO `club` (`id`, `name`, `description`, `owner_id`, `create_date`, `image_url`) VALUES (1, 'Alexandria', 'Book club', 1, '2023-03-17', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `club_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `alexandriaDB`;
+INSERT INTO `club_comment` (`id`, `club_comment`, `comment_date`, `user_id`, `club_id`, `in_reply_to_id`) VALUES (1, 'Great club!', '2023-03-17', 1, 1, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `book_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `alexandriaDB`;
+INSERT INTO `book_comment` (`id`, `book_comment`, `comment_date`, `book_id`, `user_id`, `in_reply_to_id`) VALUES (1, 'Fun to read', '2023-03-17', 1, 1, NULL);
 
 COMMIT;
 
