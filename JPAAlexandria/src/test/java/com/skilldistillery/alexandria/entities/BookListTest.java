@@ -1,7 +1,9 @@
 package com.skilldistillery.alexandria.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -45,7 +47,14 @@ class BookListTest {
 	}
 
 
-
+	@Test
+	void test_BookList_To_Book_ManyToMany_Mapping() {
+		assertNotNull(bookList);
+		assertNotNull(bookList.getBooks());
+//		
+		assertFalse(bookList.getBooks().isEmpty());
+		assertTrue(bookList.getBooks().size() > 0);
+	}
 	
 	
 

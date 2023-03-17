@@ -1,5 +1,6 @@
 package com.skilldistillery.alexandria.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class BookList {
@@ -21,6 +25,12 @@ public class BookList {
 	
 	@Column(name="image_url")
 	private String imageUrl;
+	
+	@ManyToMany
+	@JoinTable(name="booklist_has_book",
+			joinColumns=@JoinColumn(name="booklist_id"),
+			inverseJoinColumns=@JoinColumn(name="book_id"))
+			private List<Book> books;
 	
 	public BookList() {}
 
@@ -54,6 +64,14 @@ public class BookList {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 
 	@Override

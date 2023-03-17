@@ -43,7 +43,14 @@ class GenreTest {
 		assertEquals("sci-fi",genre.getGenre());
 	}
 
-
+	@Test
+	void test_Genre_To_Book_ManyToMany_Mapping() {
+		assertNotNull(genre);
+		assertNotNull(genre.getBooks());
+//		
+//		assertFalse(genre.getBooks().isEmpty());
+//		assertTrue(genre.getBooks().size() > 0);
+	}
 
 	
 	
