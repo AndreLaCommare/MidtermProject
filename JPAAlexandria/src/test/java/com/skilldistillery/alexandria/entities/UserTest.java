@@ -46,5 +46,42 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
 	}
+	
+	@Test
+	void test_User_to_ListOfClubMemberships_ManyToMany() {
+		assertNotNull(user);
+		assertNotNull(user.getClubMemberships());
+		//assertFalse(book.getClubMemberships().isEmpty());
+	}
+	
+	@Test
+	void test_User_ListOfFavoriteBooks_ManyToMany() {
+		assertNotNull(user);
+		assertNotNull(user.getFavoriteBooks());
+		//assertFalse(book.getBookLists().isEmpty());
+	}
+	
+	@Test
+	void test_User_ListOfBookComments_OneToMany() {
+		assertNotNull(user);
+		assertNotNull(user.getUserBookComments());
+		assertEquals("Fun to read", user.getUserBookComments().get(0).getBookComment());
+	}
+	
+	@Test
+	void test_User_ListOfClubComments_OneToMany() {
+		assertNotNull(user);
+		assertNotNull(user.getUserClubComments());
+		assertNotNull("Great club!",user.getUserClubComments().get(0).getComment());
+		
+	}
+	
+	@Test
+	void test_User_ListOfBookLists_OneToMany() {
+		assertNotNull(user);
+		assertNotNull(user.getUserBookLists());
+		//assertNotNull("Ender's Game",user.getUserBookLists().get(0).getBooks().get(0).getTitle());
+		
+	}
 
 }

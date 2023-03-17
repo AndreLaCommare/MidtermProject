@@ -48,5 +48,21 @@ class ClubCommentTest {
 		assertEquals(3, clubComment.getCommentDate().getMonthValue());
 		assertEquals(17, clubComment.getCommentDate().getDayOfMonth());
 	}
+	
+	@Test
+	void test_ClubComment_hasUser_ManyToOne() {
+		assertNotNull(clubComment);
+		assertNotNull(clubComment.getUser());
+		assertEquals("kenny",clubComment.getUser().getFirstName());
+		
+	}
+	
+	@Test
+	void test_ClubComment_hasClub_ManyToOne() {
+		assertNotNull(clubComment);
+		assertNotNull(clubComment.getClub());
+		assertEquals("Alexandria",clubComment.getClub().getName());
+		
+	}
 
 }

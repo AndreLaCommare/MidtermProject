@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class BookList {
@@ -31,6 +32,12 @@ public class BookList {
 			joinColumns=@JoinColumn(name="booklist_id"),
 			inverseJoinColumns=@JoinColumn(name="book_id"))
 			private List<Book> books;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
 	
 	public BookList() {}
 
@@ -72,6 +79,14 @@ public class BookList {
 
 	public void setBooks(List<Book> books) {
 		this.books = books;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

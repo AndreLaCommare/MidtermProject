@@ -46,5 +46,20 @@ public class BookCommentTest {
 		assertNotNull(bookcomment);
 		assertEquals("Fun to read", bookcomment.getBookComment());
 	}
+	
+	@Test
+	void test_BookComment_OneToMany_Book() {
+		assertNotNull(bookcomment);
+		assertNotNull(bookcomment.getBook());
+	}
+	
+	@Test
+	void test_BookComment_has_User_ManyToOne() {
+		assertNotNull(bookcomment);
+		assertNotNull(bookcomment.getUser());
+		assertEquals("kenny",bookcomment.getUser().getFirstName());
+		assertEquals("Yan",bookcomment.getUser().getLastName());
+		assertEquals("admin",bookcomment.getUser().getPassword());
+	}
 
 }

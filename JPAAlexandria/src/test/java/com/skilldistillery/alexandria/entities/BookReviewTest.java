@@ -1,5 +1,6 @@
 package com.skilldistillery.alexandria.entities;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
@@ -44,6 +45,12 @@ class BookReviewTest {
 	@Test
 	void test_bookreview_mapping() {
 		assertNotNull(review);
+	}
+	
+	@Test
+	void test_BookReview_has_Book_ManyToOne() {
+		assertNotNull(review);
+		assertEquals("Ender's Game", review.getBook().getTitle());
 	}
 
 }
