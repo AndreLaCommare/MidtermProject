@@ -1,5 +1,6 @@
 package com.skilldistillery.alexandria.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -35,6 +38,16 @@ public class Book {
 	private int publishedYear;
 	@Column(name="cover_url")
 	private String coverUrl;
+	
+	@ManyToMany
+	@JoinTable(name="book_has_genre",
+			joinColumns=@JoinColumn(name="book_id"),
+			inverseJoinColumns=@JoinColumn(name="genre_id"))
+			private List<Genre> genres;
+	
+	@ManyToMany(mappedBy="books")
+	private List<BookList> bookLists;
+	
 	
 	public Book () {
 		super();
@@ -100,6 +113,24 @@ public class Book {
 	public void setCoverUrl(String coverUrl) {
 		this.coverUrl = coverUrl;
 	}
+
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
+
+	public List<BookList> getBookLists() {
+		return bookLists;
+	}
+
+	public void setBookLists(List<BookList> bookLists) {
+		this.bookLists = bookLists;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
