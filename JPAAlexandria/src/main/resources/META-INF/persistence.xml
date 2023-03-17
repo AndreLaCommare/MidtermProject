@@ -18,6 +18,8 @@
  <class>com.skilldistillery.alexandria.entities.Genre</class>
  <class>com.skilldistillery.alexandria.entities.BookReviewId</class>
  <class>com.skilldistillery.alexandria.entities.BookList</class>
+ <class>com.skilldistillery.alexandria.entities.BookComment</class>
+ <class>com.skilldistillery.alexandria.entities.Club</class>
  
  
  
