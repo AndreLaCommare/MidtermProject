@@ -30,10 +30,12 @@ public class BookComment {
 	@Column(name = "comment_date")
 	private LocalDateTime commentDate;
 
-	@Column(name = "book_id")
+	@ManyToOne
+	@JoinColumn(name = "book_id")
 	private Book book;
 
-	@Column(name = "user_id")
+	@ManyToOne
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	@JsonIgnore
