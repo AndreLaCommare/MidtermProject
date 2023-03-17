@@ -1,1 +1,7 @@
 @charset "UTF-8";
+.header{
+	height:200px;
+	width: 900px;
+	background-color: #F4F4F8;
+	color: #362C1B;
+}
