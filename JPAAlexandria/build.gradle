@@ -34,7 +34,7 @@ ext {
 dependencies {
   implementation "mysql:mysql-connector-java:$mySqlConnectorVersion"
   implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
-  
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.14.2'
   implementation "org.hibernate:hibernate-core:$hibernateVersion"
   implementation "org.hibernate:hibernate-c3p0:$hibernateVersion"
   testImplementation "org.junit.jupiter:junit-jupiter:$junit5Version"

@@ -1,5 +1,6 @@
 package com.skilldistillery.alexandria.entities;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
@@ -24,7 +25,7 @@ public class Club {
 	private int ownerId;
 	
 	@Column(name="create_date")
-	private DateTimeFormatter createDate;
+	private LocalDateTime createDate;
 	
 	@Column(name="image_url")
 	private String imageURL;
@@ -35,6 +36,10 @@ public class Club {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
 	}
 
 	public void setId(int id) {
@@ -65,12 +70,8 @@ public class Club {
 		this.ownerId = ownerId;
 	}
 
-	public DateTimeFormatter getCreateDate() {
+	public LocalDateTime getCreateDate() {
 		return createDate;
-	}
-
-	public void setCreateDate(DateTimeFormatter createDate) {
-		this.createDate = createDate;
 	}
 
 	public String getImageURL() {

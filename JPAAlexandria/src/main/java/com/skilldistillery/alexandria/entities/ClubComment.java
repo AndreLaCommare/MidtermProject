@@ -1,6 +1,7 @@
 package com.skilldistillery.alexandria.entities;
 
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,34 +9,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity	
-@Table(name = "club_comment")
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name="club_comment")
 public class ClubComment {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
-
+	
 	@Column(name="club_comment")
-	private String clubComment;
-
+	private String comment;
+	
 	@Column(name="comment_date")
-	private DateTimeFormatter commentDate;
+	private LocalDate commentDate;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="in_reply_to_id")
+	private ClubComment parentComment;
+	
+	@OneToMany(mappedBy="parentComment")
+	private List<ClubComment> replies;
 
-	@Column(name="user_id")
-	private int userId;
-
-	@Column(name="club_id")
-	private int clubId;
-
-	@Column(name="in_reply_to_id")
-	private int inReplyToId;
-
-	public ClubComment() {
-		super();
-	}
 
 	public int getId() {
 		return id;
@@ -45,44 +46,20 @@ public class ClubComment {
 		this.id = id;
 	}
 
-	public String getClubComment() {
-		return clubComment;
+	public String getComment() {
+		return comment;
 	}
 
-	public void setClubComment(String clubComment) {
-		this.clubComment = clubComment;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
-	public DateTimeFormatter getCommentDate() {
+	public LocalDate getCommentDate() {
 		return commentDate;
 	}
 
-	public void setCommentDate(DateTimeFormatter commentDate) {
+	public void setCommentDate(LocalDate commentDate) {
 		this.commentDate = commentDate;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
-	public int getClubId() {
-		return clubId;
-	}
-
-	public void setClubId(int clubId) {
-		this.clubId = clubId;
-	}
-
-	public int getInReplyToId() {
-		return inReplyToId;
-	}
-
-	public void setInReplyToId(int inReplyToId) {
-		this.inReplyToId = inReplyToId;
 	}
 
 	@Override
@@ -90,6 +67,21 @@ public class ClubComment {
 		return Objects.hash(id);
 	}
 
+	public ClubComment getParentComment() {
+		return parentComment;
+	}
+	
+	public void setParentComment(ClubComment parentComment) {
+		this.parentComment = parentComment;
+	}
+	
+	public List<ClubComment> getReplies() {
+		return replies;
+	}
+	
+	public void setReplies(List<ClubComment> replies) {
+		this.replies = replies;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -104,11 +96,12 @@ public class ClubComment {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("ClubComment [id=").append(id).append(", clubComment=").append(clubComment)
-				.append(", commentDate=").append(commentDate).append(", userId=").append(userId).append(", clubId=")
-				.append(clubId).append(", inReplyToId=").append(inReplyToId).append("]");
-		return builder.toString();
+		return "ClubComment [id=" + id + ", comment=" + comment + ", commentDate=" + commentDate + "]";
 	}
-
+	
+	
+	
+	
+	
+	
 }
