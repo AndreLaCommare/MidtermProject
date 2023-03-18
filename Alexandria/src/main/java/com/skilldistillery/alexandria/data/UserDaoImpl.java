@@ -1,14 +1,15 @@
 package com.skilldistillery.alexandria.data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.alexandria.entities.Book;
 import com.skilldistillery.alexandria.entities.User;
-
-import net.bytebuddy.matcher.ElementMatcher;
 
 @Transactional
 @Service
@@ -60,11 +61,49 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public User findUserById(int userId) {
 		
-		return null;
+		return em.find(User.class, userId);
 	}
 
 	@Override
 	public User updateUser(int userId, User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Book> findBookByTitle(String title) {
+		title = "%" + title + "%";
+		String jpql = "SELECT b FROM Book b WHERE b.title LIKE :title";
+		List<Book> book = em.createQuery(jpql, Book.class).setParameter("title", title).getResultList();
+		
+		return book;
+	}
+
+	@Override
+	public List<Book> findBookByGenre(String genre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> findBookByAuthor(String author) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> findBookByLanguage(String language) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> findBookByDescription(String description) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> findBookByISBN(String isbn) {
 		// TODO Auto-generated method stub
 		return null;
 	}

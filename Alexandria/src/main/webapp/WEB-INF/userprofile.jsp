@@ -31,6 +31,10 @@
 	<form action="logout.do" method="GET">
 		 <input type="submit" value="Log out">
 	</form>
+	<form action="bookbytitle.do" method="GET">
+	<input type="text" name="title">
+		 <input type="submit" value="Find Book">
+	</form>
 
 
 <jsp:include page="bootstrapFoot.jsp" />
