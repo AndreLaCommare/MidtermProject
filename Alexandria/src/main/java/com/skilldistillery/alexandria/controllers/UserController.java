@@ -16,14 +16,15 @@ public class UserController {
 	
 	@RequestMapping(path = {"/", "home.do"})
 	public String home(Model model) {
+		System.out.println("***************************Home.do******************************");
 		//DEBUG
-		User u = new User();
-		u.setUsername("admin");
-		u.setPassword("admin");
-		u = userDao.login(u);
-		model.addAttribute("SMOKETEST", u);
+//		User u = new User();
+//		u.setUsername("admin");
+//		u.setPassword("admin");
+//		u = userDao.login(u);
+//		model.addAttribute("SMOKETEST", u);
 		//DEBUG
 		
-		return "home";
+		return "signuplogin";
 	}
 }
