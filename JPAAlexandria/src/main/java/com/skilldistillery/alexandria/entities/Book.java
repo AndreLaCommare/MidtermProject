@@ -252,6 +252,42 @@ public class Book {
 			user.removeBook(this);
 		}
 	}
+	
+	public void addBookComment(BookComment bookComment) {
+		if (bookComments == null) {bookComments = new ArrayList<>(); }
+		if ( ! bookComments.contains(bookComment) ) {
+			bookComments.add(bookComment);
+			if (bookComment.getBook() != null) {
+				bookComment.getBook().removeBookComment(bookComment);
+			}
+			bookComment.setBook(this);
+		}
+	}
+	
+	public void removeBookComment(BookComment bookComment) {
+		if (bookComments != null && bookComments.contains(bookComment)) {
+			bookComments.remove(bookComment);
+			bookComment.setBook(null);
+		}
+	}
+	
+	public void addBookReview(BookReview bookReview) {
+		if (reviews == null) {reviews = new ArrayList<>(); }
+		if ( ! reviews.contains(bookReview) ) {
+			reviews.add(bookReview);
+			if (bookReview.getBook() != null) {
+				bookReview.getBook().removeBookReview(bookReview);
+			}
+			bookReview.setBook(this);
+		}
+	}
+	
+	public void removeBookReview(BookReview bookReview) {
+		if (reviews != null && reviews.contains(bookReview)) {
+			reviews.remove(bookReview);
+			bookReview.setBook(null);
+		}
+	}
 
 
 	@Override

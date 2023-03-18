@@ -159,6 +159,24 @@ public class Club {
 			user.removeClub(this);
 		}
 	}
+	
+	public void addClubComment(ClubComment clubComment) {
+		if (commentsOnClub == null) {commentsOnClub = new ArrayList<>(); }
+		if ( ! commentsOnClub.contains(clubComment) ) {
+			commentsOnClub.add(clubComment);
+			if (clubComment.getClub() != null) {
+				clubComment.getClub().removeClubComment(clubComment);;
+			}
+			clubComment.setClub(this);
+		}
+	}
+	
+	public void removeClubComment(ClubComment clubComment) {
+		if (commentsOnClub != null && commentsOnClub.contains(clubComment)) {
+			commentsOnClub.remove(clubComment);
+			clubComment.setClub(null);
+		}
+	}
 
 	@Override
 	public boolean equals(Object obj) {

@@ -1,6 +1,7 @@
 package com.skilldistillery.alexandria.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -116,6 +117,24 @@ public class BookComment {
 		this.replies = replies;
 	}
 
+//	public void addBookComment(BookComment bookComment) {
+//		if (replies == null) {replies = new ArrayList<>(); }
+//		if ( ! replies.contains(bookComment) ) {
+//			replies.add(bookComment);
+//			if (bookComment.getBook() != null) {
+//				bookComment.getBookComment().removeBookComment(bookComment);
+//			}
+//			bookComment.setBookComment(this);
+//		}
+//	}
+	///////////////// NOTE TO SELF. MIGHT HAVE TO DO MANY TO MANY FOR THE SELF JOIN RELATIONSHIP
+//	
+//	public void removeBookComment(BookComment bookComment) {
+//		if (replies != null && replies.contains(bookComment)) {
+//			replies.remove(bookComment);
+//			bookComment.setBookComment(null);
+//		}
+//	}
 	
 
 	@Override
