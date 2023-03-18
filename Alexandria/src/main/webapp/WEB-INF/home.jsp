@@ -17,7 +17,7 @@
 </div>
 	<h1>Welcome to Alexandria</h1>
 	
-	<h2> User: ${SMOKETEST}</h2> <!-- DEBUG -->
+	<h2> Home Page</h2> <!-- DEBUG -->
 	
 <jsp:include page="bootstrapFoot.jsp" />
 </body>

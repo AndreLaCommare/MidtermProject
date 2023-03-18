@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 
-<title>Log In</title>
+<title>Sign Up</title>
 <jsp:include page="bootstrapHead.jsp" />
 
 </head>
@@ -18,11 +18,16 @@
 	<%--Edit the file nav.jsp to change nav links --%>
 	<%-- <%@ include file="nav.jsp"%> --%>
 
-	<h2>Log In</h2>
+	<h2>Sign Up</h2>
 
-	<form action="login.do" method="POST">
-		<input type="text" name="username"> <input type="password"
-			name="password" /> <input type="submit" value="Log In">
+	<form action="signup.do" method="POST">
+		First Name <input type="text" name="firstName"> 
+		Last Name <input type="text" name="lastName" /> 
+		Email <input type="text" name="email" /> 
+		Username <input type="text" name="username" /> 
+		Password <input type="password" name="password" /> 
+		
+			<input type="submit" value="Sign Up">
 	</form>
 	
 <jsp:include page="bootstrapFoot.jsp" />	
