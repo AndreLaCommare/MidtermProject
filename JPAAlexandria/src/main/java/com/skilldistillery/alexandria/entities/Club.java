@@ -145,6 +145,20 @@ public class Club {
 			book.removeClub(this);
 		}
 	}
+	public void addUser(User user) {
+		if (clubMembers == null ) {clubMembers = new ArrayList<>(); }
+		if ( ! clubMembers.contains(user) ) {
+			clubMembers.add(user);
+			user.addClub(this);
+		}
+	}
+	
+	public void removeUser(User user) {
+		if (clubMembers != null && clubMembers.contains(user)) {
+			clubMembers.remove(user);
+			user.removeClub(this);
+		}
+	}
 
 	@Override
 	public boolean equals(Object obj) {

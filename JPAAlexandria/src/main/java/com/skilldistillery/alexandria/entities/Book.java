@@ -238,6 +238,21 @@ public class Book {
 			club.removeBook(this);
 		}
 	}
+	public void addUser(User user) {
+		if (usersWithFavBooks == null ) {usersWithFavBooks = new ArrayList<>(); }
+		if ( ! usersWithFavBooks.contains(user) ) {
+			usersWithFavBooks.add(user);
+			user.addBook(this);
+		}
+	}
+	
+	public void removeUser(User user) {
+		if (usersWithFavBooks != null && usersWithFavBooks.contains(user)) {
+			usersWithFavBooks.remove(user);
+			user.removeBook(this);
+		}
+	}
+
 
 	@Override
 	public int hashCode() {

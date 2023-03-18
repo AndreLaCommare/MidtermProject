@@ -1,5 +1,6 @@
 package com.skilldistillery.alexandria.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -177,6 +178,35 @@ public class User {
 
 	public void setUserBookLists(List<BookList> userBookLists) {
 		this.userBookLists = userBookLists;
+	}
+	
+	public void addBook(Book book) {
+		if (favoriteBooks == null ) {favoriteBooks = new ArrayList<>(); }
+		if ( ! favoriteBooks.contains(book) ) {
+			favoriteBooks.add(book);
+			book.addUser(this);
+		}
+	}
+	
+	public void removeBook(Book book) {
+		if (favoriteBooks != null && favoriteBooks.contains(book)) {
+			favoriteBooks.remove(book);
+			book.removeUser(this);
+		}
+	}
+	public void addClub(Club club) {
+		if (clubMemberships == null ) {clubMemberships = new ArrayList<>(); }
+		if ( ! clubMemberships.contains(club) ) {
+			clubMemberships.add(club);
+			club.addUser(this);
+		}
+	}
+	
+	public void removeClub(Club club) {
+		if (clubMemberships != null && clubMemberships.contains(club)) {
+			clubMemberships.remove(club);
+			club.removeUser(this);
+		}
 	}
 
 	@Override
