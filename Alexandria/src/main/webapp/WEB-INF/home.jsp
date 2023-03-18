@@ -6,9 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Alexandria | Find your next read</title>
+<jsp:include page="bootstrapHead.jsp" />
   <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 </head>
 <body>
+<jsp:include page="navbar.jsp" />
 <div class = "header">
 <h2>Alexandria</h2>
 
@@ -16,5 +18,7 @@
 	<h1>Welcome to Alexandria</h1>
 	
 	<h2> User: ${SMOKETEST}</h2> <!-- DEBUG -->
+	
+<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>
