@@ -1,5 +1,6 @@
 package com.skilldistillery.alexandria.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -87,6 +88,21 @@ public class BookList {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public void addBook(Book book) {
+		if (books == null ) {books = new ArrayList<>(); }
+		if ( ! books.contains(book) ) {
+			books.add(book);
+			book.addBookList(this);
+		}
+	}
+	
+	public void removeBook(Book book) {
+		if (books != null && books.contains(book)) {
+			books.remove(book);
+			book.removeBookList(this);
+		}
 	}
 
 	@Override

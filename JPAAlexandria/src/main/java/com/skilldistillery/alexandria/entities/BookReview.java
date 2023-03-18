@@ -39,6 +39,7 @@ public class BookReview {
 	@Column(name = "last_update")
 	private LocalDateTime lastUpdate;
 	
+	
 
 
 	public BookReviewId getId() {

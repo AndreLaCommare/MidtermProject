@@ -1,6 +1,7 @@
 package com.skilldistillery.alexandria.entities;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -48,6 +49,24 @@ public class Language {
 
 	public void setBooks(List<Book> books) {
 		this.books = books;
+	}
+	
+	public void addBook(Book book) {
+		if (books == null) {books = new ArrayList<>(); }
+		if ( ! books.contains(book) ) {
+			books.add(book);
+			if (book.getLanguage() != null) {
+				book.getLanguage().removeBook(book);;
+			}
+			book.setLanguage(this);
+		}
+	}
+	
+	public void removeBook(Book book) {
+		if (books != null && books.contains(book)) {
+			books.remove(book);
+			book.setLanguage(null);
+		}
 	}
 
 	@Override

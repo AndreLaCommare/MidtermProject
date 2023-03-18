@@ -1,5 +1,6 @@
 package com.skilldistillery.alexandria.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -58,6 +59,9 @@ public class User {
 	
 	@OneToMany(mappedBy="user")
 	private List<BookList> userBookLists;
+	
+	@OneToMany(mappedBy="user")
+	private List<BookReview> bookReviews;
 	
 	
 	
@@ -177,6 +181,107 @@ public class User {
 
 	public void setUserBookLists(List<BookList> userBookLists) {
 		this.userBookLists = userBookLists;
+	}
+	
+	public void addBook(Book book) {
+		if (favoriteBooks == null ) {favoriteBooks = new ArrayList<>(); }
+		if ( ! favoriteBooks.contains(book) ) {
+			favoriteBooks.add(book);
+			book.addUser(this);
+		}
+	}
+	
+	public void removeBook(Book book) {
+		if (favoriteBooks != null && favoriteBooks.contains(book)) {
+			favoriteBooks.remove(book);
+			book.removeUser(this);
+		}
+	}
+	public void addClub(Club club) {
+		if (clubMemberships == null ) {clubMemberships = new ArrayList<>(); }
+		if ( ! clubMemberships.contains(club) ) {
+			clubMemberships.add(club);
+			club.addUser(this);
+		}
+	}
+	
+	public void removeClub(Club club) {
+		if (clubMemberships != null && clubMemberships.contains(club)) {
+			clubMemberships.remove(club);
+			club.removeUser(this);
+		}
+	}
+	
+	public void addBookList(BookList bookList) {
+		if (userBookLists == null) {userBookLists = new ArrayList<>(); }
+		if ( ! userBookLists.contains(bookList) ) {
+			userBookLists.add(bookList);
+			if (bookList.getUser() != null) {
+				bookList.getUser().removeBookList(bookList);
+			}
+			bookList.setUser(this);
+		}
+	}
+	
+	public void removeBookList(BookList bookList) {
+		if (userBookLists != null && userBookLists.contains(bookList)) {
+			userBookLists.remove(bookList);
+			bookList.setUser(null);
+		}
+	}
+	
+	public void addBookComment(BookComment bookComment) {
+		if (userBookComments == null) {userBookComments = new ArrayList<>(); }
+		if ( ! userBookComments.contains(bookComment) ) {
+			userBookComments.add(bookComment);
+			if (bookComment.getUser() != null) {
+				bookComment.getUser().removeBookComment(bookComment);
+			}
+			bookComment.setUser(this);
+		}
+	}
+	
+	public void removeBookComment(BookComment bookComment) {
+		if (userBookComments != null && userBookComments.contains(bookComment)) {
+			userBookComments.remove(bookComment);
+			bookComment.setUser(null);
+		}
+	}
+	
+	public void addClubComment(ClubComment clubComment) {
+		if (userClubComments == null) {userClubComments = new ArrayList<>(); }
+		if ( ! userClubComments.contains(clubComment) ) {
+			userClubComments.add(clubComment);
+			if (clubComment.getUser() != null) {
+				clubComment.getUser().removeClubComment(clubComment);
+			}
+			clubComment.setUser(this);
+		}
+	}
+	
+	public void removeClubComment(ClubComment clubComment) {
+		if (userClubComments != null && userClubComments.contains(clubComment)) {
+			userClubComments.remove(clubComment);
+			clubComment.setUser(null);
+		}
+	}
+	
+	public void addBookReview(BookReview bookReview) {
+		if (bookReviews == null) {bookReviews = new ArrayList<>(); }
+		if ( ! bookReviews.contains(bookReview) ) {
+			bookReviews.add(bookReview);
+			if (bookReview.getUser() != null) {
+				bookReview.getUser().removeBookReview(bookReview);
+			}
+			bookReview.setUser(this);
+		}
+	}
+	
+	public void removeBookReview(BookReview bookReview) {
+		if (bookReviews != null && bookReviews.contains(bookReview)) {
+			bookReviews.remove(bookReview);
+			bookReview.setUser(null);
+		}
 	}
 
 	@Override
