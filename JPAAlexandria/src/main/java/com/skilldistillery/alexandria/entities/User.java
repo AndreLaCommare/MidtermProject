@@ -208,6 +208,60 @@ public class User {
 			club.removeUser(this);
 		}
 	}
+	
+	public void addBookList(BookList bookList) {
+		if (userBookLists == null) {userBookLists = new ArrayList<>(); }
+		if ( ! userBookLists.contains(bookList) ) {
+			userBookLists.add(bookList);
+			if (bookList.getUser() != null) {
+				bookList.getUser().removeBookList(bookList);
+			}
+			bookList.setUser(this);
+		}
+	}
+	
+	public void removeBookList(BookList bookList) {
+		if (userBookLists != null && userBookLists.contains(bookList)) {
+			userBookLists.remove(bookList);
+			bookList.setUser(null);
+		}
+	}
+	
+	public void addBookComment(BookComment bookComment) {
+		if (userBookComments == null) {userBookComments = new ArrayList<>(); }
+		if ( ! userBookComments.contains(bookComment) ) {
+			userBookComments.add(bookComment);
+			if (bookComment.getUser() != null) {
+				bookComment.getUser().removeBookComment(bookComment);
+			}
+			bookComment.setUser(this);
+		}
+	}
+	
+	public void removeBookComment(BookComment bookComment) {
+		if (userBookComments != null && userBookComments.contains(bookComment)) {
+			userBookComments.remove(bookComment);
+			bookComment.setUser(null);
+		}
+	}
+	
+	public void addClubComment(ClubComment clubComment) {
+		if (userClubComments == null) {userClubComments = new ArrayList<>(); }
+		if ( ! userClubComments.contains(clubComment) ) {
+			userClubComments.add(clubComment);
+			if (clubComment.getUser() != null) {
+				clubComment.getUser().removeClubComment(clubComment);
+			}
+			clubComment.setUser(this);
+		}
+	}
+	
+	public void removeClubComment(ClubComment clubComment) {
+		if (userClubComments != null && userClubComments.contains(clubComment)) {
+			userClubComments.remove(clubComment);
+			clubComment.setUser(null);
+		}
+	}
 
 	@Override
 	public int hashCode() {
