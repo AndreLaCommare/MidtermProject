@@ -1,6 +1,7 @@
 package com.skilldistillery.alexandria.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -128,6 +129,21 @@ public class Club {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+	
+	public void addBook(Book book) {
+		if (clubBooks == null ) {clubBooks = new ArrayList<>(); }
+		if ( ! clubBooks.contains(book) ) {
+			clubBooks.add(book);
+			book.addClub(this);
+		}
+	}
+	
+	public void removeBook(Book book) {
+		if (clubBooks != null && clubBooks.contains(book)) {
+			clubBooks.remove(book);
+			book.removeClub(this);
+		}
 	}
 
 	@Override

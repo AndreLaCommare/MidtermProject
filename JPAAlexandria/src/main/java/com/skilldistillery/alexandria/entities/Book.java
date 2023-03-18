@@ -1,5 +1,6 @@
 package com.skilldistillery.alexandria.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,7 +42,9 @@ public class Book {
 	private String coverUrl;
 
 	@ManyToMany
-	@JoinTable(name = "book_has_genre", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
+	@JoinTable(name = "book_has_genre", 
+	joinColumns = @JoinColumn(name = "book_id"), 
+	inverseJoinColumns = @JoinColumn(name = "genre_id"))
 	private List<Genre> genres;
 
 	@ManyToMany(mappedBy = "books")
@@ -189,6 +192,51 @@ public class Book {
 	
 	public void setReviews(List<BookReview> reviews) {
 		this.reviews = reviews;
+	}
+	
+	public void addGenre(Genre genre) {
+		if (genres == null ) {genres = new ArrayList<>(); }
+		if ( ! genres.contains(genre) ) {
+			genres.add(genre);
+			genre.addBook(this);
+		}
+	}
+	
+	public void removeGenre(Genre genre) {
+		if (genres != null && genres.contains(genre)) {
+			genres.remove(genre);
+			genre.removeBook(this);
+		}
+	}
+
+	public void addBookList(BookList bookList) {
+		if (bookLists == null ) {bookLists = new ArrayList<>(); }
+		if ( ! bookLists.contains(bookList) ) {
+			bookLists.add(bookList);
+			bookList.addBook(this);
+		}
+	}
+	
+	public void removeBookList(BookList bookList) {
+		if (bookLists != null && bookLists.contains(bookList)) {
+			bookLists.remove(bookList);
+			bookList.removeBook(this);
+		}
+	}
+	
+	public void addClub(Club club) {
+		if (clubsWithThisBook == null ) {clubsWithThisBook = new ArrayList<>(); }
+		if ( ! clubsWithThisBook.contains(club) ) {
+			clubsWithThisBook.add(club);
+			club.addBook(this);
+		}
+	}
+	
+	public void removeClub(Club club) {
+		if (clubsWithThisBook != null && clubsWithThisBook.contains(club)) {
+			clubsWithThisBook.remove(club);
+			club.removeBook(this);
+		}
 	}
 
 	@Override
