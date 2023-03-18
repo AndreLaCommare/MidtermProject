@@ -1,6 +1,7 @@
 package com.skilldistillery.alexandria.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,8 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -118,6 +117,24 @@ public class BookComment {
 		this.replies = replies;
 	}
 
+	public void addBookComment(BookComment parentComment) {
+		if (replies == null) {replies = new ArrayList<>(); }
+		if ( ! replies.contains(parentComment) ) {
+			replies.add(parentComment);
+			if (parentComment.getBook() != null) {
+				parentComment.getBook().removeBookComment(parentComment);
+			}
+			parentComment.setParentComment(parentComment);
+		}
+	}
+	/////////////// NOTE TO SELF. MIGHT HAVE TO DO MANY TO MANY FOR THE SELF JOIN RELATIONSHIP
+	
+	public void removeBookComment(BookComment parentComment) {
+		if (replies != null && replies.contains(parentComment)) {
+			replies.remove(parentComment);
+			parentComment.setParentComment(null);
+		}
+	}
 	
 
 	@Override

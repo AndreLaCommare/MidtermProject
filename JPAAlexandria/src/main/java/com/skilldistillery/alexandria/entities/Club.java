@@ -1,6 +1,7 @@
 package com.skilldistillery.alexandria.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -128,6 +129,53 @@ public class Club {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+	
+	public void addBook(Book book) {
+		if (clubBooks == null ) {clubBooks = new ArrayList<>(); }
+		if ( ! clubBooks.contains(book) ) {
+			clubBooks.add(book);
+			book.addClub(this);
+		}
+	}
+	
+	public void removeBook(Book book) {
+		if (clubBooks != null && clubBooks.contains(book)) {
+			clubBooks.remove(book);
+			book.removeClub(this);
+		}
+	}
+	public void addUser(User user) {
+		if (clubMembers == null ) {clubMembers = new ArrayList<>(); }
+		if ( ! clubMembers.contains(user) ) {
+			clubMembers.add(user);
+			user.addClub(this);
+		}
+	}
+	
+	public void removeUser(User user) {
+		if (clubMembers != null && clubMembers.contains(user)) {
+			clubMembers.remove(user);
+			user.removeClub(this);
+		}
+	}
+	
+	public void addClubComment(ClubComment clubComment) {
+		if (commentsOnClub == null) {commentsOnClub = new ArrayList<>(); }
+		if ( ! commentsOnClub.contains(clubComment) ) {
+			commentsOnClub.add(clubComment);
+			if (clubComment.getClub() != null) {
+				clubComment.getClub().removeClubComment(clubComment);;
+			}
+			clubComment.setClub(this);
+		}
+	}
+	
+	public void removeClubComment(ClubComment clubComment) {
+		if (commentsOnClub != null && commentsOnClub.contains(clubComment)) {
+			commentsOnClub.remove(clubComment);
+			clubComment.setClub(null);
+		}
 	}
 
 	@Override
