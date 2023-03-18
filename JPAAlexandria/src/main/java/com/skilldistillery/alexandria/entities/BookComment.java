@@ -117,24 +117,24 @@ public class BookComment {
 		this.replies = replies;
 	}
 
-//	public void addBookComment(BookComment bookComment) {
-//		if (replies == null) {replies = new ArrayList<>(); }
-//		if ( ! replies.contains(bookComment) ) {
-//			replies.add(bookComment);
-//			if (bookComment.getBook() != null) {
-//				bookComment.getBookComment().removeBookComment(bookComment);
-//			}
-//			bookComment.setBookComment(this);
-//		}
-//	}
-	///////////////// NOTE TO SELF. MIGHT HAVE TO DO MANY TO MANY FOR THE SELF JOIN RELATIONSHIP
-//	
-//	public void removeBookComment(BookComment bookComment) {
-//		if (replies != null && replies.contains(bookComment)) {
-//			replies.remove(bookComment);
-//			bookComment.setBookComment(null);
-//		}
-//	}
+	public void addBookComment(BookComment parentComment) {
+		if (replies == null) {replies = new ArrayList<>(); }
+		if ( ! replies.contains(parentComment) ) {
+			replies.add(parentComment);
+			if (parentComment.getBook() != null) {
+				parentComment.getBook().removeBookComment(parentComment);
+			}
+			parentComment.setParentComment(parentComment);
+		}
+	}
+	/////////////// NOTE TO SELF. MIGHT HAVE TO DO MANY TO MANY FOR THE SELF JOIN RELATIONSHIP
+	
+	public void removeBookComment(BookComment parentComment) {
+		if (replies != null && replies.contains(parentComment)) {
+			replies.remove(parentComment);
+			parentComment.setParentComment(null);
+		}
+	}
 	
 
 	@Override

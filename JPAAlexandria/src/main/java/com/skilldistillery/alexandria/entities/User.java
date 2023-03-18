@@ -60,6 +60,9 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<BookList> userBookLists;
 	
+	@OneToMany(mappedBy="user")
+	private List<BookReview> bookReviews;
+	
 	
 	
 	
@@ -260,6 +263,24 @@ public class User {
 		if (userClubComments != null && userClubComments.contains(clubComment)) {
 			userClubComments.remove(clubComment);
 			clubComment.setUser(null);
+		}
+	}
+	
+	public void addBookReview(BookReview bookReview) {
+		if (bookReviews == null) {bookReviews = new ArrayList<>(); }
+		if ( ! bookReviews.contains(bookReview) ) {
+			bookReviews.add(bookReview);
+			if (bookReview.getUser() != null) {
+				bookReview.getUser().removeBookReview(bookReview);
+			}
+			bookReview.setUser(this);
+		}
+	}
+	
+	public void removeBookReview(BookReview bookReview) {
+		if (bookReviews != null && bookReviews.contains(bookReview)) {
+			bookReviews.remove(bookReview);
+			bookReview.setUser(null);
 		}
 	}
 
