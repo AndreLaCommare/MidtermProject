@@ -1,5 +1,6 @@
 package com.skilldistillery.alexandria.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -66,6 +67,21 @@ public class Genre {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+	
+	public void addBook(Book book) {
+		if (books == null ) {books = new ArrayList<>(); }
+		if ( ! books.contains(book) ) {
+			books.add(book);
+			book.addGenre(this);
+		}
+	}
+	
+	public void removeBook(Book book) {
+		if (books != null && books.contains(book)) {
+			books.remove(book);
+			book.removeGenre(this);
+		}
 	}
 
 	@Override
