@@ -25,6 +25,6 @@ public class UserController {
 //		model.addAttribute("SMOKETEST", u);
 		//DEBUG
 		
-		return "signuplogin";
+		return "home";
 	}
 }

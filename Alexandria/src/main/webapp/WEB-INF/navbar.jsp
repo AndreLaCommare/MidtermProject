@@ -19,10 +19,16 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 flex-row"> <!-- Add 'flex-row' class here -->
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.do">Home</a></li>     
       
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="create.do">Add a Show</a></li>
+      <!--   <li class="nav-item"><a class="nav-link active" aria-current="page" href="create.do">Sign Up</a></li> -->
       
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="create.do">Add a Show</a></li>
       </ul>
+        <form action="login.do" method="POST">
+		Username <input type="text" name="username"> Password <input type="password"
+			name="password"/> <input type="submit" value="Log In">
+	</form>
+        <form action="signuppage.do" method="GET">
+		 <input type="submit" value="Sign Up">
+	</form>
       
     </div>
   </div>

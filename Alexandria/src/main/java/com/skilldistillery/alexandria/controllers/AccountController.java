@@ -17,7 +17,7 @@ public class AccountController {
 			return "userprofile";
 			
 		}else {
-			return "signuplogin";
+			return "signup";
 		}
 	}
 

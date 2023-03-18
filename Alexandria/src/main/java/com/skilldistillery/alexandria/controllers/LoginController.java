@@ -31,7 +31,24 @@ public class LoginController {
 			return "userprofile";
 		} else {
 
-			return "signuplogin";
+			return "signup";
+		}
+	}
+	@RequestMapping(path = "signuppage.do", method = RequestMethod.GET)
+	public String signup() {
+			return "signuppage";
+	}
+	
+	@RequestMapping(path = "signup.do", method = RequestMethod.POST)
+	public String userSignedUp(User user, HttpSession session) {
+		System.out.println("***************************Signed Up POST******************************");
+		user = userdao.createUser(user);
+		if (user != null) {
+			session.setAttribute("loggedInUser", user);
+			return "home";
+		} else {
+
+			return "signup";
 		}
 	}
 

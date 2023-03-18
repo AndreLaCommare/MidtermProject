@@ -49,6 +49,15 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
+	public User createUser(User user) {
+		
+		em.persist(user);
+		em.flush();
+		return user;
+		
+	}
+	
+	@Override
 	public User findUserById(int userId) {
 		
 		return null;
