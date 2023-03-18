@@ -27,6 +27,11 @@
 			<h2>Not Logged In</h2>
 		</c:otherwise>
 	</c:choose>
+	
+	<form action="logout.do" method="GET">
+		 <input type="submit" value="Log out">
+	</form>
+
 
 <jsp:include page="bootstrapFoot.jsp" />
 </body>

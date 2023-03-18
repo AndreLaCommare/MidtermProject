@@ -1,0 +1,44 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema mylibrarydb
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `mylibrarydb` ;
+
+-- -----------------------------------------------------
+-- Schema mylibrarydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mylibrarydb` DEFAULT CHARACTER SET utf8 ;
+USE `mylibrarydb` ;
+
+-- -----------------------------------------------------
+-- Table `book`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `book` ;
+
+CREATE TABLE IF NOT EXISTS `book` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cover_url` VARCHAR(2000) NULL DEFAULT NULL,
+  `title` VARCHAR(100) NOT NULL,
+  `description` TEXT NULL DEFAULT NULL,
+  `author` VARCHAR(45) NOT NULL,
+  `country` VARCHAR(45) NULL DEFAULT NULL,
+  `genre` VARCHAR(45) NULL DEFAULT NULL,
+  `pages` INT NULL DEFAULT NULL,
+  `published_year` INT NULL DEFAULT NULL,
+  `price` DECIMAL(6,2) NULL DEFAULT NULL,
+  `isbn` VARCHAR(100) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
