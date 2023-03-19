@@ -130,7 +130,7 @@ public class UserDaoImpl implements UserDAO {
 			em.remove(em.find(Club.class, id));
 			return true;
 		} else {
-			System.out.println("There is no such fighter.");
+			System.out.println("There is no such book Club.");
 			return false;
 		}
 	}

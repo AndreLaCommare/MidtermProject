@@ -22,6 +22,11 @@
 	<input type="text" name="author">
 		 <input type="submit" value="Find Author">
 	</form>
+	
+	<form action="clubByName.do" method="GET">
+	<input type="text" name="club">
+		 <input type="submit" value="Find Club">
+	</form>
 
 </body>
 </html>
