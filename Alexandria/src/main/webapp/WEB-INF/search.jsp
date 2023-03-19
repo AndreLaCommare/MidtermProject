@@ -5,10 +5,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Search</title>
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 </head>
 <body>
+
+	<form action="bookbytitle.do" method="GET">
+	<input type="text" name="title">
+		 <input type="submit" value="Find Title">
+	</form>
+<!-- 	<form action="bookbygenre.do" method="GET">
+	<input type="text" name="genre" value="genre">
+		 <input type="submit" value="Find Genre">
+	</form> -->
+	<form action="bookbyAuthor.do" method="GET">
+	<input type="text" name="author">
+		 <input type="submit" value="Find Author">
+	</form>
 
 </body>
 </html>

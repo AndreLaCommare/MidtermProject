@@ -39,6 +39,10 @@ public class UserController {
 		model.addAttribute("user", user);
 		return "userbyid";
 	}
+	@GetMapping(path="searchpage.do")
+	public String searchPage() {
+		return "search";
+	}
 	
 	@GetMapping(path="bookbytitle.do")
 	public String findBookByKeyword(String title, Model model) {
