@@ -9,7 +9,6 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.alexandria.entities.Book;
-import com.skilldistillery.alexandria.entities.Genre;
 import com.skilldistillery.alexandria.entities.User;
 
 @Transactional
@@ -80,14 +79,15 @@ public class UserDaoImpl implements UserDAO {
 		return book;
 	}
 
-	@Override
-	public List<Genre> findBooksByGenre(String genre) {
-		genre = "%" + genre + "%";
-		String jpql = "SELECT g FROM Genre g WHERE g.genre LIKE :genre";
-		List<Genre> genres = em.createQuery(jpql, Genre.class).setParameter("genre", genre).getResultList();
-		
-		return genres;
-	}
+//	@Override
+//	public List<Book> findBooksByGenre(String genre) {
+//		genre = "%" + genre + "%";
+//		
+//		String jpql = "SELECT b FROM Book b WHERE b.genre LIKE :title";
+//		List<Book> genres = em.createQuery(jpql, Book.class).setParameter("genre", genre).getResultList();
+//		
+//		return genres;
+//	}
 	
 
 
@@ -110,7 +110,7 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Book> findBooksByISBN(String isbn) {
+	public Book findBooksByISBN(String isbn) {
 		// TODO Auto-generated method stub
 		return null;
 	}
