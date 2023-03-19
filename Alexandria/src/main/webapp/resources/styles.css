@@ -1,7 +1,48 @@
 @charset "UTF-8";
-.header{
-	height:200px;
-	width: 900px;
-	background-color: #F4F4F8;
-	color: #362C1B;
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&family=Playfair+Display:wght@400;800&display=swap');
+html{
+	background: #F4F4F8;
 }
+#header{
+	 text-overflow: inherit;
+	 height:40px;
+	 width: 100%;
+	 background-color: #F4F4F8;
+	 color: #362C1B;
+	 display: inline-block;
+ }
+.sitename{
+	 margin-bottom: 30px;
+	 padding-bottom: 30px;
+	 position: absolute;
+	 top: -10px;
+	font-family: "Nanum Myeongjo";
+	font-weight: 800 !important;
+	font-weight: bold;
+ }
+.sitename, .trending-btn, .search-btn, .signin-btn, .login-btn {
+	display: inline-block;
+}
+.trending-btn, .search-btn{
+	display: inline-block;
+	float: right;
+}
+
+.signin-btn, .login-btn{
+	 display: inline-block;
+	 float: right;
+	 border-color: #380036;
+	 padding-left: 10px;
+	 padding-right: 10px;
+	 border-radius: 12px 12px 12px 12px;
+	 border-spacing: 5px;
+	 color: #F4F4F8;
+	 font-size: 25px;
+	background: rgb(138,112,144);
+	background: linear-gradient(51deg, rgba(138,112,144,1) 7%, rgba(56,0,54,1) 71%);
+}
+
+
+
+
+
