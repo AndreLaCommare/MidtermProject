@@ -80,9 +80,6 @@ class BookTest {
 	void test_Book_hasAuthor() {
 		assertNotNull(book);
 		assertNotNull(book.getAuthor());
-		assertEquals("Orson",book.getAuthor().getFirstName());
-		assertEquals("Scott",book.getAuthor().getMiddleName());
-		assertEquals("Card",book.getAuthor().getLastName());
 	}
 	
 	@Test

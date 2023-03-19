@@ -14,11 +14,8 @@
 	<input type="text" name="title">
 		 <input type="submit" value="Find Title">
 	</form>
-<!-- 	<form action="bookbygenre.do" method="GET">
-	<input type="text" name="genre" value="genre">
-		 <input type="submit" value="Find Genre">
-	</form> -->
-	<form action="bookbyAuthor.do" method="GET">
+
+	<form action="bookbyauthor.do" method="GET">
 	<input type="text" name="author">
 		 <input type="submit" value="Find Author">
 	</form>
