@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
 
 @Transactional
@@ -98,5 +99,22 @@ public class UserDaoImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public Club createBookClub(Club bookClub) {
+		// TODO Auto-generated method stub
+		em.persist(bookClub);
+		em.flush();
+		return bookClub;
+	}
 
+	@Override
+	public boolean deleteBookClub(int id) {
+		if (em.contains(em.find(Club.class, id))) {
+			em.remove(em.find(Club.class, id));
+			return true;
+		} else {
+			System.out.println("There is no such fighter.");
+			return false;
+		}
+	}
 }

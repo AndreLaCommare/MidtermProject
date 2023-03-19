@@ -5,10 +5,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Book Club</title>
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 </head>
 <body>
+<c:choose>
+    <c:when test="${empty bookClub}">
+       No Club Found.<br>
+       <a href="home.do">Return to Menu</a>
+    </c:when>
+    <c:otherwise>
+        <div>
+  
+  
+  <h2>${bookClub.name}</h2>
+  <img src="${bookClub.imageURL }" width="150" height="150"><br>
+  <p>Club Description: ${bookClub.description}</p>
+
+ <a href="DeleteClub.do?id=${bookClub.id }">Delete Current Club</a> <br>
+  <a href="UpdateClub.do?id=${bookClub.id }">Update Current Club</a> <br>
+ 
+ 
+ 
+ 
+ 
+ 
+  <a href="home.do">Return to Menu</a>
+</div>
+    </c:otherwise>
+</c:choose>
+
+
 
 </body>
 </html>
