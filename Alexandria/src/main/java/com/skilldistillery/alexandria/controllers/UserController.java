@@ -1,8 +1,6 @@
 package com.skilldistillery.alexandria.controllers;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.skilldistillery.alexandria.data.UserDAO;
-import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
 
 @Controller
@@ -53,6 +51,34 @@ public class UserController {
 //		model.addAttribute("book", userDao.findBooksByGenre(genre));
 //		return "bookbygenre";
 //	}
+	
+	
+	
+	@GetMapping(path="createClub.do")
+	public String createClubPage(HttpSession session) {
+		User user = (User) session.getAttribute("loggedInUser");
+		if (user != null) {
+		return "createBookClub";
+		}else {
+			return "signup";
+		}
+	}
+	
+	@PostMapping(path="createBookClub.do")
+		public String createBookClub(Model model, Club bookClub) {
+		try {
+			bookClub = userDao.createBookClub(bookClub);
+		}catch(RuntimeException e){
+			System.err.println(e);
+		}
+		if (bookClub != null) {
+			model.addAttribute("bookClub", bookClub);
+			return "bookclub";
+		}else {
+			return "error";
+		}
+	}
+	
 	
 	
 	

@@ -43,6 +43,12 @@
 	<input type="text" name="author">
 		 <input type="submit" value="Find Author">
 	</form>
+	
+	<form action="createClub.do" method="GET">
+		 <input type="submit" value="Create A Book Club!">
+	</form>
+	
+	
 
 
 <jsp:include page="bootstrapFoot.jsp" />
