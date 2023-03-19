@@ -20,7 +20,8 @@
 	
 	<c:forEach var="books" items="${book }">
 	<tr>
-
+	
+	
 	<td>${books.genre }</td>
 
 	</tr>
