@@ -21,7 +21,7 @@ USE `alexandriaDB` ;
 DROP TABLE IF EXISTS `language` ;
 
 CREATE TABLE IF NOT EXISTS `language` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL,
   `name` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -33,7 +33,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `author` ;
 
 CREATE TABLE IF NOT EXISTS `author` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `image_url` VARCHAR(2000) NULL,
   `description` TEXT NULL,
@@ -79,7 +79,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `genre` ;
 
 CREATE TABLE IF NOT EXISTS `genre` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `image_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`))
@@ -161,7 +161,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `club` ;
 
 CREATE TABLE IF NOT EXISTS `club` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT NULL,
   `owner_id` INT NOT NULL,
@@ -381,6 +381,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `alexandriaDB`;
 INSERT INTO `language` (`id`, `name`) VALUES (1, 'English');
+INSERT INTO `language` (`id`, `name`) VALUES (2, 'Japanese');
 
 COMMIT;
 
@@ -507,7 +508,13 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `alexandriaDB`;
-INSERT INTO `genre` (`id`, `name`, `image_url`) VALUES (1, 'sci-fi', NULL);
+INSERT INTO `genre` (`id`, `name`, `image_url`) VALUES (1, 'Science fiction', NULL);
+INSERT INTO `genre` (`id`, `name`, `image_url`) VALUES (2, 'Drama', NULL);
+INSERT INTO `genre` (`id`, `name`, `image_url`) VALUES (3, 'Non-fiction', NULL);
+INSERT INTO `genre` (`id`, `name`, `image_url`) VALUES (4, 'Fiction', NULL);
+INSERT INTO `genre` (`id`, `name`, `image_url`) VALUES (5, 'Romance', NULL);
+INSERT INTO `genre` (`id`, `name`, `image_url`) VALUES (6, 'Action', NULL);
+INSERT INTO `genre` (`id`, `name`, `image_url`) VALUES (7, 'Mystery', NULL);
 
 COMMIT;
 
@@ -528,6 +535,7 @@ COMMIT;
 START TRANSACTION;
 USE `alexandriaDB`;
 INSERT INTO `book_review` (`rating`, `review`, `create_date`, `last_update`, `book_id`, `user_id`) VALUES (10, 'Great Book', '2023-03-17', '2023-03-17', 1, 1);
+INSERT INTO `book_review` (`rating`, `review`, `create_date`, `last_update`, `book_id`, `user_id`) VALUES (9, 'Awesome read', '2023-03-19', '2023-03-19', 2, 1);
 
 COMMIT;
 
