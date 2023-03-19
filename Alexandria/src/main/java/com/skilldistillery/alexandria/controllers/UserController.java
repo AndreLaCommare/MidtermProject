@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.alexandria.data.UserDAO;
 import com.skilldistillery.alexandria.entities.Club;
@@ -52,7 +54,7 @@ public class UserController {
 	
 	@GetMapping(path="bookbyauthor.do")
 	public String findByAuthor(String author, Model model) {
-		model.addAttribute("book", userDao.findBooksByAuthor(author));
+		model.addAttribute("books", userDao.findBooksByAuthor(author));
 		return "booklistsearch";
 	}
 	
@@ -82,6 +84,23 @@ public class UserController {
 			return "error";
 		}
 	}
+	
+	 @RequestMapping(path = "DeleteClub.do")
+		public ModelAndView deleteClub(@RequestParam("id") int id) {
+			boolean isDeleted = userDao.deleteBookClub(id);
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("bookClub", isDeleted);
+			mv.setViewName("userprofile");
+			return mv;
+			}
+
+	 
+		@GetMapping(path="findClubById.do")
+		public String findClubById(Integer clubId, Model model) {
+			Club club = userDao.findClubById(clubId);
+			model.addAttribute("bookClub", club);
+			return "bookclub";
+		}
 	
 	
 	

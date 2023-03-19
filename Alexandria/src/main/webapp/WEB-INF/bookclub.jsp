@@ -19,6 +19,7 @@
   
   
   <h2>${bookClub.name}</h2>
+  <p>Club ID: ${bookClub.id }</p>
   <img src="${bookClub.imageURL }" width="150" height="150"><br>
   <p>Club Description: ${bookClub.description}</p>
 
@@ -30,7 +31,7 @@
  
  
  
-  <a href="home.do">Return to Menu</a>
+  <a href="userprofile.do">Return to Menu</a>
 </div>
     </c:otherwise>
 </c:choose>
