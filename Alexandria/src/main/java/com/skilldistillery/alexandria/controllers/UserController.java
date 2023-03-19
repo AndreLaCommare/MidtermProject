@@ -44,8 +44,24 @@ public class UserController {
 	
 	@GetMapping(path="bookbytitle.do")
 	public String findBookByKeyword(String title, Model model) {
-		
-		model.addAttribute("book", userDao.findBookByTitle(title));
+		model.addAttribute("book", userDao.findBooksByTitle(title));
 		return "bookbytitle";
 	}
+	
+	@GetMapping(path="bookbygenre.do")
+	public String findBookByGenre(String genre, Model model) {
+		model.addAttribute("book", userDao.findBooksByGenre(genre));
+		return "bookbygenre";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

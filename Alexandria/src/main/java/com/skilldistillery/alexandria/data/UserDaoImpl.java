@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.Genre;
 import com.skilldistillery.alexandria.entities.User;
 
 @Transactional
@@ -69,8 +70,9 @@ public class UserDaoImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
-	public List<Book> findBookByTitle(String title) {
+	public List<Book> findBooksByTitle(String title) {
 		title = "%" + title + "%";
 		String jpql = "SELECT b FROM Book b WHERE b.title LIKE :title";
 		List<Book> book = em.createQuery(jpql, Book.class).setParameter("title", title).getResultList();
@@ -79,31 +81,36 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Book> findBookByGenre(String genre) {
+	public List<Genre> findBooksByGenre(String genre) {
+		genre = "%" + genre + "%";
+		String jpql = "SELECT g FROM Genre g WHERE g.genre LIKE :genre";
+		List<Genre> genres = em.createQuery(jpql, Genre.class).setParameter("genre", genre).getResultList();
+		
+		return genres;
+	}
+	
+
+
+	@Override
+	public List<Book> findBooksByAuthor(String author) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Book> findBookByAuthor(String author) {
+	public List<Book> findBooksByLanguage(String language) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Book> findBookByLanguage(String language) {
+	public List<Book> findBooksByDescription(String description) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Book> findBookByDescription(String description) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Book> findBookByISBN(String isbn) {
+	public List<Book> findBooksByISBN(String isbn) {
 		// TODO Auto-generated method stub
 		return null;
 	}
