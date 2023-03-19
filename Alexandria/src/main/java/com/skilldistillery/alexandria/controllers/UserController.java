@@ -90,9 +90,17 @@ public class UserController {
 			boolean isDeleted = userDao.deleteBookClub(id);
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("bookClub", isDeleted);
-			mv.setViewName("home");
+			mv.setViewName("userprofile");
 			return mv;
 			}
+
+	 
+		@GetMapping(path="findClubById.do")
+		public String findClubById(Integer clubId, Model model) {
+			Club club = userDao.findClubById(1);
+			model.addAttribute("bookClub", club);
+			return "bookclub";
+		}
 	
 	
 	

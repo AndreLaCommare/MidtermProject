@@ -99,6 +99,7 @@ public class UserDaoImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
 	public Club createBookClub(Club bookClub) {
 		// TODO Auto-generated method stub
@@ -106,6 +107,8 @@ public class UserDaoImpl implements UserDAO {
 		em.flush();
 		return bookClub;
 	}
+	
+	
 
 	@Override
 	public boolean deleteBookClub(int id) {
@@ -116,5 +119,11 @@ public class UserDaoImpl implements UserDAO {
 			System.out.println("There is no such book Club.");
 			return false;
 		}
+	}
+
+	@Override
+	public Club findClubById(int clubId) {
+		// TODO Auto-generated method stub
+		return em.find(Club.class, clubId);
 	}
 }

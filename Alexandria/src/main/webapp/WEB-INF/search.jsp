@@ -20,7 +20,7 @@
 		 <input type="submit" value="Find Author">
 	</form>
 	
-	<form action="clubByName.do" method="GET">
+	<form action="findClubById.do" method="GET">
 	<input type="text" name="club">
 		 <input type="submit" value="Find Club">
 	</form>
