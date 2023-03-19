@@ -6,7 +6,7 @@
 	 text-overflow: inherit;
 	 height:40px;
 	 width: 100%;
-	 background-color: #380036;
+	 background-color: #420041;
 	 color: #F4F4F8;
 	 display: inline-block;
  }
@@ -16,7 +16,7 @@
 	height: 30px;
 	width: 30px;
 	margin-top: 5px;
-	margin-left: 5px;
+	margin-left: 9px;
 }
 .sitename{
 	 margin-bottom: 30px;
@@ -39,6 +39,9 @@
 	padding-left: 30px;
 	padding-right: 30px;
 	margin-top: 12px;
+	font-size: 30px;
+	position: relative;
+	top: -8px;
 }
 
 .signin-btn, .login-btn{
@@ -51,13 +54,96 @@
 	 margin-bottom: auto;
 	 text-align: center;
 	 padding-top: 3px;
-	 padding-left: 10px;
-	 padding-right: 10px;
+	 padding-left: 5px;
+	 padding-right: 5px;
 	 border-radius: 12px 12px 12px 12px;
 	 border-spacing: 5px;
 	 color: #F4F4F8;
 	 font-size: 25px;
 	 background: #c4b564;
+	position: relative;
+	top: -1px;
+}
+#home-back-img{
+	background-color: #8a7090;
+	position: relative;
+	float: left;
+	background-image: url("homebackimg.jpg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 1000px;
+	width: 100%;
+	position: relative;
+	opacity: 70%;
+}
+
+#home-greeting{
+	font-family: "Nanum Myeongjo";
+	position: absolute;
+	width: 400px;
+	text-align: center;
+	top: 200px;
+	left: 130px;
+	font-weight: bolder;
+	background-color: rgba(244, 244, 248, 0.52);
+	border-radius: 20px 0px 20px 0px;
+}
+#home-alexandria-greeting{
+	font-family: "Nanum Myeongjo";
+	position: absolute;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	top: 100px;
+	left: 160px;
+	font-weight: bolder;
+	background-color: rgba(244, 244, 248, 0.52);
+	border-radius: 20px 0px 20px 0px;
+}
+#home-right {
+	position: absolute;
+	top: 300px;
+	left: 1000px;
+	float: right;
+	font-family: "Nanum Myeongjo";
+}
+.cover{
+	border-radius: 10px 10px 10px 10px;
+	height: 220px;
+	width: 170px;
+	display: inline-block;
+	padding: 10px;
+	background-color: rgba(244, 244, 248, 0.7);
+}
+#home-cover1{
+	/*aristotle*/
+	position: absolute;
+	left: 25px;
+	top: 500px;
+}
+#home-cover2{
+	/*camus*/
+	position: absolute;
+	left: 250px;
+	top: 500px;
+}
+#home-cover3{
+	/*cristo*/
+	position: absolute;
+	left: 470px;
+	top: 500px;
+}
+#home-cover4{
+	/*hp*/
+	position: absolute;
+	left: 370px;
+	top: 780px;
+}
+#home-cover5{
+	/*solitude*/
+	position: absolute;
+	left: 120px;
+	top: 780px;
 }
 
 
