@@ -17,11 +17,11 @@ public interface UserDAO {
 	User createUser(User user);
 
 	List<Book> findBooksByTitle(String title);
-	List<Genre> findBooksByGenre(String genre);
+	List<Book> findBooksByGenre(String genre);
 	List<Book> findBooksByAuthor(String author);
 	List<Book> findBooksByLanguage(String language);
 	List<Book> findBooksByDescription(String description);
-	List<Book> findBooksByISBN(String isbn);
+	Book findBooksByISBN(String isbn);
 
 
 }
