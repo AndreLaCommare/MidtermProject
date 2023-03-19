@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Search</title>
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 </head>
 <body>
