@@ -78,7 +78,7 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public List<Book> findBooksByAuthor(String author) {
 		author = "%" + author + "%";
-		String jpql = "SELECT b FROM Book WHERE b.author.name LIKE :author";
+		String jpql = "SELECT b FROM Book b WHERE b.author.name LIKE :author";
 		return em.createQuery(jpql, Book.class).setParameter("author", author).getResultList();
 	}
 

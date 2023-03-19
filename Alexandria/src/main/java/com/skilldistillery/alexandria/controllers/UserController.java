@@ -54,7 +54,7 @@ public class UserController {
 	
 	@GetMapping(path="bookbyauthor.do")
 	public String findByAuthor(String author, Model model) {
-		model.addAttribute("book", userDao.findBooksByAuthor(author));
+		model.addAttribute("books", userDao.findBooksByAuthor(author));
 		return "booklistsearch";
 	}
 	
@@ -97,7 +97,7 @@ public class UserController {
 	 
 		@GetMapping(path="findClubById.do")
 		public String findClubById(Integer clubId, Model model) {
-			Club club = userDao.findClubById(1);
+			Club club = userDao.findClubById(clubId);
 			model.addAttribute("bookClub", club);
 			return "bookclub";
 		}
