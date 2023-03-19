@@ -7,7 +7,9 @@
 <title>Error Page</title>
 </head>
 <body>
-
+<strong>An Error has occurred</strong>
+<br>
+ <a href="home.do">Return to Menu</a>
 
 </body>
 </html>
