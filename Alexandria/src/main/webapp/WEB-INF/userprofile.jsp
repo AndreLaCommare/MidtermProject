@@ -31,6 +31,13 @@
 	<form action="logout.do" method="GET">
 		 <input type="submit" value="Log out">
 	</form>
+
+
+	<form action="createClub.do" method="GET">
+		 <input type="submit" value="Create A Book Club!">
+	</form>
+	
+
 	
 
 
