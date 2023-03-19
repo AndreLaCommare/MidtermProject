@@ -1,5 +1,9 @@
 package com.skilldistillery.alexandria.data;
 
+import java.util.List;
+
+import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.Genre;
 import com.skilldistillery.alexandria.entities.User;
 
 public interface UserDAO {
@@ -11,6 +15,14 @@ public interface UserDAO {
 	User updateUser(int userId, User user);
 
 	User createUser(User user);
+
+	List<Book> findBooksByTitle(String title);
+	List<Genre> findBooksByGenre(String genre);
+	List<Book> findBooksByAuthor(String author);
+	List<Book> findBooksByLanguage(String language);
+	List<Book> findBooksByDescription(String description);
+	List<Book> findBooksByISBN(String isbn);
+
 
 }
 
