@@ -33,10 +33,8 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `author` ;
 
 CREATE TABLE IF NOT EXISTS `author` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `first_name` VARCHAR(45) NULL,
-  `middle_name` VARCHAR(45) NULL,
-  `last_name` VARCHAR(45) NULL,
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
   `image_url` VARCHAR(2000) NULL,
   `description` TEXT NULL,
   PRIMARY KEY (`id`))
@@ -81,7 +79,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `genre` ;
 
 CREATE TABLE IF NOT EXISTS `genre` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `image_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`))
@@ -163,7 +161,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `club` ;
 
 CREATE TABLE IF NOT EXISTS `club` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT NULL,
   `owner_id` INT NOT NULL,
@@ -392,8 +390,52 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `alexandriaDB`;
-INSERT INTO `author` (`id`, `first_name`, `middle_name`, `last_name`, `image_url`, `description`) VALUES (1, 'Orson', 'Scott', 'Card', NULL, 'Orson Scott Card is an American writer known best for his science fiction works. He is the first and only person to win both a Hugo Award and a Nebula Award in consecutive years, winning both awards for both his novel Ender\'s Game and its sequel Speaker for the Dead.');
-INSERT INTO `author` (`id`, `first_name`, `middle_name`, `last_name`, `image_url`, `description`) VALUES (2, 'Joanne', 'Kathleen', 'Rowling', NULL, 'J. K. Rowling, is a British author and philanthropist. She wrote Harry Potter, a seven-volume children\'s fantasy series.');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (1, 'Orson Scott', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (2, 'JK Rowling', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (3, 'Shusaku Endo', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (4, 'H.P Lovecraft', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (5, 'Julius Evola', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (6, 'Plato', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (7, 'Marcus Aurelius', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (8, 'Dante Alighieri', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (9, 'Dale Carnegie', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (10, 'Fyodor Dostoyevsky', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (12, 'George Orwell', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (13, 'George Orwell', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (16, 'Sir Thomas More', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (17, 'Seneca', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (18, 'Aldous Huxley', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (19, 'Fyodor Dostoyevsky', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (20, 'Fyodor Dostoyevsky', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (21, 'Fyodor Dostoyevsky', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (22, 'Aleksandr Solzhenitsyn', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (23, 'Alexandre Dumas', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (24, 'Eric Matthes', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (25, 'Mahmoud Al-Batal', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (26, 'John Milton', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (28, 'Philip K. Dick', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (29, 'Dashiell Hammett', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (30, 'Terrence McKenna', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (31, 'Jocko Willink', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (32, 'Hezi Brosh', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (33, 'Friedrick Nietzsche', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (34, 'Philip Zimbardo', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (35, 'Sylvain Neuvel', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (36, 'Robert Coram', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (37, 'Yuval Noah Harari', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (38, 'Richard Evelyn Byrd', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (39, 'Niccolo Machiavelli', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (40, 'Liao Yiwu', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (41, 'Homer', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (42, 'Padmasambhava', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (43, 'Karl Marx', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (45, 'Jean-Paul Sartre', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (46, 'Franz Kafka', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (48, 'Franz Kafka', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (49, 'Fanon Frantz', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (50, 'Peter Kemp', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (51, 'Junji Ito', '', '');
+INSERT INTO `author` (`id`, `name`, `image_url`, `description`) VALUES (52, 'Thomas Nelson', '', '');
 
 COMMIT;
 
