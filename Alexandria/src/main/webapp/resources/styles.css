@@ -1,7 +1,66 @@
 @charset "UTF-8";
-.header{
-	height:200px;
-	width: 900px;
-	background-color: #F4F4F8;
-	color: #362C1B;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nanum+Myeongjo:wght@800&family=Playfair+Display:ital,wght@0,400;0,800;1,600&display=swap');html{
+	background: #F4F4F8;
 }
+#header{
+	 text-overflow: inherit;
+	 height:40px;
+	 width: 100%;
+	 background-color: #380036;
+	 color: #F4F4F8;
+	 display: inline-block;
+ }
+.logo{
+	background: #F4F4F8;
+	border-radius: 10px 10px 10px 10px;
+	height: 30px;
+	width: 30px;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.sitename{
+	 margin-bottom: 30px;
+	 padding-bottom: 30px;
+	 position: absolute;
+	 top: -10px;
+	font-family: "Nanum Myeongjo";
+	font-weight: 800 !important;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-top: 5px;
+ }
+.sitename, .trending-btn, .search-btn, .signin-btn, .login-btn {
+	display: inline-block;
+}
+.trending-btn, .search-btn{
+	font-family: "Bebas Neue";
+	display: inline-block;
+	float: right;
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-top: 12px;
+}
+
+.signin-btn, .login-btn{
+	 font-family: "Bebas Neue";
+	 display: inline-block;
+	 float: right;
+	 border-color: #380036;
+	 margin-top: 5px;
+	 margin-right: 9px;
+	 margin-bottom: auto;
+	 text-align: center;
+	 padding-top: 3px;
+	 padding-left: 10px;
+	 padding-right: 10px;
+	 border-radius: 12px 12px 12px 12px;
+	 border-spacing: 5px;
+	 color: #F4F4F8;
+	 font-size: 25px;
+	 background: #c4b564;
+}
+
+
+
+
+

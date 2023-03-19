@@ -50,11 +50,11 @@ public class UserController {
 		return "bookbytitle";
 	}
 	
-//	@GetMapping(path="bookbygenre.do")
-//	public String findBookByGenre(String genre, Model model) {
-//		model.addAttribute("book", userDao.findBooksByGenre(genre));
-//		return "bookbygenre";
-//	}
+	@GetMapping(path="bookbyauthor.do")
+	public String findByAuthor(String author, Model model) {
+		model.addAttribute("book", userDao.findBooksByAuthor(author));
+		return "booklistsearch";
+	}
 	
 	
 	
