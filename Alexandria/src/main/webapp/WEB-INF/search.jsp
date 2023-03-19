@@ -20,6 +20,26 @@
 		 <input type="submit" value="Find Author">
 	</form>
 	
+	<form action="bookbylanguage.do" method="GET">
+	<input type="text" name="language">
+		 <input type="submit" value="Find Books by Language">
+	</form>
+	
+	<form action="bookbydescription.do" method="GET">
+	<input type="text" name="description">
+		 <input type="submit" value="Find Books by Description">
+	</form>
+	
+	<form action="bookbygenre.do" method="GET">
+	<input type="text" name="genre">
+		 <input type="submit" value="Find Books by Genre">
+	</form>
+	
+	<form action="bookbyisbn.do" method="GET">
+	<input type="text" name="isbn">
+		 <input type="submit" value="Find Book by ISBN">
+	</form>
+	
 	<form action="findClubById.do" method="GET">
 	<input type="text" name="club">
 		 <input type="submit" value="Find Club">

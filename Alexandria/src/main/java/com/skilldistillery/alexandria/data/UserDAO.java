@@ -21,7 +21,7 @@ public interface UserDAO {
 	List<Book> findBooksByAuthor(String author);
 	List<Book> findBooksByLanguage(String language);
 	List<Book> findBooksByDescription(String description);
-	Book findBooksByISBN(String isbn);
+	Book findBookByISBN(String isbn);
 	
 	Club createBookClub(Club bookClub);
 	boolean deleteBookClub(int id);
