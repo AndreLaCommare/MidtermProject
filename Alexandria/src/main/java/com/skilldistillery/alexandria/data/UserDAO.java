@@ -25,6 +25,7 @@ public interface UserDAO {
 	
 	Club createBookClub(Club bookClub);
 	boolean deleteBookClub(int id);
+	Club findClubById(int userId);
 
 }
 
