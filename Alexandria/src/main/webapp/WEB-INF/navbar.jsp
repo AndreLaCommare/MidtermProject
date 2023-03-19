@@ -22,13 +22,7 @@
       <!--   <li class="nav-item"><a class="nav-link active" aria-current="page" href="create.do">Sign Up</a></li> -->
       
       </ul>
-        <form action="login.do" method="POST">
-		Username <input type="text" name="username"> Password <input type="password"
-			name="password"/> <input type="submit" value="Log In">
-	</form>
-        <form action="signuppage.do" method="GET">
-		 <input type="submit" value="Sign Up">
-	</form>
+   
         <form action="searchpage.do" method="GET">
 		 <input type="submit" value="Search">
 	</form>
