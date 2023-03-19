@@ -37,31 +37,27 @@ public class UserDaoImpl implements UserDAO {
 	public User getUserByUserNameAndPassword(String username, String password) {
 		String jpql = "SELECT u FROM User u WHERE u.username = :name AND u.password = :pass ";
 		User user = null;
-
 		try {
-			user = em.createQuery(jpql, User.class).setParameter("name", username)
-					.setParameter("pass", password).getSingleResult();
+			user = em.createQuery(jpql, User.class).setParameter("name", username).setParameter("pass", password)
+					.getSingleResult();
 		} catch (Exception e) {
-			
 			e.printStackTrace();
 			user = null;
 		}
 		return user;
-
 	}
 
 	@Override
 	public User createUser(User user) {
-		
+
 		em.persist(user);
 		em.flush();
 		return user;
-		
 	}
-	
+
 	@Override
 	public User findUserById(int userId) {
-		
+
 		return em.find(User.class, userId);
 	}
 
@@ -70,32 +66,20 @@ public class UserDaoImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public List<Book> findBooksByTitle(String title) {
 		title = "%" + title + "%";
 		String jpql = "SELECT b FROM Book b WHERE b.title LIKE :title";
 		List<Book> book = em.createQuery(jpql, Book.class).setParameter("title", title).getResultList();
-		
 		return book;
 	}
 
-//	@Override
-//	public List<Book> findBooksByGenre(String genre) {
-//		genre = "%" + genre + "%";
-//		
-//		String jpql = "SELECT b FROM Book b WHERE b.genre LIKE :title";
-//		List<Book> genres = em.createQuery(jpql, Book.class).setParameter("genre", genre).getResultList();
-//		
-//		return genres;
-//	}
-	
-
-
 	@Override
 	public List<Book> findBooksByAuthor(String author) {
-		// TODO Auto-generated method stub
-		return null;
+		author = "%" + author + "%";
+		String jpql = "SELECT b FROM Book WHERE b.author.name LIKE :author";
+		return em.createQuery(jpql, Book.class).setParameter("author", author).getResultList();
 	}
 
 	@Override
@@ -115,7 +99,6 @@ public class UserDaoImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public Club createBookClub(Club bookClub) {
 		// TODO Auto-generated method stub
@@ -134,5 +117,4 @@ public class UserDaoImpl implements UserDAO {
 			return false;
 		}
 	}
-
 }
