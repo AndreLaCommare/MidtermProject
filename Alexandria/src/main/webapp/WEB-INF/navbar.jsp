@@ -29,6 +29,9 @@
         <form action="signuppage.do" method="GET">
 		 <input type="submit" value="Sign Up">
 	</form>
+        <form action="searchpage.do" method="GET">
+		 <input type="submit" value="Search">
+	</form>
       
     </div>
   </div>
