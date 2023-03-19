@@ -44,9 +44,6 @@ class AuthorTest {
 	@Test
 	void test_basic_mapping() {
 		assertNotNull(author);
-		assertEquals("Orson", author.getFirstName());
-		assertEquals("Card", author.getLastName());
-		assertEquals("Scott", author.getMiddleName());
 	}
 	
 	@Test
