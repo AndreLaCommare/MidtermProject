@@ -37,6 +37,12 @@
 		 <input type="submit" value="Create A Book Club!">
 	</form>
 	
+	<form action="createbooklist.do" method="GET">
+		 <input type="submit" value="Create a Book List">
+	</form>
+<!-- 	<form action="getbooklist.do" method="GET">
+		 <input type="submit" value="See Your Favorites">
+	</form> -->
 
 	
 

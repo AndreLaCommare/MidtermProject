@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.alexandria.data.UserDAO;
 import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.BookList;
 import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
@@ -83,6 +84,7 @@ public class UserController {
 		return "showSingleBook";
 	}
 	
+	
 	@GetMapping(path="showById.do")
 	public String findById(Integer id, Model model) {
 		Book book = userDao.findBookById(id);
@@ -100,6 +102,7 @@ public class UserController {
 		}
 	}
 	
+	
 	@PostMapping(path="createBookClub.do")
 		public String createBookClub(Model model, Club bookClub) {
 		try {
@@ -114,6 +117,31 @@ public class UserController {
 			return "error";
 		}
 	}
+	
+	@GetMapping(path="createbooklist.do")
+	public String createbooklist(HttpSession session) {
+		User user = (User) session.getAttribute("loggedInUser");
+		if (user != null) {
+			return "createBookList";
+		}else {
+			return "signuppage";
+		}
+	}
+	@PostMapping(path="createdBookList.do")
+	public String createdBookList(Model model, BookList booklist) {
+		try {
+			booklist = userDao.createBookList(booklist);
+		} catch(RuntimeException e) {
+			System.err.println(e);
+		}
+		if (booklist != null) {
+			model.addAttribute("bookList", booklist);
+			return "booklist";
+		} else {
+			return "error";
+		}
+	}
+	
 	
 	 @RequestMapping(path = "DeleteClub.do")
 		public ModelAndView deleteClub(@RequestParam("id") int id) {

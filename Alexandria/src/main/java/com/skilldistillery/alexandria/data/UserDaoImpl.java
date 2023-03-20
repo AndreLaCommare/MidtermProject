@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.BookList;
 import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.BookReviewId;
 import com.skilldistillery.alexandria.entities.Club;
@@ -116,6 +117,14 @@ public class UserDaoImpl implements UserDAO {
 		System.out.println("in book club");
 		return bookClub;
 	}
+	
+	@Override
+	public BookList createBookList(BookList booklist) {
+		em.persist(booklist);
+		em.flush();
+		return booklist;
+	}
+
 
 	@Override
 	public boolean deleteBookClub(int id) {
