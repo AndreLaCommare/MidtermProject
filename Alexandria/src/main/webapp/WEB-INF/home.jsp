@@ -11,7 +11,7 @@
     <img class=logo src="resources/logo.png"><a class="sitename"><h2><strong>Alexandria</strong></h2></a>
     <a class="login-btn" href="loginpage.do" role="button">  Log In</a>
     <a class="signin-btn" href="signuppage.do" role="button">  Sign Up  </a>
-    <a class="trending-btn">  Trending  </a>
+    <a class="trending-btn" href="" role="button">  Trending  </a>
     <a class="search-btn" href="searchpage.do" role="button">Search</a>
 </div>
 <div id="home-left">

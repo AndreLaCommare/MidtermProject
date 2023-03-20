@@ -11,9 +11,6 @@
 
 </head>
 <body>
-<jsp:include page="navbar.jsp" />
-	<%--Edit the file nav.jsp to change nav links --%>
-	<%-- <%@ include file="nav.jsp"%> --%>
 
 	<c:choose>
 		<c:when test="${not empty sessionScope.loggedInUser }">
