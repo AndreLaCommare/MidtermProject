@@ -120,16 +120,9 @@ public class UserController {
 			model.addAttribute("bookClub", club);
 			return "bookclub";
 		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+		@GetMapping(path="loginpage.do")
+		public String loginPage(Model model) {
+			return "loginpage";
+		}
 }
