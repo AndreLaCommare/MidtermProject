@@ -48,14 +48,33 @@ public class UserController {
 	
 	@GetMapping(path="bookbytitle.do")
 	public String findBookByKeyword(String title, Model model) {
-		model.addAttribute("book", userDao.findBooksByTitle(title));
-		return "bookbytitle";
+		model.addAttribute("books", userDao.findBooksByTitle(title));
+		return "booklistsearch";
 	}
 	
 	@GetMapping(path="bookbyauthor.do")
 	public String findByAuthor(String author, Model model) {
 		model.addAttribute("books", userDao.findBooksByAuthor(author));
 		return "booklistsearch";
+	}
+	@GetMapping(path="bookbylanguage.do")
+	public String findByLanguage(String language, Model model) {
+		model.addAttribute("books", userDao.findBooksByLanguage(language));
+		return "booklistsearch";
+	}
+	
+	@GetMapping(path="bookbydescription.do")
+	public String findByDescription(String description, Model model) {
+		model.addAttribute("books", userDao.findBooksByDescription(description));
+		return "booklistsearch";
+	}
+	
+
+	
+	@GetMapping(path="bookbyisbn.do")
+	public String findByISBN(String isbn, Model model) {
+		model.addAttribute("book", userDao.findBookByISBN(isbn));
+		return "showSingleBook";
 	}
 	
 	

@@ -40,7 +40,7 @@ class GenreTest {
 	void test_InventoryBookList_basic_mappings() {
 		assertNotNull(genre);
 		assertNotNull(genre.getId());
-		assertEquals("sci-fi",genre.getGenre());
+		assertEquals("Science fiction",genre.getGenre());
 	}
 
 	@Test

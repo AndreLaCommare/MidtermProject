@@ -85,26 +85,33 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public List<Book> findBooksByLanguage(String language) {
 		// TODO Auto-generated method stub
-		return null;
+		language = "%" + language + "%";
+		String jpql = "SELECT b FROM Book b WHERE b.language.name LIKE :language";
+		return em.createQuery(jpql, Book.class).setParameter("language", language).getResultList();
 	}
 
 	@Override
 	public List<Book> findBooksByDescription(String description) {
 		// TODO Auto-generated method stub
-		return null;
+		description = "%" + description + "%";
+		String jpql = "SELECT b FROM Book b WHERE b.description LIKE :description";
+		return em.createQuery(jpql, Book.class).setParameter("description", description).getResultList();
 	}
 
 	@Override
-	public Book findBooksByISBN(String isbn) {
+	public Book findBookByISBN(String isbn) {
 		// TODO Auto-generated method stub
-		return null;
+		String jpql = "SELECT b FROM Book b WHERE b.isbn = :isbn";
+		return em.createQuery(jpql, Book.class).setParameter("isbn", isbn).getSingleResult();
 	}
 	
 	@Override
 	public Club createBookClub(Club bookClub) {
 		// TODO Auto-generated method stub
+		
 		em.persist(bookClub);
 		em.flush();
+		System.out.println("in book club");
 		return bookClub;
 	}
 	
@@ -126,4 +133,7 @@ public class UserDaoImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return em.find(Club.class, clubId);
 	}
+
+	
+	
 }
