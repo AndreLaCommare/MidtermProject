@@ -74,8 +74,12 @@ public class UserController {
 
 	
 	@GetMapping(path="bookbyisbn.do")
-	public String findByISBN(String isbn, Model model) {
-		model.addAttribute("book", userDao.findBookByISBN(isbn));
+	public String findByISBN(String isbn, Model model, HttpSession session) {
+		Book book = userDao.findBookByISBN(isbn);
+		model.addAttribute("book", book);
+		User user = (User) session.getAttribute("loggedInUser");
+		
+		model.addAttribute("review", userDao.bookReviewExistsForUser(book.getId(), user.getId()));
 		return "showSingleBook";
 	}
 	
@@ -140,9 +144,17 @@ public class UserController {
 				
 				model.addAttribute("book", review.getBook());
 				model.addAttribute("review", review);
-				return "review";
+				return "showSingleBook";
 			}else {
 				return "error";
 			}
+		}
+		
+		@GetMapping(path="updatereview.do")
+		public String updateReview(Model model, BookReview review) {
+			review = userDao.updateBookReview(review);
+			model.addAttribute("review", review);
+			model.addAttribute("book", userDao.findBookById(review.getBook().getId()));
+			return "showSingleBook";
 		}
 }

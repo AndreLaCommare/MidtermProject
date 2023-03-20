@@ -36,7 +36,6 @@
         <div>
         <p>Review: ${review.review	} </p>
         
-        
         </div>
   
   

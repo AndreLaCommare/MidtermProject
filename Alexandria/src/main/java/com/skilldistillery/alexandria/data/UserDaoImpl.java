@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.alexandria.entities.Book;
 import com.skilldistillery.alexandria.entities.BookReview;
+import com.skilldistillery.alexandria.entities.BookReviewId;
 import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
 
@@ -64,7 +65,7 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User updateUser(int userId, User user) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
@@ -105,18 +106,16 @@ public class UserDaoImpl implements UserDAO {
 		String jpql = "SELECT b FROM Book b WHERE b.isbn = :isbn";
 		return em.createQuery(jpql, Book.class).setParameter("isbn", isbn).getSingleResult();
 	}
-	
+
 	@Override
 	public Club createBookClub(Club bookClub) {
 		// TODO Auto-generated method stub
-		
+
 		em.persist(bookClub);
 		em.flush();
 		System.out.println("in book club");
 		return bookClub;
 	}
-	
-	
 
 	@Override
 	public boolean deleteBookClub(int id) {
@@ -146,6 +145,27 @@ public class UserDaoImpl implements UserDAO {
 		return review;
 	}
 
-	
-	
+	@Override
+	public BookReview updateBookReview(BookReview review) {
+
+		BookReview updateReview = em.find(BookReview.class, review.getId());
+		updateReview.setReview(review.getReview());
+		updateReview.setRating(review.getRating());
+
+		return updateReview;
+	}
+
+	@Override
+	public BookReview bookReviewExistsForUser(int bookId, int userId) {
+		BookReviewId id = new BookReviewId();
+		id.setBookId(bookId);
+		id.setUserId(userId);
+		return em.find(BookReview.class, id);
+	}
+
+	@Override
+	public Book findBookById(int id) {
+		return em.find(Book.class, id);
+	}
+
 }
