@@ -43,6 +43,16 @@ body{
  }
 .sitename, .trending-btn, .search-btn, .signin-btn, .login-btn {
 	display: inline-block;
+	text-decoration: none;
+}
+ .trending-btn:hover, .search-btn:hover{
+	text-decoration: underline;
+}
+ .signin-btn:hover, .login-btn:hover{
+	 background: #867c45;
+ }
+ .trending-btn, .search-btn, .signin-btn, .login-btn:visited{
+	color: #F4F4F8;
 }
 .trending-btn, .search-btn{
 	font-family: "Bebas Neue";
@@ -120,8 +130,8 @@ body{
 }
 .cover{
 	border-radius: 10px 10px 10px 10px;
-	height: 250px;
-	width: 200px;
+	height: 220px;
+	width: 170px;
 	display: inline-block;
 	padding: 10px;
 	background-color: rgba(244, 244, 248, 0.7);
