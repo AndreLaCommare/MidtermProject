@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Book Details</title>
+<title>Insert title here</title>
 </head>
 <body>
-
 
 <c:choose>
     <c:when test="${empty book}">
@@ -25,38 +25,31 @@
   <p>Publication Year: ${book.publishedYear }</p>
   <p>Price: ${book.price}</p>
   <p>Language ${book.language}</p>
-  <p>Written By: ${book.author}</p><br>
-  
+  <p>Written By: ${book.author}</p><br><br></div>
+  <p>Reviews</p>
   <c:choose>
-		<c:when test="${not empty sessionScope.loggedInUser }">
-  
-  Write a Review:
-  <form action="review.do" method="post">
-  
-  <label for="review"></label><br>
-		<textarea id="review" name="review" rows="4" cols="50"></textarea>
-		<br> 
-		
-		 <input type="submit" value="Submit Review">
-  
-  </form>
-  </c:when>
-		<c:otherwise>
-			<h4>Log In To Write A Review</h4>
-		</c:otherwise>
-	</c:choose>
+  	 <c:when test="${empty review}">
+       No Review Found.<br>
+       <a href="home.do">Return Home</a>
+    </c:when>
+    <c:otherwise>
+        <div>
+        <p>Review: ${review.review	} </p>
+        
+        
+        </div>
   
   
   
-  
-  
-  
-  
-  
-  
-  
- 
-  <a href="home.do">Return Home</a>
-</div>
-    </c:otherwise>
+   </c:otherwise>
+    </c:choose>
+   </c:otherwise>
 </c:choose>
+
+
+
+  
+  
+  
+</body>
+</html>

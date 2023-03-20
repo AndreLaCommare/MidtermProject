@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.alexandria.data.UserDAO;
+import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
 
@@ -124,5 +126,21 @@ public class UserController {
 		@GetMapping(path="loginpage.do")
 		public String loginPage(Model model) {
 			return "loginpage";
+		}
+		
+		
+		@PostMapping(path="review.do")
+		public String writeAReview(Model model, BookReview review, Book book) {
+			try {
+				review = userDao.writeReview(review, book);
+			}catch(RuntimeException e){
+				System.err.println(e);
+			}
+			if (review != null) {
+				model.addAttribute("review", review);
+				return "review";
+			}else {
+				return "error";
+			}
 		}
 }
