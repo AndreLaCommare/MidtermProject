@@ -41,7 +41,7 @@
 	</form>
 	
 	<form action="findClubById.do" method="GET">
-	<input type="text" name="club">
+	<input type="text" name="clubId">
 		 <input type="submit" value="Find Club">
 	</form>
 

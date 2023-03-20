@@ -18,6 +18,7 @@
 Club Name: <input type="text" name="name" /><br>
 Club Profile Pic(Image URL)<input type="text" name="imageURL" /><br>
 Club Description: <input type="text" name="description" /><br>
+ <input type="hidden" name="owner.id" value = "${loggedInUser.id }"/><br>
 
 
 <input type="submit"
