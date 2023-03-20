@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.alexandria.data.UserDAO;
 import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.BookComment;
 import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
@@ -154,12 +155,38 @@ public class UserController {
 				return "error";
 			}
 		}
+		@PostMapping(path="comment.do")
+		public String publishAComment(Model model, BookComment comment) {
+			try {
+				comment = userDao.writeComment(comment);
+			}catch(RuntimeException e){
+				System.err.println(e);
+			}
+			if (comment != null) {
+				
+				model.addAttribute("book", comment.getBook());
+				model.addAttribute("bookComment", comment);
+				return "showSingleBook";
+			}else {
+				return "error";
+			}
+		}
 		
 		@GetMapping(path="updatereview.do")
 		public String updateReview(Model model, BookReview review) {
 			review = userDao.updateBookReview(review);
 			model.addAttribute("review", review);
 			model.addAttribute("book", userDao.findBookById(review.getBook().getId()));
+			return "showSingleBook";
+		}
+		
+		@GetMapping(path="replyComment.do")
+		public String replyToComment(Model model, BookComment comment) {
+			
+			comment = (BookComment) userDao.replyComments(comment).get(0);
+			
+			model.addAttribute("bookComment", comment);
+			model.addAttribute("book", userDao.findBookById(comment.getBook().getId()));
 			return "showSingleBook";
 		}
 }

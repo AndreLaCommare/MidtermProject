@@ -3,6 +3,7 @@ package com.skilldistillery.alexandria.data;
 import java.util.List;
 
 import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.BookComment;
 import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
@@ -35,6 +36,10 @@ public interface UserDAO {
 	BookReview bookReviewExistsForUser(int bookId, int userId);
 	
 	Book findBookById(int id);
+
+	BookComment writeComment(BookComment comment);
+	
+	List<BookComment> replyComments(BookComment comment);
 }
 
 
