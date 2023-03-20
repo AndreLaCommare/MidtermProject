@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.alexandria.data.UserDAO;
+import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
 
@@ -72,12 +74,21 @@ public class UserController {
 
 	
 	@GetMapping(path="bookbyisbn.do")
-	public String findByISBN(String isbn, Model model) {
-		model.addAttribute("book", userDao.findBookByISBN(isbn));
+	public String findByISBN(String isbn, Model model, HttpSession session) {
+		Book book = userDao.findBookByISBN(isbn);
+		model.addAttribute("book", book);
+		User user = (User) session.getAttribute("loggedInUser");
+		
+		model.addAttribute("review", userDao.bookReviewExistsForUser(book.getId(), user.getId()));
 		return "showSingleBook";
 	}
 	
-	
+	@GetMapping(path="showById.do")
+	public String findById(Integer id, Model model) {
+		Book book = userDao.findBookById(id);
+		model.addAttribute("book", book);
+		return "showSingleBook";
+	}
 	
 	@GetMapping(path="createClub.do")
 	public String createClubPage(HttpSession session) {
@@ -124,5 +135,31 @@ public class UserController {
 		@GetMapping(path="loginpage.do")
 		public String loginPage(Model model) {
 			return "loginpage";
+		}
+		
+		
+		@PostMapping(path="review.do")
+		public String writeAReview(Model model, BookReview review) {
+			try {
+				review = userDao.writeReview(review);
+			}catch(RuntimeException e){
+				System.err.println(e);
+			}
+			if (review != null) {
+				
+				model.addAttribute("book", review.getBook());
+				model.addAttribute("review", review);
+				return "showSingleBook";
+			}else {
+				return "error";
+			}
+		}
+		
+		@GetMapping(path="updatereview.do")
+		public String updateReview(Model model, BookReview review) {
+			review = userDao.updateBookReview(review);
+			model.addAttribute("review", review);
+			model.addAttribute("book", userDao.findBookById(review.getBook().getId()));
+			return "showSingleBook";
 		}
 }

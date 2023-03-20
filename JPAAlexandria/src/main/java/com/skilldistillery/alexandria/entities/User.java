@@ -45,6 +45,10 @@ public class User {
 	@ManyToMany(mappedBy="clubMembers")
 	private List<Club> clubMemberships;
 	
+	
+	@OneToMany(mappedBy= "owner")
+	private List<Club> ownedClubs;
+	
 	@ManyToMany
 	@JoinTable(name="user_has_favorite_book",
 			joinColumns=@JoinColumn(name="user_id"),
@@ -185,6 +189,22 @@ public class User {
 		this.userBookLists = userBookLists;
 	}
 	
+	public List<Club> getOwnedClubs() {
+		return ownedClubs;
+	}
+
+	public void setOwnedClubs(List<Club> ownedClubs) {
+		this.ownedClubs = ownedClubs;
+	}
+
+	public List<BookReview> getBookReviews() {
+		return bookReviews;
+	}
+
+	public void setBookReviews(List<BookReview> bookReviews) {
+		this.bookReviews = bookReviews;
+	}
+
 	public void addBook(Book book) {
 		if (favoriteBooks == null ) {favoriteBooks = new ArrayList<>(); }
 		if ( ! favoriteBooks.contains(book) ) {
