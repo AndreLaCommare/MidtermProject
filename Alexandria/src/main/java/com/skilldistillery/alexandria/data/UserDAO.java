@@ -3,6 +3,7 @@ package com.skilldistillery.alexandria.data;
 import java.util.List;
 
 import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
 
@@ -27,6 +28,7 @@ public interface UserDAO {
 	boolean deleteBookClub(int id);
 	Club findClubById(int userId);
 
+	BookReview writeReview(BookReview review);
 }
 
 

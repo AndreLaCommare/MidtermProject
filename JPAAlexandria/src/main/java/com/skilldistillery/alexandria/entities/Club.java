@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -26,8 +27,9 @@ public class Club {
 	
 	private String description;
 	
-	@Column(name="owner_id")
-	private int ownerId;
+	@ManyToOne
+	@JoinColumn(name="owner_id")
+	private User owner;
 	
 	@Column(name="create_date")
 	private LocalDateTime createDate;
@@ -82,12 +84,14 @@ public class Club {
 		this.description = description;
 	}
 
-	public int getOwnerId() {
-		return ownerId;
+
+
+	public User getOwner() {
+		return owner;
 	}
 
-	public void setOwnerId(int ownerId) {
-		this.ownerId = ownerId;
+	public void setOwner(User owner) {
+		this.owner = owner;
 	}
 
 	public LocalDateTime getCreateDate() {
@@ -194,7 +198,7 @@ public class Club {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Club [id=").append(id).append(", name=").append(name).append(", description=")
-				.append(description).append(", ownerId=").append(ownerId).append(", createDate=").append(createDate)
+				.append(description).append(", ownerId=").append(owner).append(", createDate=").append(createDate)
 				.append(", imageURL=").append(imageURL).append("]");
 		return builder.toString();
 	}

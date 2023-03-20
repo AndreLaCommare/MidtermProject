@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
 
@@ -132,6 +133,17 @@ public class UserDaoImpl implements UserDAO {
 	public Club findClubById(int clubId) {
 		// TODO Auto-generated method stub
 		return em.find(Club.class, clubId);
+	}
+
+	@Override
+	public BookReview writeReview(BookReview review) {
+		// TODO Auto-generated method stub
+		review.setBook(em.find(Book.class, review.getBook().getId()));
+		review.setUser(em.find(User.class, review.getUser().getId()));
+		em.persist(review);
+		em.flush();
+		System.out.println("in write review");
+		return review;
 	}
 
 	
