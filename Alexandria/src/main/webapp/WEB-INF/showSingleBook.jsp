@@ -25,7 +25,34 @@
   <p>Publication Year: ${book.publishedYear }</p>
   <p>Price: ${book.price}</p>
   <p>Language ${book.language}</p>
-  <p>Written By: ${book.author}</p>
+  <p>Written By: ${book.author}</p><br>
+  
+  <c:choose>
+		<c:when test="${not empty sessionScope.loggedInUser }">
+  
+  Write a Review:
+  <form>
+  
+  <label for="review">Review:</label><br>
+		<textarea id="review" name="review" rows="4" cols="50"></textarea>
+		<br> 
+  
+  </form>
+  </c:when>
+		<c:otherwise>
+			<h2>Log In To Create a Write a Review</h2>
+		</c:otherwise>
+	</c:choose>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
  
   <a href="home.do">Return Home</a>
 </div>
