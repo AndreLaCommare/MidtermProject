@@ -113,6 +113,7 @@
 							<input type="submit" value="Submit Review">
 
 						</form>
+<<<<<<< HEAD
 						
 	Leave a Comment:
 	
@@ -130,8 +131,20 @@
 					</c:when>
 					<c:otherwise>
 						<h4>Log In To Write A Review and Leave a Comment</h4>
+
+						<form action="account.do" method="GET">
+		 <input type="submit" value="Return to Profile">
+	</form>
+					</c:when>
+					<c:otherwise>
+						<h4>Log In To Write A Review</h4>
+						<form action="home.do" method="GET">
+		 <input type="submit" value="Go to Home">
+	</form>
+
 					</c:otherwise>
 				</c:choose>
+
 
 
 
@@ -145,6 +158,7 @@
 				<form action="account.do" method="GET">
 					<input type="submit" value="Return to Profile">
 				</form>
+
 
 			</div>
 		</c:otherwise>
