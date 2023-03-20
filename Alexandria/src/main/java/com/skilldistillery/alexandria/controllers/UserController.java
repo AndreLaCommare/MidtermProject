@@ -130,13 +130,15 @@ public class UserController {
 		
 		
 		@PostMapping(path="review.do")
-		public String writeAReview(Model model, BookReview review, Book book) {
+		public String writeAReview(Model model, BookReview review) {
 			try {
-				review = userDao.writeReview(review, book);
+				review = userDao.writeReview(review);
 			}catch(RuntimeException e){
 				System.err.println(e);
 			}
 			if (review != null) {
+				
+				model.addAttribute("book", review.getBook());
 				model.addAttribute("review", review);
 				return "review";
 			}else {

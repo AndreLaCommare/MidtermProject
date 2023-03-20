@@ -28,7 +28,7 @@ public interface UserDAO {
 	boolean deleteBookClub(int id);
 	Club findClubById(int userId);
 
-	BookReview writeReview(BookReview review,Book book);
+	BookReview writeReview(BookReview review);
 }
 
 

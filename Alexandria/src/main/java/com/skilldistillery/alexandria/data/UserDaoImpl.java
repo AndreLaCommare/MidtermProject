@@ -136,10 +136,10 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public BookReview writeReview(BookReview review, Book book) {
+	public BookReview writeReview(BookReview review) {
 		// TODO Auto-generated method stub
-		
-		review.setBook(book);
+		review.setBook(em.find(Book.class, review.getBook().getId()));
+		review.setUser(em.find(User.class, review.getUser().getId()));
 		em.persist(review);
 		em.flush();
 		System.out.println("in write review");
