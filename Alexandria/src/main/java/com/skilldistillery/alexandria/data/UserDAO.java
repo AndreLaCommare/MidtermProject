@@ -29,6 +29,12 @@ public interface UserDAO {
 	Club findClubById(int userId);
 
 	BookReview writeReview(BookReview review);
+
+	BookReview updateBookReview(BookReview review);
+	
+	BookReview bookReviewExistsForUser(int bookId, int userId);
+	
+	Book findBookById(int id);
 }
 
 
