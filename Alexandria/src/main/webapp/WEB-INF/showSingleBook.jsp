@@ -80,8 +80,10 @@
 
 
 
-
-				<a href="home.do">Return Home</a>
+			<form action="account.do" method="GET">
+		 <input type="submit" value="Return to Profile">
+	</form>
+			
 			</div>
 		</c:otherwise>
 	</c:choose>
