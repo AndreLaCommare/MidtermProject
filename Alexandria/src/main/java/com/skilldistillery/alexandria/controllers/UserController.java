@@ -83,7 +83,12 @@ public class UserController {
 		return "showSingleBook";
 	}
 	
-	
+	@GetMapping(path="showById.do")
+	public String findById(Integer id, Model model) {
+		Book book = userDao.findBookById(id);
+		model.addAttribute("book", book);
+		return "showSingleBook";
+	}
 	
 	@GetMapping(path="createClub.do")
 	public String createClubPage(HttpSession session) {
