@@ -27,6 +27,7 @@
 				<p>Language ${book.language}</p>
 				<p>Written By: ${book.author}</p>
 				<br>
+
 				<c:if test="${not empty book.bookComments }">
 
 					<div>
@@ -37,18 +38,18 @@
 								<li>${bookComment.bookComment }</li>
 
 
+								<c:if test="${not empty sessionScope.loggedInUser }">
+									<form action="replyComment.do" method="GET">
 
-								<form action="replyComment.do" method="GET">
+										<input type="hidden" name="book.id" value="${book.id}">
 
-									<input type="hidden" name="book.id" value="${book.id}">
+										<input type="hidden" name="parentCommentId"
+											value="${bookComment.id}"> <input type="text"
+											id="bookComment" name="bookComment"> <input
+											type="submit" value="Reply">
 
-									<input type="hidden" name="parentCommentId"
-										value="${bookComment.id}"> <input type="text"
-										id="bookComment" name="bookComment"> <input
-										type="submit" value="Reply">
-
-								</form>
-
+									</form>
+								</c:if>
 
 							</c:forEach>
 						</ol>
@@ -58,14 +59,25 @@
 
 
 				</c:if>
-				<c:choose>
+
+				<c:set var="haveReviewed" value="${false }"></c:set>
 
 
-					<c:when test="${not empty review }">
+
+
+				<c:if test="${not empty book.reviews }">
+
+					<h2>Reviews:</h2>
+					<c:forEach var="review" items="${book.reviews }">
+
+
+
 						<c:choose>
 							<c:when test="${sessionScope.loggedInUser.id == review.user.id }">
+								<c:set var="haveReviewed" value="${true }"></c:set>
+
 								<div>
-									<p>Review: ${review.review	}</p>
+									<p>${review.review	}</p>
 
 									<form action="updatereview.do" method="GET">
 										<input type="hidden" name="book.id" value="${book.id}">
@@ -84,50 +96,56 @@
 
 
 
-<!--  
-
-TODO: Iterate over list of reivews like comments. If a review belongs to a user we displayu edit form. Otherwise display list of reviews.
-
-
-
-
-
-  -->
-
 							<c:otherwise>
+								<h3>Posted Review By: ${ review.user.username}</h3>
 
-								<!-- TODO Display Review Without Form -->
+								<p>Rating: ${review.rating }</p>
+								<blockquote>${review.review}</blockquote>
+
+
+
+
 
 
 							</c:otherwise>
-
 						</c:choose>
-					</c:when>
 
-					<c:otherwise>
-						<c:if test="${not empty sessionScope.loggedInUser }">
+					</c:forEach>
+
+				</c:if>
+
+
+				<c:choose>
+					<c:when
+						test="${not empty sessionScope.loggedInUser and not haveReviewed}">
   
   Write a Review:
   
   <form action="review.do" method="post">
 
-								<label for="rating">Score out of 10:</label> <input
-									type="number" name="rating"> <br> <label
-									for="review"></label><br>
+							<label for="rating">Score out of 10:</label> <input type="number"
+								name="rating"> <br> <label for="review"></label><br>
 
 
-								<textarea id="review" name="review" rows="4" cols="50"></textarea>
-								<br> <input type="hidden" name="book.id" value="${book.id}">
-								<br> <input type="hidden" name="id.bookId"
-									value="${book.id}"> <input type="submit"
-									value="Submit Review">
+							<textarea id="review" name="review" rows="4" cols="50"></textarea>
+							<br> <input type="hidden" name="book.id" value="${book.id}">
+							<br> <input type="hidden" name="id.bookId"
+								value="${book.id}"> <input type="submit"
+								value="Submit Review">
 
-							</form>
-						</c:if>
+						</form>
+					</c:when>
 
+					<c:otherwise>
+						<h4>Log In To Write A Review</h4>
+						<form action="home.do" method="GET">
+							<input type="submit" value="Go to Home">
+						</form>
 
 					</c:otherwise>
 				</c:choose>
+
+
 				<c:choose>
 
 					<c:when test="${not empty sessionScope.loggedInUser }">
@@ -149,10 +167,7 @@ TODO: Iterate over list of reivews like comments. If a review belongs to a user 
 							<input type="submit" value="Return to Profile">
 						</form>
 
-						<h4>Log In To Write A Review</h4>
-						<form action="home.do" method="GET">
-							<input type="submit" value="Go to Home">
-						</form>
+
 
 					</c:otherwise>
 				</c:choose>
@@ -166,5 +181,6 @@ TODO: Iterate over list of reivews like comments. If a review belongs to a user 
 
 
 			</div>
+
 		</c:otherwise>
 	</c:choose>
