@@ -59,14 +59,20 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User findUserById(int userId) {
-
 		return em.find(User.class, userId);
 	}
 
 	@Override
-	public User updateUser(int userId, User user) {
-
-		return null;
+	public User updateUser(int userId, User updatedUser) {
+		User managed = em.find(User.class, userId);
+		managed.setUsername(updatedUser.getUsername());
+		managed.setPassword(updatedUser.getPassword());
+		managed.setImageUrl(updatedUser.getImageUrl());
+		managed.setFirstName(updatedUser.getFirstName());
+		managed.setLastName(updatedUser.getLastName());
+		managed.setAboutMe(updatedUser.getAboutMe());
+		em.close();
+		return managed;
 	}
 
 	@Override
