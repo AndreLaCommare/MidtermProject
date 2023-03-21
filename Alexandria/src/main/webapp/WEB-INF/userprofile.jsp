@@ -10,21 +10,40 @@
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 
 </head>
+
+<style>
+  body {
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+  
+  form {
+    margin-bottom: 10px;
+  }
+</style>
+
 <body>
 
+  <div class="navbar">
+    <a href="home.do">Home</a>
+  </div>
+  
 	<c:choose>
 		<c:when test="${not empty sessionScope.loggedInUser}">
 			<h2>Your Account Details</h2>
 			<h3>User name: ${sessionScope.loggedInUser.username} (id: ${loggedInUser.id})</h3>
 			<br>
+
 			<h4>${loggedInUser.firstName} ${loggedInUser.lastName}</h4>
-			<img src="${sessionScope.loggedInUser.imageUrl}" alt="Profile Picture" width="100">
+			<img src="${sessionScope.loggedInUser.imageUrl}" alt="Profile Picture" width="200">
+			<br>
 			<h6>About Me:</h6>
 			<p>${sessionScope.loggedInUser.aboutMe}</p>
+	
 		</c:when>
-		<c:otherwise>
-			<h2>Not Logged In</h2>
-		</c:otherwise>
+			<c:otherwise>
+				<h2>Not Logged In</h2>
+			</c:otherwise>
 	</c:choose>
 
 	<c:choose>
@@ -41,35 +60,23 @@
 	</c:when>
 	</c:choose>
 
-
-	
 	<form action="searchpage.do" method="GET">
 		 <input type="submit" value="Search">
 	</form>
 	
-	<form action="logout.do" method="GET">
-		<input type="submit" value="Log out">
-	</form>
-
 	<form action="createClub.do" method="GET">
 		<input type="submit" value="Create A Book Club!">
 	</form>
-
-
-
-
 
 	<form action="updateuserprofile.do" method="GET">
 		<input type="hidden" name="userId" value="${loggedInUser.id}" />
 		<input type="submit" value="Update Profile">
 	</form>
-	
-	<style>
-	form {
-		margin-bottom: 10px;
-	}
-	</style>
 
+	<form action="logout.do" method="GET">
+		<input type="submit" value="Log out">
+	</form>
+	
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>
