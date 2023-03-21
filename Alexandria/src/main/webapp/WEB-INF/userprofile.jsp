@@ -11,12 +11,11 @@
 
 </head>
 <body>
-<<<<<<< HEAD
-	<jsp:include page="navbar.jsp" />
+
 	<%--Edit the file nav.jsp to change nav links --%>
 	<%-- <%@ include file="nav.jsp"%> --%>
-=======
->>>>>>> 5eb8912d85478095da1d695b3712866af722f062
+
+
 
 	<c:choose>
 		<c:when test="${not empty sessionScope.loggedInUser }">
@@ -31,15 +30,15 @@
 			<h2>Not Logged In</h2>
 		</c:otherwise>
 	</c:choose>
-<<<<<<< HEAD
 
-=======
+
+
 	
 	<form action="searchpage.do" method="GET">
 		 <input type="submit" value="Search">
 	</form>
 	
->>>>>>> 5eb8912d85478095da1d695b3712866af722f062
+
 	<form action="logout.do" method="GET">
 		<input type="submit" value="Log out">
 	</form>
