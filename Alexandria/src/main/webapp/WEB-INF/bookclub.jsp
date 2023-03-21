@@ -23,15 +23,36 @@
   <img src="${bookClub.imageURL }" width="150" height="150"><br>
   <p>Club Description: ${bookClub.description}</p>
 
- <a href="DeleteClub.do?id=${bookClub.id }">Delete Current Club</a> <br>
+ <c:choose>
+ <c:when test="${not empty sessionScope.loggedInUser and loggedInUser.id == bookClub.owner.id}">
+ 
+ 
+<form action="DeleteClub.do" method="POST">
+	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
+	<button type="submit" role="button" class="search-btn-submit">Delete Club</button>
+	</form>
+ 
   <a href="UpdateClub.do?id=${bookClub.id }">Update Current Club</a> <br>
  
+ </c:when>
+ </c:choose>
+
+ <c:choose>
+ <c:when test="${not empty sessionScope.loggedInUser and loggedInUser.id != bookClub.owner.id}">
+ 	<form action="JoinClub.do" method="POST">
+	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
+	<button type="submit" role="button" class="search-btn-submit">Join Club!</button>
+	</form>
+ 
+  </c:when>
+ </c:choose>
  
  
  
+ <form action="home.do" method="GET">
+ <button type="submit" role="button" class="search-btn-submit">Return Home</button>
+	</form>
  
- 
-  <a href="userprofile.do">Return to Menu</a>
 </div>
     </c:otherwise>
 </c:choose>

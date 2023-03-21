@@ -138,14 +138,33 @@ public class UserController {
 		return "showSingleBook";
 	}
 
-	@RequestMapping(path = "DeleteClub.do")
-	public ModelAndView deleteClub(@RequestParam("id") int id) {
-		boolean isDeleted = userDao.deleteBookClub(id);
+	@PostMapping(path = "DeleteClub.do")
+	public ModelAndView deleteClub( int clubId) {
+		boolean isDeleted = userDao.deleteBookClub(clubId);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bookClub", isDeleted);
 		mv.setViewName("userprofile");
 		return mv;
 	}
+	
+	@PostMapping(path = "deleteFavoriteBook.do")
+	public String removeFromFavorites(HttpSession session, Integer bookId, Model model) {
+		User user = (User) session.getAttribute("loggedInUser");
+		if (user != null) {
+			try {
+				userDao.removeFromFavorites(bookId, user.getId());
+				session.setAttribute("loggedInUser", userDao.findUserById(user.getId()));
+				
+			}catch (RuntimeException e) {
+				System.err.println(e);
+			}
+		}else {
+			return "signuppage";
+		}
+		return "userprofile";
+	}
+	
+	
 
 	@GetMapping(path = "findClubById.do")
 	public String findClubById(Integer clubId, Model model) {

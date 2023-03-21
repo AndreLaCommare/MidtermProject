@@ -55,6 +55,10 @@
 					<li>Title: ${favorite.title}</li>
 				</ul>
 				<a href="showById.do?id=${favorite.id}"><img src="${favorite.coverUrl}" width="150"></a>
+				<form action="deleteFavoriteBook.do" method="POST">
+				<input type="hidden" value="${favorite.id}" name="bookId">
+		<input type="submit" value="Remove From Favorites">
+	</form>
 				</div>
 	</c:forEach>
 	</c:when>

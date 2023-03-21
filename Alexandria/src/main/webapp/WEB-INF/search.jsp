@@ -56,7 +56,7 @@
 	
 	<h4 class="book-club-search-title">Book Club Search</h4>
 	<form action="findClubById.do" method="GET">
-	<input type="text" placeholder="Club ID" name="club" class="search-input">
+	<input type="text" placeholder="Club ID" name="clubId" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 </div>
