@@ -120,6 +120,15 @@ public class UserController {
 			return "error";
 		}
 	}
+	
+	@PostMapping(path = "UpdateClub.do")
+	public String updateBookClub(Model model, Club bookClub, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		bookClub = userDao.updateBookClub(bookClub, loggedInUser.getId());
+		model.addAttribute("bookClub", bookClub);
+		return "bookclub";
+		
+	}
 
 	@PostMapping(path = "addbooktofavorites.do")
 	public String addBookToFavorites(HttpSession session, Integer bookId, Model model) {

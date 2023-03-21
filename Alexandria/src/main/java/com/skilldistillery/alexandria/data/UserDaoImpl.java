@@ -263,4 +263,24 @@ public class UserDaoImpl implements UserDAO {
 		}
 	}
 
+	@Override
+	public Club updateBookClub(Club bookClub, int userId) {
+		// TODO Auto-generated method stub
+		
+		bookClub.setOwner(em.find(User.class, userId));
+
+		Club updatedClub = em.find(Club.class, bookClub.getId());
+		if (updatedClub.getOwner().getId() == userId) {
+
+			updatedClub.setName(bookClub.getName());
+			updatedClub.setImageURL(bookClub.getImageURL());
+			updatedClub.setDescription(bookClub.getDescription());
+
+			return updatedClub;
+	}else {
+		
+		return null;
+	}
+
+}
 }
