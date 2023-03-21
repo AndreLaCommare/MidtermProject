@@ -8,16 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skilldistillery.alexandria.data.BookDAO;
 import com.skilldistillery.alexandria.data.UserDAO;
 import com.skilldistillery.alexandria.entities.Book;
-
-import com.skilldistillery.alexandria.entities.BookList;
-
 import com.skilldistillery.alexandria.entities.BookComment;
-
 import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
@@ -27,6 +23,9 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userDao;
+	
+	@Autowired
+	private BookDAO bookDao;
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
@@ -56,41 +55,44 @@ public class UserController {
 
 	@GetMapping(path = "bookbytitle.do")
 	public String findBookByKeyword(String title, Model model) {
-		model.addAttribute("books", userDao.findBooksByTitle(title));
+		model.addAttribute("books", bookDao.findBooksByTitle(title));
 		return "booklistsearch";
 	}
 
 	@GetMapping(path = "bookbyauthor.do")
 	public String findByAuthor(String author, Model model) {
-		model.addAttribute("books", userDao.findBooksByAuthor(author));
+		model.addAttribute("books", bookDao.findBooksByAuthor(author));
 		return "booklistsearch";
 	}
 
 	@GetMapping(path = "bookbylanguage.do")
 	public String findByLanguage(String language, Model model) {
-		model.addAttribute("books", userDao.findBooksByLanguage(language));
+		model.addAttribute("books", bookDao.findBooksByLanguage(language));
 		return "booklistsearch";
 	}
 
 	@GetMapping(path = "bookbydescription.do")
 	public String findByDescription(String description, Model model) {
-		model.addAttribute("books", userDao.findBooksByDescription(description));
+		model.addAttribute("books", bookDao.findBooksByDescription(description));
 		return "booklistsearch";
 	}
 
 	@GetMapping(path = "bookbyisbn.do")
 	public String findByISBN(String isbn, Model model, HttpSession session) {
-		Book book = userDao.findBookByISBN(isbn);
+		Book book = bookDao.findBookByISBN(isbn);
+		if (book != null) {
 		model.addAttribute("book", book);
-		User user = (User) session.getAttribute("loggedInUser");
+//		User user = (User) session.getAttribute("loggedInUser");
 
-		model.addAttribute("review", userDao.bookReviewExistsForUser(book.getId(), user.getId()));
+//		model.addAttribute("review", userDao.bookReviewExistsForUser(book.getId(), user.getId()));
+		}
 		return "showSingleBook";
+		
 	}
 
 	@GetMapping(path = "showById.do")
 	public String findById(Integer id, Model model) {
-		Book book = userDao.findBookById(id);
+		Book book = bookDao.findBookById(id);
 		model.addAttribute("book", book);
 		return "showSingleBook";
 	}
@@ -119,6 +121,15 @@ public class UserController {
 		} else {
 			return "error";
 		}
+	}
+	
+	@PostMapping(path = "UpdateClub.do")
+	public String updateBookClub(Model model, Club bookClub, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		bookClub = userDao.updateBookClub(bookClub, loggedInUser.getId());
+		model.addAttribute("bookClub", bookClub);
+		return "bookclub";
+		
 	}
 
 	@PostMapping(path = "addbooktofavorites.do")
@@ -257,7 +268,7 @@ public class UserController {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		review = userDao.updateBookReview(review, loggedInUser.getId());
 		model.addAttribute("review", review);
-		model.addAttribute("book", userDao.findBookById(review.getBook().getId()));
+		model.addAttribute("book", bookDao.findBookById(review.getBook().getId()));
 		return "showSingleBook";
 	}
 
@@ -270,7 +281,7 @@ public class UserController {
 			comment = userDao.replyComment(comment, parentCommentId, loggedInUser.getId());
 
 			model.addAttribute("bookComment", comment);
-			model.addAttribute("book", userDao.findBookById(comment.getBook().getId()));
+			model.addAttribute("book", bookDao.findBookById(comment.getBook().getId()));
 			return "showSingleBook";
 		}
 		return "loginpage";
