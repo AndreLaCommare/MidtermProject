@@ -239,7 +239,9 @@ body {
 	height: auto;
 	width: 600px;
 	text-align: center;
-	background: rgba(244, 244, 248, 0.52);
+	background-color: #DCD9D4;
+ 	background-image: linear-gradient(to bottom, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), radial-gradient(at 50% 0%, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0.50) 50%);
+ 	background-blend-mode: soft-light,screen;
 	margin: 0 auto;
 	font-size: 50px;
 	padding: 20px;
@@ -255,20 +257,28 @@ body {
 	background-size: cover;
 	text-align: center;
 	height: 100vh;
-	width: 100vw;
+	width: auto;
 	background-repeat: no-repeat;
 	display: block;
 	margin: 0;
 }
 
 .search-btn-submit {
-	height: 35px;
-	width: 35px;
 	padding: 0;
 	margin-right: 0;
+	left: 420px;
+	top: -33px;
+	border-radius: 7px 7px 7px 7px;
 	position: relative;
-	left: 20px !important;
-	top: 6px !important;
+	height: 35px;
+	width: 35px;
+	display:block;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+}
+.search-btn-submit:hover{
+	background:#D3D3D3;
 }
 
 .book-club-search-title {
@@ -281,12 +291,23 @@ body {
 	margin-bottom: 15px;
 	margin-top: 10px;
 	color: #F4F4F8;
+	text-shadow: 5px 5px black;
 }
 .search-input{
 	position: relative;
-	left: 25px;
-	width: 300px;
-	height: 31px;
+	top:0;
+	left: -45px;
+	height: 25px;
+	width: 250px;
+	font-size: 20px;
+	margin-left: 15px;
+	font-family: "Nanum Myeongjo";
+	border-radius: 10px;
+	box-shadow:10px 5px 5px black;
+	background-color: #f4f4f8;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
 }
 
 .login-container{
@@ -294,11 +315,11 @@ body {
 	border-radius: 20px 20px 20px 20px;
 	font-size: 60px;
 	color: #f4f4f8;
-	height: auto;
+	height: 160px;
 	width: 500px;
-/* 	background-image: url("wavesbkgrnd.svg");*/	
-	background: rgb(138,112,144);
-	background: linear-gradient(180deg, rgba(138,112,144,0.8866174351585014) 7%, rgba(56,0,54,1) 88%);
+	background-color: #DCD9D4;
+ 	background-image: linear-gradient(to bottom, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), radial-gradient(at 50% 0%, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0.50) 50%);
+ 	background-blend-mode: soft-light,screen;
 	position: relative;
 	top: 100px;
 	padding: 30px;
@@ -310,12 +331,21 @@ body {
 }
 
 .login-title{
+	position: relative;
+	top: -100px;
+	font-weight: 800 !important;
+	font-stretch: wider;
+	font-style: bolder;
+	font-variant:small-caps;
+	font-style: italic;
 	text-align: center;
-	-webkit-text-stroke: 3px black;
+	color: black;
+	text-shadow: 10px 5px 5px 362C1B;
+
 }
 
 .login-input-user{
-	top: -30px;
+	top: -180px;
 	height: 40px;
 	left: -30px;
 	position: relative;
@@ -324,13 +354,16 @@ body {
 	margin-left: 30px;
 	font-family: "Nanum Myeongjo";
 	border-radius: 10px;
-	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-	background-color: #f4f4f8; 
+	box-shadow:10px 5px 5px black;
+	background-color: #f4f4f8;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
 }
 
 .login-input-password{
 	position: relative;
-	top:-30px;
+	top:-180px;
 	left: -45px;
 	height: 40px;
 	width: 200px;
@@ -338,8 +371,11 @@ body {
 	margin-left: 15px;
 	font-family: "Nanum Myeongjo";
 	border-radius: 10px;
-	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-	background-color: #f4f4f8; 
+	box-shadow:10px 5px 5px black;
+	background-color: #f4f4f8;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
 }
 .login-btn-submit{
 	border-radius: 15px 15px 15px 15px;
@@ -347,9 +383,17 @@ body {
 	height: auto;
 	width: auto;
 	display:block;
-	top: -76px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	top: -225px;
 	left: 450px;
 }
+.login-btn-submit:hover{
+	background: #C9C9CC;
+	
+}
+
 .login-btn-icon{
 	position: relative;
 	height: 35px;
