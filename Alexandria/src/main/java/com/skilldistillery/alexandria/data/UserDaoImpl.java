@@ -84,43 +84,7 @@ public class UserDaoImpl implements UserDAO {
 		return managed;
 	}
 
-	@Override
-	public List<Book> findBooksByTitle(String title) {
-		title = "%" + title + "%";
-		String jpql = "SELECT b FROM Book b WHERE b.title LIKE :title";
-		List<Book> book = em.createQuery(jpql, Book.class).setParameter("title", title).getResultList();
-		return book;
-	}
-
-	@Override
-	public List<Book> findBooksByAuthor(String author) {
-		author = "%" + author + "%";
-		String jpql = "SELECT b FROM Book b WHERE b.author.name LIKE :author";
-		return em.createQuery(jpql, Book.class).setParameter("author", author).getResultList();
-	}
-
-	@Override
-	public List<Book> findBooksByLanguage(String language) {
-		// TODO Auto-generated method stub
-		language = "%" + language + "%";
-		String jpql = "SELECT b FROM Book b WHERE b.language.name LIKE :language";
-		return em.createQuery(jpql, Book.class).setParameter("language", language).getResultList();
-	}
-
-	@Override
-	public List<Book> findBooksByDescription(String description) {
-		// TODO Auto-generated method stub
-		description = "%" + description + "%";
-		String jpql = "SELECT b FROM Book b WHERE b.description LIKE :description";
-		return em.createQuery(jpql, Book.class).setParameter("description", description).getResultList();
-	}
-
-	@Override
-	public Book findBookByISBN(String isbn) {
-		// TODO Auto-generated method stub
-		String jpql = "SELECT b FROM Book b WHERE b.isbn = :isbn";
-		return em.createQuery(jpql, Book.class).setParameter("isbn", isbn).getSingleResult();
-	}
+	
 
 	@Override
 	public Club createBookClub(Club bookClub) {
@@ -132,7 +96,6 @@ public class UserDaoImpl implements UserDAO {
 		return bookClub;
 	}
 
-	
 	@Override
 	public Book addToFavorites(int bookId, int userId) {
 		Book book = em.find(Book.class, bookId);
@@ -141,18 +104,17 @@ public class UserDaoImpl implements UserDAO {
 		em.flush();
 		return book;
 	}
-	
-	
+
 	@Override
 	public boolean removeFromFavorites(int bookId, int userId) {
 		Book book = em.find(Book.class, bookId);
 		User user = em.find(User.class, userId);
 		if (user.getFavoriteBooks().contains(book)) {
-		user.removeFavoriteBook(book);
-		em.flush();
-		return true;
-		}else {
-		return false;
+			user.removeFavoriteBook(book);
+			em.flush();
+			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -229,10 +191,7 @@ public class UserDaoImpl implements UserDAO {
 		return em.find(BookReview.class, id);
 	}
 
-	@Override
-	public Book findBookById(int id) {
-		return em.find(Book.class, id);
-	}
+	
 
 	@Override
 	public BookComment writeComment(BookComment comment, int userId) {
@@ -266,7 +225,7 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public Club updateBookClub(Club bookClub, int userId) {
 		// TODO Auto-generated method stub
-		
+
 		bookClub.setOwner(em.find(User.class, userId));
 
 		Club updatedClub = em.find(Club.class, bookClub.getId());
@@ -277,10 +236,10 @@ public class UserDaoImpl implements UserDAO {
 			updatedClub.setDescription(bookClub.getDescription());
 
 			return updatedClub;
-	}else {
-		
-		return null;
-	}
+		} else {
 
-}
+			return null;
+		}
+
+	}
 }
