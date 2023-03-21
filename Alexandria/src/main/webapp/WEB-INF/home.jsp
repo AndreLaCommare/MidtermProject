@@ -26,10 +26,23 @@
 <div id="home-cover4"><img src="resources/hpcover.jpg" class="cover"></div>
 <div id="home-cover5"><img src="resources/solitudecover.png" class="cover"></div>
 </div>
+    <h1 class="home-signup-title">Sign Up</h1>
+    <div class="home-signup-container">
+    <form action="signup.do" method="POST">
+		<input type="text" placeholder="First Name" class="home-input-fname" name="firstName"> 
+		<input type="text" placeholder="Last Name" class="home-input-lname" name="lastName"/>
+		<br>
+		<input type="text" placeholder="Email" class="home-input-email" name="email"/>
+		<br>
+		<input type="text" placeholder="Username" class="home-input-username" name="username"/> 
+		<input type="password" placeholder="Password" class="home-input-password" name="password"/> 
+			<button type="submit" role="button" class="home-signup-submit-btn"><img src="resources/loginicon.svg"></button>
+	</form>
 <div id="home-right-background">
 <div id="home-right">
-
-    <h1>Sign Up</h1>
+    
+	
+	</div>
 </div>
 </div>
 </body>
