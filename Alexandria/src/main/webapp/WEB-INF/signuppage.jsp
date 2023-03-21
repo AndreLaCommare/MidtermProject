@@ -14,9 +14,6 @@
 
 	<link rel="icon" type="image/x-icon" href="/resources/logo.png">
 <body>
-<jsp:include page="navbar.jsp" />
-	<%--Edit the file nav.jsp to change nav links --%>
-	<%-- <%@ include file="nav.jsp"%> --%>
 
 	<h2>Sign Up</h2>
 
