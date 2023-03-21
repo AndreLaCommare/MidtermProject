@@ -287,5 +287,71 @@ body {
 	left: 25px;
 	width: 300px;
 	height: 31px;
+}
 
+.login-container{
+	font-family: "Nanum Myeongjo";
+	border-radius: 20px 20px 20px 20px;
+	font-size: 60px;
+	color: #f4f4f8;
+	height: auto;
+	width: 500px;
+/* 	background-image: url("wavesbkgrnd.svg");*/	
+	background: rgb(138,112,144);
+	background: linear-gradient(180deg, rgba(138,112,144,0.8866174351585014) 7%, rgba(56,0,54,1) 88%);
+	position: relative;
+	top: 100px;
+	padding: 30px;
+	border: thick;
+	border-color: black;
+	border-style: solid;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.login-title{
+	text-align: center;
+	-webkit-text-stroke: 3px black;
+}
+
+.login-input-user{
+	top: -30px;
+	height: 40px;
+	left: -30px;
+	position: relative;
+	width: 200px;
+	font-size: 30px;
+	margin-left: 30px;
+	font-family: "Nanum Myeongjo";
+	border-radius: 10px;
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+	background-color: #f4f4f8; 
+}
+
+.login-input-password{
+	position: relative;
+	top:-30px;
+	left: -45px;
+	height: 40px;
+	width: 200px;
+	font-size: 30px;
+	margin-left: 15px;
+	font-family: "Nanum Myeongjo";
+	border-radius: 10px;
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+	background-color: #f4f4f8; 
+}
+.login-btn-submit{
+	border-radius: 15px 15px 15px 15px;
+	position: relative;
+	height: auto;
+	width: auto;
+	display:block;
+	top: -76px;
+	left: 450px;
+}
+.login-btn-icon{
+	position: relative;
+	height: 35px;
+	width: 35px;
 }
