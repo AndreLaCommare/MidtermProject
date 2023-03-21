@@ -25,6 +25,10 @@
 		</c:otherwise>
 	</c:choose>
 	
+	<form action="searchpage.do" method="GET">
+		 <input type="submit" value="Search">
+	</form>
+	
 	<form action="logout.do" method="GET">
 		 <input type="submit" value="Log out">
 	</form>

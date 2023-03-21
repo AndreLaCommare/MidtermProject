@@ -29,17 +29,17 @@ public interface UserDAO {
 	boolean deleteBookClub(int id);
 	Club findClubById(int userId);
 
-	BookReview writeReview(BookReview review);
+	BookReview writeReview(BookReview review, int userId);
 
-	BookReview updateBookReview(BookReview review);
+	BookReview updateBookReview(BookReview review, int userId);
 	
 	BookReview bookReviewExistsForUser(int bookId, int userId);
 	
 	Book findBookById(int id);
 
-	BookComment writeComment(BookComment comment);
+	BookComment writeComment(BookComment comment, int userId);
 	
-	List<BookComment> replyComments(BookComment comment);
+	BookComment replyComment(BookComment comment, int parentCommentId, int userId);
 }
 
 

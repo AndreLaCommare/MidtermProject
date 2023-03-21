@@ -30,41 +30,28 @@
 				<c:if test="${not empty book.bookComments }">
 
 					<div>
-						Comments: 
+						Comments:
 						<ol>
-						<c:forEach var="bookComment" items ="${book.bookComments }"> 
-						
-						<li>${bookComment.bookComment }</li>
-						
-						
-						
-						<form action="replyComment.do" method="GET">
-						
-							<input type="hidden" name="book.id" value="${book.id}">
-							<input type="hidden" name="user.id" value="${loggedInUser.id}">
-							<input type="hidden" name="id.bookId" value="${book.id}">
-							<input type="hidden" name="id.userId" value="${loggedInUser.id}">
-						
-						
-						
-						<input type="text" id="bookComment" name="bookComment">
-						
-						
-						
-						<input type="submit" value="Reply">
-						
-						</form>
-						
-						
-						</c:forEach>
-						</ol>
-						
-						
-						
-						
-						
-						
+							<c:forEach var="bookComment" items="${book.bookComments }">
 
+								<li>${bookComment.bookComment }</li>
+
+
+
+								<form action="replyComment.do" method="GET">
+
+									<input type="hidden" name="book.id" value="${book.id}">
+
+									<input type="hidden" name="parentCommentId"
+										value="${bookComment.id}"> <input type="text"
+										id="bookComment" name="bookComment"> <input
+										type="submit" value="Reply">
+
+								</form>
+
+
+							</c:forEach>
+						</ol>
 
 					</div>
 
@@ -72,85 +59,103 @@
 
 				</c:if>
 				<c:choose>
+
+
 					<c:when test="${not empty review }">
-						<div>
-							<p>Review: ${review.review	}</p>
+						<c:choose>
+							<c:when test="${sessionScope.loggedInUser.id == review.user.id }">
+								<div>
+									<p>Review: ${review.review	}</p>
 
-							<form action="updatereview.do" method="GET">
-								<input type="hidden" name="book.id" value="${book.id}">
-								<input type="hidden" name="user.id" value="${loggedInUser.id}">
-								<input type="hidden" name="id.bookId" value="${book.id}">
-								<input type="hidden" name="id.userId" value="${loggedInUser.id}">
-								<label for="rating">Score out of 10:</label> <input
-									type="number" name="rating" value="${review.rating }">
-								<br> <label for="review"></label><br>
-								<textarea id="review" name="review" rows="4" cols="50">${review.review }</textarea>
-								<input type="submit" value="Edit Review">
-							</form>
-						</div>
+									<form action="updatereview.do" method="GET">
+										<input type="hidden" name="book.id" value="${book.id}">
+										<input type="hidden" name="user.id" value="${loggedInUser.id}">
+										<input type="hidden" name="id.bookId" value="${book.id}">
+										<input type="hidden" name="id.userId"
+											value="${loggedInUser.id}"> <label for="rating">Score
+											out of 10:</label> <input type="number" name="rating"
+											value="${review.rating }"> <br> <label
+											for="review"></label><br>
+										<textarea id="review" name="review" rows="4" cols="50">${review.review }</textarea>
+										<input type="submit" value="Edit Review">
+									</form>
+								</div>
+							</c:when>
 
 
 
+<!--  
+
+TODO: Iterate over list of reivews like comments. If a review belongs to a user we displayu edit form. Otherwise display list of reviews.
+
+
+
+
+
+  -->
+
+							<c:otherwise>
+
+								<!-- TODO Display Review Without Form -->
+
+
+							</c:otherwise>
+
+						</c:choose>
 					</c:when>
 
-
-
-					<c:when test="${not empty sessionScope.loggedInUser }">
+					<c:otherwise>
+						<c:if test="${not empty sessionScope.loggedInUser }">
   
   Write a Review:
   
   <form action="review.do" method="post">
 
-							<label for="rating">Score out of 10:</label> <input type="number"
-								name="rating"> <br> <label for="review"></label><br>
+								<label for="rating">Score out of 10:</label> <input
+									type="number" name="rating"> <br> <label
+									for="review"></label><br>
 
 
-							<textarea id="review" name="review" rows="4" cols="50"></textarea>
-							<br> <input type="hidden" name="book.id" value="${book.id}">
-							<input type="hidden" name="user.id" value="${loggedInUser.id}">
-							<input type="hidden" name="id.bookId" value="${book.id}">
-							<input type="hidden" name="id.userId" value="${loggedInUser.id}">
-							<input type="submit" value="Submit Review">
+								<textarea id="review" name="review" rows="4" cols="50"></textarea>
+								<br> <input type="hidden" name="book.id" value="${book.id}">
+								<br> <input type="hidden" name="id.bookId"
+									value="${book.id}"> <input type="submit"
+									value="Submit Review">
 
-						</form>
-<<<<<<< HEAD
-						
-	Leave a Comment:
-	
-			<form action="comment.do" method="post">
-			
-							<input type="text" id="bookComment" name="bookComment">	
-							<br> 
-							
-							<input type="hidden" name="book.id" value="${book.id}">
-							<input type="hidden" name="user.id" value="${loggedInUser.id}">
-							<input type="hidden" name="id.bookId" value="${book.id}">
-							<input type="hidden" name="id.userId" value="${loggedInUser.id}">
-							<input type="submit" value="Publish Comment">
+							</form>
+						</c:if>
+
+
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+
+					<c:when test="${not empty sessionScope.loggedInUser }">
+
+				Leave a Comment:
+
+				<form action="comment.do" method="post">
+
+							<input type="text" id="bookComment" name="bookComment"> <br>
+
+							<input type="hidden" name="book.id" value="${book.id}"> <input
+								type="submit" value="Publish Comment">
 						</form>
 					</c:when>
 					<c:otherwise>
 						<h4>Log In To Write A Review and Leave a Comment</h4>
 
 						<form action="account.do" method="GET">
-		 <input type="submit" value="Return to Profile">
-	</form>
-					</c:when>
-					<c:otherwise>
+							<input type="submit" value="Return to Profile">
+						</form>
+
 						<h4>Log In To Write A Review</h4>
 						<form action="home.do" method="GET">
-		 <input type="submit" value="Go to Home">
-	</form>
+							<input type="submit" value="Go to Home">
+						</form>
 
 					</c:otherwise>
 				</c:choose>
-
-
-
-
-
-
-
 
 
 
