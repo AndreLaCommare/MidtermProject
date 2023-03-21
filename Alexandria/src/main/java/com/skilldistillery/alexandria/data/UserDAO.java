@@ -48,10 +48,14 @@ public interface UserDAO {
 
 	Book findBookById(int id);
 
-	BookList createBookList(BookList booklist);
 
 	BookComment writeComment(BookComment comment, int userId);
 
 	BookComment replyComment(BookComment comment, int parentCommentId, int userId);
+
+
+	Book addToFavorites(int bookId, int userId);
+
+	Book removeFromFavorites(int bookId, int userId);
 
 }

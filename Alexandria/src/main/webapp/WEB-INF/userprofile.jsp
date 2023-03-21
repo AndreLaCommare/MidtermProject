@@ -30,7 +30,19 @@
 			<h2>Not Logged In</h2>
 		</c:otherwise>
 	</c:choose>
-
+	<c:choose>
+	<c:when test="${not empty sessionScope.loggedInUser and not empty loggedInUser.favoriteBooks }">
+	<h4>Your Favorites</h4>
+	<c:forEach var="favorite" items="${loggedInUser.favoriteBooks}">
+	<div>
+				<ul>
+					<li>Title: ${favorite.title}</li>
+				</ul>
+				<a href="showById.do?id=${favorite.id}"><img src="${favorite.coverUrl}" width="150"></a>
+				</div>
+	</c:forEach>
+	</c:when>
+	</c:choose>
 
 
 	
@@ -46,18 +58,10 @@
 	<form action="createClub.do" method="GET">
 		<input type="submit" value="Create A Book Club!">
 	</form>
-<<<<<<< HEAD
-	
-	<form action="createbooklist.do" method="GET">
-		 <input type="submit" value="Create a Book List">
-	</form>
-<!-- 	<form action="getbooklist.do" method="GET">
-		 <input type="submit" value="See Your Favorites">
-	</form> -->
 
-	
-=======
->>>>>>> 10fd887b7bb87a056b719f3cadfe23f838faef66
+
+
+
 
 	<form action="updateuserprofile.do" method="GET">
 		<input type="hidden" name="userId" value="${loggedInUser.id}" />

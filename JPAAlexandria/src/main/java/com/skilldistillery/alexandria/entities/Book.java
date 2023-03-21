@@ -242,14 +242,14 @@ public class Book {
 		if (usersWithFavBooks == null ) {usersWithFavBooks = new ArrayList<>(); }
 		if ( ! usersWithFavBooks.contains(user) ) {
 			usersWithFavBooks.add(user);
-			user.addBook(this);
+			user.addFavoriteBook(this);
 		}
 	}
 	
 	public void removeUser(User user) {
 		if (usersWithFavBooks != null && usersWithFavBooks.contains(user)) {
 			usersWithFavBooks.remove(user);
-			user.removeBook(this);
+			user.removeFavoriteBook(this);
 		}
 	}
 	

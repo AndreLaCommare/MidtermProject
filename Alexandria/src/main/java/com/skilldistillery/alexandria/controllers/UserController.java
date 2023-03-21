@@ -121,29 +121,21 @@ public class UserController {
 		}
 	}
 
-	@GetMapping(path = "createbooklist.do")
-	public String createbooklist(HttpSession session) {
+	@PostMapping(path = "addbooktofavorites.do")
+	public String addBookToFavorites(HttpSession session, Integer bookId, Model model) {
 		User user = (User) session.getAttribute("loggedInUser");
+
 		if (user != null) {
-			return "createBookList";
+			try {
+				Book book = userDao.addToFavorites(bookId, user.getId());
+				model.addAttribute("book", book);
+			} catch (RuntimeException e) {
+				System.err.println(e);
+			}
 		} else {
 			return "signuppage";
 		}
-	}
-
-	@PostMapping(path = "createdBookList.do")
-	public String createdBookList(Model model, BookList booklist) {
-		try {
-			booklist = userDao.createBookList(booklist);
-		} catch (RuntimeException e) {
-			System.err.println(e);
-		}
-		if (booklist != null) {
-			model.addAttribute("bookList", booklist);
-			return "booklist";
-		} else {
-			return "error";
-		}
+		return "showSingleBook";
 	}
 
 	@RequestMapping(path = "DeleteClub.do")

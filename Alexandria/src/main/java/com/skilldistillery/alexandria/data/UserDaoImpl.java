@@ -64,7 +64,11 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User findUserById(int userId) {
-		return em.find(User.class, userId);
+		User user = em.find(User.class, userId);
+		if (user != null) {
+			user.getFavoriteBooks().size();
+		}
+		return user;
 	}
 
 	@Override
@@ -128,11 +132,23 @@ public class UserDaoImpl implements UserDAO {
 		return bookClub;
 	}
 
+	
 	@Override
-	public BookList createBookList(BookList booklist) {
-		em.persist(booklist);
+	public Book addToFavorites(int bookId, int userId) {
+		Book book = em.find(Book.class, bookId);
+		User user = em.find(User.class, userId);
+		user.addFavoriteBook(book);
 		em.flush();
-		return booklist;
+		return book;
+	}
+	
+	@Override
+	public Book removeFromFavorites(int bookId, int userId) {
+		Book book = em.find(Book.class, bookId);
+		User user = em.find(User.class, userId);
+		user.removeFavoriteBook(book);
+		em.flush();
+		return book;
 	}
 
 	@Override
