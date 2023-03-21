@@ -178,8 +178,18 @@
 					</c:otherwise>
 				</c:choose>
 
-
-
+<%-- 			 <c:choose> 
+ 			<c:when test="${not empty sessionScope.loggedInUser and loggedInUser.id == bookClub.owner.id}">
+ 
+ 
+			<form action="assignTobookclub.do" method="POST">
+				<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
+				<button type="submit" role="button" class="search-btn-submit">Add to Favorites</button>
+			</form>
+ 
+ 			</c:when>
+			 </c:choose> --%>
+			 
 
 				<form action="account.do" method="GET">
 					<input type="submit" value="Return to Profile">

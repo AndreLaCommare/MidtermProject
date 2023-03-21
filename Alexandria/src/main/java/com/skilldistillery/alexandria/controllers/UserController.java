@@ -137,6 +137,7 @@ public class UserController {
 		}
 		return "showSingleBook";
 	}
+	
 
 	@PostMapping(path = "DeleteClub.do")
 	public ModelAndView deleteClub( int clubId) {
@@ -167,8 +168,21 @@ public class UserController {
 	
 
 	@GetMapping(path = "findClubById.do")
-	public String findClubById(Integer clubId, Model model) {
+	public String findClubById(Integer clubId, Model model, HttpSession session) {
+		boolean myClub = false;
 		Club club = userDao.findClubById(clubId);
+		User user = (User) session.getAttribute("loggedInUser");
+		if (club.getOwner().getId() == user.getId()) {
+			myClub = true;
+		} else {
+			for (Club fav : user.getClubMemberships()) {
+				if (fav.getId() == clubId) {
+					myClub = true;
+				}
+			}
+		}
+		
+		model.addAttribute("myClub", myClub);
 		model.addAttribute("bookClub", club);
 		return "bookclub";
 	}
