@@ -11,11 +11,18 @@
 
 </head>
 <body>
+<<<<<<< HEAD
+	<jsp:include page="navbar.jsp" />
+	<%--Edit the file nav.jsp to change nav links --%>
+	<%-- <%@ include file="nav.jsp"%> --%>
+=======
+>>>>>>> 5eb8912d85478095da1d695b3712866af722f062
 
 	<c:choose>
 		<c:when test="${not empty sessionScope.loggedInUser }">
-	<h2>Your Account Details</h2>
-			<h3>User Name: ${sessionScope.loggedInUser.username } (id: ${loggedInUser.id })</h3>
+			<h2>Your Account Details</h2>
+			<h3>User Name: ${sessionScope.loggedInUser.username } (id:
+				${loggedInUser.id })</h3>
 			<br>
 			<h4>${loggedInUser.firstName }${ loggedInUser.lastName}</h4>
 
@@ -24,24 +31,28 @@
 			<h2>Not Logged In</h2>
 		</c:otherwise>
 	</c:choose>
+<<<<<<< HEAD
+
+=======
 	
 	<form action="searchpage.do" method="GET">
 		 <input type="submit" value="Search">
 	</form>
 	
+>>>>>>> 5eb8912d85478095da1d695b3712866af722f062
 	<form action="logout.do" method="GET">
-		 <input type="submit" value="Log out">
+		<input type="submit" value="Log out">
 	</form>
-
 
 	<form action="createClub.do" method="GET">
-		 <input type="submit" value="Create A Book Club!">
+		<input type="submit" value="Create A Book Club!">
 	</form>
-	
 
-	
+	<form action="updateuserprofile.do" method="GET">
+		<input type="hidden" name="userId" value="${loggedInUser.id}" />
+		<input type="submit" value="Update Profile">
+	</form>
 
-
-<jsp:include page="bootstrapFoot.jsp" />
+	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>

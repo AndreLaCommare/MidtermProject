@@ -192,7 +192,27 @@ public class UserController {
 				return "error";
 			}
 		}
+		
+	
+
 		return "loginpage";
+	}
+	
+	@GetMapping(path = {"updateuserprofile.do"})		
+	public String updateUserProfile(Model model, Integer userId, User user) {
+		user = userDao.findUserById(userId);
+		model.addAttribute("update", user);
+		return "updateuserprofile";
+	}
+	
+	@PostMapping(path = {"updateduserprofile.do"})
+	public String updatedUserProfile(Model model, Integer userId, User user) {
+		System.out.println("***************************UpdateedUserProfile.do******************************");
+		User updatedUserProfile = userDao.updateUser(userId, user);
+		System.out.println(userId);
+		System.out.println(user);
+		model.addAttribute("update", updatedUserProfile);
+		return "updateduserprofile";
 	}
 
 	@GetMapping(path = "updatereview.do")
@@ -219,4 +239,5 @@ public class UserController {
 	}
 		return "loginpage";
 	}
+
 }
