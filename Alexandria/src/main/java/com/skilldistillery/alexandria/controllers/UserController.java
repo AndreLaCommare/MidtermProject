@@ -13,7 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.alexandria.data.UserDAO;
 import com.skilldistillery.alexandria.entities.Book;
+
+import com.skilldistillery.alexandria.entities.BookList;
+
 import com.skilldistillery.alexandria.entities.BookComment;
+
 import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
@@ -103,6 +107,7 @@ public class UserController {
 
 	@PostMapping(path = "createBookClub.do")
 	public String createBookClub(Model model, Club bookClub) {
+
 		try {
 			bookClub = userDao.createBookClub(bookClub);
 		} catch (RuntimeException e) {
@@ -116,14 +121,50 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(path = "DeleteClub.do")
-	public ModelAndView deleteClub(@RequestParam("id") int id) {
-		boolean isDeleted = userDao.deleteBookClub(id);
+	@PostMapping(path = "addbooktofavorites.do")
+	public String addBookToFavorites(HttpSession session, Integer bookId, Model model) {
+		User user = (User) session.getAttribute("loggedInUser");
+
+		if (user != null) {
+			try {
+				Book book = userDao.addToFavorites(bookId, user.getId());
+				model.addAttribute("book", book);
+			} catch (RuntimeException e) {
+				System.err.println(e);
+			}
+		} else {
+			return "signuppage";
+		}
+		return "showSingleBook";
+	}
+
+	@PostMapping(path = "DeleteClub.do")
+	public ModelAndView deleteClub( int clubId) {
+		boolean isDeleted = userDao.deleteBookClub(clubId);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bookClub", isDeleted);
 		mv.setViewName("userprofile");
 		return mv;
 	}
+	
+	@PostMapping(path = "deleteFavoriteBook.do")
+	public String removeFromFavorites(HttpSession session, Integer bookId, Model model) {
+		User user = (User) session.getAttribute("loggedInUser");
+		if (user != null) {
+			try {
+				userDao.removeFromFavorites(bookId, user.getId());
+				session.setAttribute("loggedInUser", userDao.findUserById(user.getId()));
+				
+			}catch (RuntimeException e) {
+				System.err.println(e);
+			}
+		}else {
+			return "signuppage";
+		}
+		return "userprofile";
+	}
+	
+	
 
 	@GetMapping(path = "findClubById.do")
 	public String findClubById(Integer clubId, Model model) {
@@ -148,19 +189,19 @@ public class UserController {
 
 			try {
 				System.out.println("calling dao");
-				
+
 				System.out.println(loggedInUser);
 				System.out.println(loggedInUser.getId());
 				review = userDao.writeReview(review, loggedInUser.getId());
 				System.out.println(review);
-				
+
 				if (review != null) {
-					
+
 					model.addAttribute("book", review.getBook());
 					model.addAttribute("review", review);
-					
+
 					return "showSingleBook";
-				
+
 				}
 			} catch (RuntimeException e) {
 				System.err.println(e);
@@ -170,8 +211,6 @@ public class UserController {
 		return "loginpage";
 	}
 
-	
-	
 	@PostMapping(path = "comment.do")
 	public String publishAComment(Model model, BookComment comment, HttpSession session) {
 
@@ -192,7 +231,25 @@ public class UserController {
 				return "error";
 			}
 		}
+
 		return "loginpage";
+	}
+
+	@GetMapping(path = { "updateuserprofile.do" })
+	public String updateUserProfile(Model model, Integer userId, User user) {
+		user = userDao.findUserById(userId);
+		model.addAttribute("update", user);
+		return "updateuserprofile";
+	}
+
+	@PostMapping(path = { "updateduserprofile.do" })
+	public String updatedUserProfile(Model model, Integer userId, User user) {
+		System.out.println("***************************UpdateedUserProfile.do******************************");
+		User updatedUserProfile = userDao.updateUser(userId, user);
+		System.out.println(userId);
+		System.out.println(user);
+		model.addAttribute("update", updatedUserProfile);
+		return "updateduserprofile";
 	}
 
 	@GetMapping(path = "updatereview.do")
@@ -205,18 +262,18 @@ public class UserController {
 	}
 
 	@GetMapping(path = "replyComment.do")
-	
+
 	public String replyToComment(Model model, BookComment comment, Integer parentCommentId, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		if (loggedInUser != null) {
-			
 
-		comment = userDao.replyComment(comment, parentCommentId, loggedInUser.getId());
+			comment = userDao.replyComment(comment, parentCommentId, loggedInUser.getId());
 
-		model.addAttribute("bookComment", comment);
-		model.addAttribute("book", userDao.findBookById(comment.getBook().getId()));
-		return "showSingleBook";
-	}
+			model.addAttribute("bookComment", comment);
+			model.addAttribute("book", userDao.findBookById(comment.getBook().getId()));
+			return "showSingleBook";
+		}
 		return "loginpage";
 	}
+
 }

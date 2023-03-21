@@ -205,7 +205,7 @@ public class User {
 		this.bookReviews = bookReviews;
 	}
 
-	public void addBook(Book book) {
+	public void addFavoriteBook(Book book) {
 		if (favoriteBooks == null ) {favoriteBooks = new ArrayList<>(); }
 		if ( ! favoriteBooks.contains(book) ) {
 			favoriteBooks.add(book);
@@ -213,7 +213,7 @@ public class User {
 		}
 	}
 	
-	public void removeBook(Book book) {
+	public void removeFavoriteBook(Book book) {
 		if (favoriteBooks != null && favoriteBooks.contains(book)) {
 			favoriteBooks.remove(book);
 			book.removeUser(this);

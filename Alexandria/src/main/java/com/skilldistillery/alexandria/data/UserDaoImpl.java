@@ -9,7 +9,11 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.alexandria.entities.Book;
+
+import com.skilldistillery.alexandria.entities.BookList;
+
 import com.skilldistillery.alexandria.entities.BookComment;
+
 import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.BookReviewId;
 import com.skilldistillery.alexandria.entities.Club;
@@ -60,14 +64,24 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User findUserById(int userId) {
-
-		return em.find(User.class, userId);
+		User user = em.find(User.class, userId);
+		if (user != null) {
+			user.getFavoriteBooks().size();
+		}
+		return user;
 	}
 
 	@Override
-	public User updateUser(int userId, User user) {
-
-		return null;
+	public User updateUser(int userId, User updatedUser) {
+		User managed = em.find(User.class, userId);
+		managed.setUsername(updatedUser.getUsername());
+		managed.setPassword(updatedUser.getPassword());
+		managed.setImageUrl(updatedUser.getImageUrl());
+		managed.setFirstName(updatedUser.getFirstName());
+		managed.setLastName(updatedUser.getLastName());
+		managed.setAboutMe(updatedUser.getAboutMe());
+		em.close();
+		return managed;
 	}
 
 	@Override
@@ -118,10 +132,34 @@ public class UserDaoImpl implements UserDAO {
 		return bookClub;
 	}
 
+	
 	@Override
-	public boolean deleteBookClub(int id) {
-		if (em.contains(em.find(Club.class, id))) {
-			em.remove(em.find(Club.class, id));
+	public Book addToFavorites(int bookId, int userId) {
+		Book book = em.find(Book.class, bookId);
+		User user = em.find(User.class, userId);
+		user.addFavoriteBook(book);
+		em.flush();
+		return book;
+	}
+	
+	
+	@Override
+	public boolean removeFromFavorites(int bookId, int userId) {
+		Book book = em.find(Book.class, bookId);
+		User user = em.find(User.class, userId);
+		if (user.getFavoriteBooks().contains(book)) {
+		user.removeFavoriteBook(book);
+		em.flush();
+		return true;
+		}else {
+		return false;
+		}
+	}
+
+	@Override
+	public boolean deleteBookClub(int clubId) {
+		if (em.contains(em.find(Club.class, clubId))) {
+			em.remove(em.find(Club.class, clubId));
 			return true;
 		} else {
 			System.out.println("There is no such book Club.");
@@ -131,8 +169,12 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public Club findClubById(int clubId) {
-	
-		return em.find(Club.class, clubId);
+
+		Club bookClub = em.find(Club.class, clubId);
+		if (bookClub != null) {
+			bookClub.getClubMembers().size();
+		}
+		return bookClub;
 	}
 
 	@Override
@@ -161,20 +203,20 @@ public class UserDaoImpl implements UserDAO {
 		System.out.println("#################################################################################");
 		System.out.println(review);
 		System.out.println(review.getId());
-		
+
 		review.getId().setUserId(userId);
 		review.setUser(em.find(User.class, userId));
-		
+
 		BookReview updateReview = em.find(BookReview.class, review.getId());
 		System.out.println(updateReview);
 		System.out.println(updateReview.getUser());
-		if (updateReview.getUser().getId()== userId) {
-			
-		updateReview.setReview(review.getReview());
-		updateReview.setRating(review.getRating());
+		if (updateReview.getUser().getId() == userId) {
 
-		return updateReview;
-		}else {
+			updateReview.setReview(review.getReview());
+			updateReview.setRating(review.getRating());
+
+			return updateReview;
+		} else {
 			return null;
 		}
 	}
