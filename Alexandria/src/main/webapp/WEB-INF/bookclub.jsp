@@ -16,6 +16,7 @@
     </c:when>
     <c:otherwise>
         <div>
+
   
   
   <h2>${bookClub.name}</h2>
@@ -27,12 +28,36 @@
  <c:when test="${not empty sessionScope.loggedInUser and loggedInUser.id == bookClub.owner.id}">
  
  
+ 
+ 
+ 								<div>
+									
+
+									<form action="UpdateClub.do" method="POST">
+										<input type="hidden" name="id" value="${bookClub.id}">
+										
+		 
+											 <input type="text" name="name" value="${bookClub.name }"> <br>
+											 <input type="text" name="description" value="${bookClub.description }"> <br>
+											 <input type="text" name="imageURL" value="${bookClub.imageURL }"> <br>
+											  
+										
+										<input type="submit" value="Update Club">
+									</form>
+								</div>
+  
+ 
 <form action="DeleteClub.do" method="POST">
 	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
 	<button type="submit" role="button" class="search-btn-submit">Delete Club</button>
 	</form>
+	
+	<form action="UpdateClub.do" method="POST">
+	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
+	<button type="submit" role="button" class="search-btn-submit">Update Club</button>
+	</form>
  
-  <a href="UpdateClub.do?id=${bookClub.id }">Update Current Club</a> <br>
+  
  
  </c:when>
  </c:choose>

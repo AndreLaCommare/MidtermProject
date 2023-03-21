@@ -32,29 +32,39 @@
 
 					<div>
 						Comments:
-						<ol>
+						<div class="commentList">
 							<c:forEach var="bookComment" items="${book.bookComments }">
 
-								<li>${bookComment.bookComment }</li>
 
-
-								<c:if test="${not empty sessionScope.loggedInUser }">
-									<form action="replyComment.do" method="GET">
-
-										<input type="hidden" name="book.id" value="${book.id}">
-
-										<input type="hidden" name="parentCommentId"
-											value="${bookComment.id}"> <input type="text"
-											id="bookComment" name="bookComment"> <input
-											type="submit" value="Reply">
-
-									</form>
-
-
+								<div class ="bookComment">
+								<p class ="commentInfo"> Comment ID: ${bookComment.id} User: ${bookComment.user.username} Posted On: ${bookComment.commentDate}
+								
+								<c:if test="${not empty bookComment.parentComment }">
+								
+								
+								In Reply To: ${bookComment.parentComment.id }
 								</c:if>
+								</p>
+								<p>${bookComment.bookComment } </p>
+								
+								<c:if test="${not empty sessionScope.loggedInUser }">
+										<form action="replyComment.do" method="GET">
+
+											<input type="hidden" name="book.id" value="${book.id}">
+
+											<input type="hidden" name="parentCommentId"
+												value="${bookComment.id}"> <input type="text"
+												id="bookComment" name="bookComment"> <input
+												type="submit" value="Reply">
+
+										</form>
+
+
+									</c:if>
+								</div>
 
 							</c:forEach>
-						</ol>
+						</div>
 
 					</div>
 
@@ -161,9 +171,9 @@
 							<input type="hidden" name="book.id" value="${book.id}"> <input
 								type="submit" value="Publish Comment">
 						</form>
-						<form  action="addbooktofavorites.do" method="POST">
-							<input type = "hidden" name = "bookId" value = "${book.id}">
-							<input type="submit" value="Add to Favorites">
+						<form action="addbooktofavorites.do" method="POST">
+							<input type="hidden" name="bookId" value="${book.id}"> <input
+								type="submit" value="Add to Favorites">
 						</form>
 					</c:when>
 					<c:otherwise>
