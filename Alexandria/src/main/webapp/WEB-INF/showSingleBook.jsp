@@ -49,6 +49,8 @@
 											type="submit" value="Reply">
 
 									</form>
+
+
 								</c:if>
 
 							</c:forEach>
@@ -158,6 +160,10 @@
 
 							<input type="hidden" name="book.id" value="${book.id}"> <input
 								type="submit" value="Publish Comment">
+						</form>
+						<form  action="addbooktofavorites.do" method="POST">
+							<input type = "hidden" name = "bookId" value = "${book.id}">
+							<input type="submit" value="Add to Favorites">
 						</form>
 					</c:when>
 					<c:otherwise>
