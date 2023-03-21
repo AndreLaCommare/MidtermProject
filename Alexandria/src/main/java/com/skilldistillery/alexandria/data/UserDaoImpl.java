@@ -9,7 +9,11 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.alexandria.entities.Book;
+
 import com.skilldistillery.alexandria.entities.BookList;
+
+import com.skilldistillery.alexandria.entities.BookComment;
+
 import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.BookReviewId;
 import com.skilldistillery.alexandria.entities.Club;
@@ -60,14 +64,20 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User findUserById(int userId) {
-
 		return em.find(User.class, userId);
 	}
 
 	@Override
-	public User updateUser(int userId, User user) {
-
-		return null;
+	public User updateUser(int userId, User updatedUser) {
+		User managed = em.find(User.class, userId);
+		managed.setUsername(updatedUser.getUsername());
+		managed.setPassword(updatedUser.getPassword());
+		managed.setImageUrl(updatedUser.getImageUrl());
+		managed.setFirstName(updatedUser.getFirstName());
+		managed.setLastName(updatedUser.getLastName());
+		managed.setAboutMe(updatedUser.getAboutMe());
+		em.close();
+		return managed;
 	}
 
 	@Override
@@ -117,14 +127,13 @@ public class UserDaoImpl implements UserDAO {
 		System.out.println("in book club");
 		return bookClub;
 	}
-	
+
 	@Override
 	public BookList createBookList(BookList booklist) {
 		em.persist(booklist);
 		em.flush();
 		return booklist;
 	}
-
 
 	@Override
 	public boolean deleteBookClub(int id) {
@@ -139,29 +148,52 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public Club findClubById(int clubId) {
-		// TODO Auto-generated method stub
+
 		return em.find(Club.class, clubId);
 	}
 
 	@Override
-	public BookReview writeReview(BookReview review) {
-		// TODO Auto-generated method stub
-		review.setBook(em.find(Book.class, review.getBook().getId()));
-		review.setUser(em.find(User.class, review.getUser().getId()));
+	public BookReview writeReview(BookReview review, int userId) {
+		System.out.println("#################################################################################");
+		BookReviewId reviewId = new BookReviewId();
+		reviewId.setBookId(review.getBook().getId());
+		reviewId.setUserId(userId);
+		review.setId(reviewId);
+		Book reviewed = em.find(Book.class, review.getBook().getId());
+		review.setBook(reviewed);
+		reviewed.getBookComments().size();
+		User reviewer = em.find(User.class, userId);
+		review.setUser(reviewer);
+		review.setBook(reviewed);
 		em.persist(review);
 		em.flush();
+		System.out.println(review);
+		System.out.println(review.getBook());
 		System.out.println("in write review");
 		return review;
 	}
 
 	@Override
-	public BookReview updateBookReview(BookReview review) {
+	public BookReview updateBookReview(BookReview review, int userId) {
+		System.out.println("#################################################################################");
+		System.out.println(review);
+		System.out.println(review.getId());
+
+		review.getId().setUserId(userId);
+		review.setUser(em.find(User.class, userId));
 
 		BookReview updateReview = em.find(BookReview.class, review.getId());
-		updateReview.setReview(review.getReview());
-		updateReview.setRating(review.getRating());
+		System.out.println(updateReview);
+		System.out.println(updateReview.getUser());
+		if (updateReview.getUser().getId() == userId) {
 
-		return updateReview;
+			updateReview.setReview(review.getReview());
+			updateReview.setRating(review.getRating());
+
+			return updateReview;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -175,6 +207,35 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public Book findBookById(int id) {
 		return em.find(Book.class, id);
+	}
+
+	@Override
+	public BookComment writeComment(BookComment comment, int userId) {
+		// TODO Auto-generated method stub
+		comment.setBook(em.find(Book.class, comment.getBook().getId()));
+		comment.setUser(em.find(User.class, userId));
+		em.persist(comment);
+		em.flush();
+		System.out.println("in write Comment");
+		return comment;
+	}
+
+	@Override
+	public BookComment replyComment(BookComment comment, int parentCommentId, int userId) {
+		// TODO Auto-generated method stub
+		BookComment parent = em.find(BookComment.class, parentCommentId);
+		if (parent != null) {
+			comment.setParentComment(parent);
+			comment.setBook(em.find(Book.class, comment.getBook().getId()));
+			comment.setUser(em.find(User.class, userId));
+			em.persist(comment);
+			em.flush();
+			return comment;
+
+		} else {
+
+			return null;
+		}
 	}
 
 }

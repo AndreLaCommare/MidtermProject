@@ -16,33 +16,30 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="booklist")
+@Table(name = "booklist")
 public class BookList {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
-	
+
 	private String description;
-	
-	@Column(name="image_url")
+
+	@Column(name = "image_url")
 	private String imageUrl;
-	
+
 	@ManyToMany
-	@JoinTable(name="booklist_has_book",
-			joinColumns=@JoinColumn(name="booklist_id"),
-			inverseJoinColumns=@JoinColumn(name="book_id"))
-			private List<Book> books;
-	
-	
+	@JoinTable(name = "booklist_has_book", joinColumns = @JoinColumn(name = "booklist_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
+	private List<Book> books;
+
 	@ManyToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name = "user_id")
 	private User user;
-	
-	
-	public BookList() {}
+
+	public BookList() {
+	}
 
 	public int getId() {
 		return id;
@@ -91,15 +88,17 @@ public class BookList {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 	public void addBook(Book book) {
-		if (books == null ) {books = new ArrayList<>(); }
-		if ( ! books.contains(book) ) {
+		if (books == null) {
+			books = new ArrayList<>();
+		}
+		if (!books.contains(book)) {
 			books.add(book);
 			book.addBookList(this);
 		}
 	}
-	
+
 	public void removeBook(Book book) {
 		if (books != null && books.contains(book)) {
 			books.remove(book);
@@ -128,8 +127,5 @@ public class BookList {
 	public String toString() {
 		return "BookList id: " + id + ", name: " + name + ", description: " + description + ", imageUrl: " + imageUrl;
 	}
-	
-	
-	
-	
+
 }
