@@ -53,12 +53,11 @@
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
+	
 	<h4 class="book-club-search-title">Book Club Search</h4>
 	<form action="findClubById.do" method="GET">
 	<input type="text" placeholder="Club ID" name="club" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
-	<input type="text" name="clubId">
-		 <input type="submit" value="Find Club">
 	</form>
 </div>
 </div>
