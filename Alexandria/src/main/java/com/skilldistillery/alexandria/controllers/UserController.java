@@ -13,153 +13,210 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.alexandria.data.UserDAO;
 import com.skilldistillery.alexandria.entities.Book;
+import com.skilldistillery.alexandria.entities.BookComment;
 import com.skilldistillery.alexandria.entities.BookReview;
 import com.skilldistillery.alexandria.entities.Club;
 import com.skilldistillery.alexandria.entities.User;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private UserDAO userDao;
-	
-	@RequestMapping(path = {"/", "home.do"})
+
+	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
 		System.out.println("***************************Home.do******************************");
-		//DEBUG
+		// DEBUG
 //		User u = new User();
 //		u.setUsername("admin");
 //		u.setPassword("admin");
 //		u = userDao.login(u);
 //		model.addAttribute("SMOKETEST", u);
-		//DEBUG
-		
+		// DEBUG
+
 		return "home";
 	}
-	
-	@GetMapping(path="finduserbyid.do")
+
+	@GetMapping(path = "finduserbyid.do")
 	public String findUserById(Integer id, Model model) {
 		User user = userDao.findUserById(id);
 		model.addAttribute("user", user);
 		return "userbyid";
 	}
-	@GetMapping(path="searchpage.do")
+
+	@GetMapping(path = "searchpage.do")
 	public String searchPage() {
 		return "search";
 	}
-	
-	@GetMapping(path="bookbytitle.do")
+
+	@GetMapping(path = "bookbytitle.do")
 	public String findBookByKeyword(String title, Model model) {
 		model.addAttribute("books", userDao.findBooksByTitle(title));
 		return "booklistsearch";
 	}
-	
-	@GetMapping(path="bookbyauthor.do")
+
+	@GetMapping(path = "bookbyauthor.do")
 	public String findByAuthor(String author, Model model) {
 		model.addAttribute("books", userDao.findBooksByAuthor(author));
 		return "booklistsearch";
 	}
-	@GetMapping(path="bookbylanguage.do")
+
+	@GetMapping(path = "bookbylanguage.do")
 	public String findByLanguage(String language, Model model) {
 		model.addAttribute("books", userDao.findBooksByLanguage(language));
 		return "booklistsearch";
 	}
-	
-	@GetMapping(path="bookbydescription.do")
+
+	@GetMapping(path = "bookbydescription.do")
 	public String findByDescription(String description, Model model) {
 		model.addAttribute("books", userDao.findBooksByDescription(description));
 		return "booklistsearch";
 	}
-	
 
-	
-	@GetMapping(path="bookbyisbn.do")
+	@GetMapping(path = "bookbyisbn.do")
 	public String findByISBN(String isbn, Model model, HttpSession session) {
 		Book book = userDao.findBookByISBN(isbn);
 		model.addAttribute("book", book);
 		User user = (User) session.getAttribute("loggedInUser");
-		
+
 		model.addAttribute("review", userDao.bookReviewExistsForUser(book.getId(), user.getId()));
 		return "showSingleBook";
 	}
-	
-	@GetMapping(path="showById.do")
+
+	@GetMapping(path = "showById.do")
 	public String findById(Integer id, Model model) {
 		Book book = userDao.findBookById(id);
 		model.addAttribute("book", book);
 		return "showSingleBook";
 	}
-	
-	@GetMapping(path="createClub.do")
+
+	@GetMapping(path = "createClub.do")
 	public String createClubPage(HttpSession session) {
 		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
-		return "createBookClub";
-		}else {
+			return "createBookClub";
+		} else {
 			return "signup";
 		}
 	}
-	
-	@PostMapping(path="createBookClub.do")
-		public String createBookClub(Model model, Club bookClub) {
+
+	@PostMapping(path = "createBookClub.do")
+	public String createBookClub(Model model, Club bookClub) {
 		try {
 			bookClub = userDao.createBookClub(bookClub);
-		}catch(RuntimeException e){
+		} catch (RuntimeException e) {
 			System.err.println(e);
 		}
 		if (bookClub != null) {
 			model.addAttribute("bookClub", bookClub);
 			return "bookclub";
-		}else {
+		} else {
 			return "error";
 		}
 	}
-	
-	 @RequestMapping(path = "DeleteClub.do")
-		public ModelAndView deleteClub(@RequestParam("id") int id) {
-			boolean isDeleted = userDao.deleteBookClub(id);
-			ModelAndView mv = new ModelAndView();
-			mv.addObject("bookClub", isDeleted);
-			mv.setViewName("userprofile");
-			return mv;
-			}
 
-	 
-		@GetMapping(path="findClubById.do")
-		public String findClubById(Integer clubId, Model model) {
-			Club club = userDao.findClubById(clubId);
-			model.addAttribute("bookClub", club);
-			return "bookclub";
-		}
+	@RequestMapping(path = "DeleteClub.do")
+	public ModelAndView deleteClub(@RequestParam("id") int id) {
+		boolean isDeleted = userDao.deleteBookClub(id);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("bookClub", isDeleted);
+		mv.setViewName("userprofile");
+		return mv;
+	}
 
-		@GetMapping(path="loginpage.do")
-		public String loginPage(Model model) {
-			return "loginpage";
-		}
-		
-		
-		@PostMapping(path="review.do")
-		public String writeAReview(Model model, BookReview review) {
+	@GetMapping(path = "findClubById.do")
+	public String findClubById(Integer clubId, Model model) {
+		Club club = userDao.findClubById(clubId);
+		model.addAttribute("bookClub", club);
+		return "bookclub";
+	}
+
+	@GetMapping(path = "loginpage.do")
+	public String loginPage(Model model) {
+		return "loginpage";
+	}
+
+	@PostMapping(path = "review.do")
+	public String writeAReview(Model model, BookReview review, HttpSession session) {
+		System.out.println("#################################################################################");
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		System.out.println(loggedInUser);
+		System.out.println(review);
+		System.out.println(userDao);
+		if (loggedInUser != null) {
+
 			try {
-				review = userDao.writeReview(review);
-			}catch(RuntimeException e){
-				System.err.println(e);
-			}
-			if (review != null) {
+				System.out.println("calling dao");
 				
-				model.addAttribute("book", review.getBook());
-				model.addAttribute("review", review);
-				return "showSingleBook";
-			}else {
+				System.out.println(loggedInUser);
+				System.out.println(loggedInUser.getId());
+				review = userDao.writeReview(review, loggedInUser.getId());
+				System.out.println(review);
+				
+				if (review != null) {
+					
+					model.addAttribute("book", review.getBook());
+					model.addAttribute("review", review);
+					
+					return "showSingleBook";
+				
+				}
+			} catch (RuntimeException e) {
+				System.err.println(e);
 				return "error";
 			}
 		}
-		
-		@GetMapping(path="updatereview.do")
-		public String updateReview(Model model, BookReview review) {
-			review = userDao.updateBookReview(review);
-			model.addAttribute("review", review);
-			model.addAttribute("book", userDao.findBookById(review.getBook().getId()));
-			return "showSingleBook";
+		return "loginpage";
+	}
+
+	
+	
+	@PostMapping(path = "comment.do")
+	public String publishAComment(Model model, BookComment comment, HttpSession session) {
+
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		if (loggedInUser != null) {
+
+			try {
+				comment = userDao.writeComment(comment, loggedInUser.getId());
+			} catch (RuntimeException e) {
+				System.err.println(e);
+			}
+			if (comment != null) {
+
+				model.addAttribute("book", comment.getBook());
+				model.addAttribute("bookComment", comment);
+				return "showSingleBook";
+			} else {
+				return "error";
+			}
 		}
+		return "loginpage";
+	}
+
+	@GetMapping(path = "updatereview.do")
+	public String updateReview(Model model, BookReview review, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		review = userDao.updateBookReview(review, loggedInUser.getId());
+		model.addAttribute("review", review);
+		model.addAttribute("book", userDao.findBookById(review.getBook().getId()));
+		return "showSingleBook";
+	}
+
+	@GetMapping(path = "replyComment.do")
+	
+	public String replyToComment(Model model, BookComment comment, Integer parentCommentId, HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		if (loggedInUser != null) {
+			
+
+		comment = userDao.replyComment(comment, parentCommentId, loggedInUser.getId());
+
+		model.addAttribute("bookComment", comment);
+		model.addAttribute("book", userDao.findBookById(comment.getBook().getId()));
+		return "showSingleBook";
+	}
+		return "loginpage";
+	}
 }

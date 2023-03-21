@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -29,6 +31,7 @@ public class BookComment {
 	private String bookComment;
 
 	@Column(name = "comment_date")
+	@CreationTimestamp
 	private LocalDateTime commentDate;
 
 	@ManyToOne
