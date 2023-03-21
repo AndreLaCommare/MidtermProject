@@ -142,19 +142,24 @@ public class UserDaoImpl implements UserDAO {
 		return book;
 	}
 	
+	
 	@Override
-	public Book removeFromFavorites(int bookId, int userId) {
+	public boolean removeFromFavorites(int bookId, int userId) {
 		Book book = em.find(Book.class, bookId);
 		User user = em.find(User.class, userId);
+		if (user.getFavoriteBooks().contains(book)) {
 		user.removeFavoriteBook(book);
 		em.flush();
-		return book;
+		return true;
+		}else {
+		return false;
+		}
 	}
 
 	@Override
-	public boolean deleteBookClub(int id) {
-		if (em.contains(em.find(Club.class, id))) {
-			em.remove(em.find(Club.class, id));
+	public boolean deleteBookClub(int clubId) {
+		if (em.contains(em.find(Club.class, clubId))) {
+			em.remove(em.find(Club.class, clubId));
 			return true;
 		} else {
 			System.out.println("There is no such book Club.");
@@ -165,7 +170,11 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public Club findClubById(int clubId) {
 
-		return em.find(Club.class, clubId);
+		Club bookClub = em.find(Club.class, clubId);
+		if (bookClub != null) {
+			bookClub.getClubMembers().size();
+		}
+		return bookClub;
 	}
 
 	@Override

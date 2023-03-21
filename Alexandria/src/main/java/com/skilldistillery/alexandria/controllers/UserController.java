@@ -139,8 +139,8 @@ public class UserController {
 	}
 
 	@PostMapping(path = "DeleteClub.do")
-	public ModelAndView deleteClub(@RequestParam("id") int id) {
-		boolean isDeleted = userDao.deleteBookClub(id);
+	public ModelAndView deleteClub( int clubId) {
+		boolean isDeleted = userDao.deleteBookClub(clubId);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bookClub", isDeleted);
 		mv.setViewName("userprofile");
@@ -152,8 +152,9 @@ public class UserController {
 		User user = (User) session.getAttribute("loggedInUser");
 		if (user != null) {
 			try {
-				Book book = userDao.removeFromFavorites(bookId, user.getId());
-				model.addAttribute("book", book);
+				userDao.removeFromFavorites(bookId, user.getId());
+				session.setAttribute("loggedInUser", userDao.findUserById(user.getId()));
+				
 			}catch (RuntimeException e) {
 				System.err.println(e);
 			}

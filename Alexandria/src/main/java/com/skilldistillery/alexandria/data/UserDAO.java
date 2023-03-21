@@ -56,6 +56,6 @@ public interface UserDAO {
 
 	Book addToFavorites(int bookId, int userId);
 
-	Book removeFromFavorites(int bookId, int userId);
+	boolean removeFromFavorites(int bookId, int userId);
 
 }
