@@ -153,6 +153,7 @@
 				Leave a Comment:
 
 				<form action="comment.do" method="post">
+
 							<input type="text" id="bookComment" name="bookComment">
 							<br>
 							<input type="hidden" name="book.id" value="${book.id}">
@@ -162,7 +163,30 @@
 						<form action="addbooktofavorites.do" method="POST">
 						<input type="hidden" name="bookId" value="${book.id}">
 						<input type="submit" value="Add to Favorites">
+
+
+							<input type="text" id="bookComment" name="bookComment"> <br>
+
+							<input type="hidden" name="book.id" value="${book.id}"> <input
+								type="submit" value="Publish Comment">
 						</form>
+						
+						
+						<form action="addBookToFavorites.do" method="POST">
+							<input type="hidden" name="bookId" value="${book.id}">
+							 <input type="submit" value="Add to Favorites">
+							 <select name="option">   
+							 <option value="loggedInUser">My Favorites</option>
+							 <c:forEach var="club" items="${sessionScope.loggedInUser.ownedClubs }">
+							 <option value="${club.id }" >${club.name }</option>
+							 
+							 </c:forEach>
+							 
+							   </select>
+
+						</form>
+						
+						
 					</c:when>
 					<c:otherwise>
 					<div class="single-book-prompt-user-login">

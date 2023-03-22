@@ -35,6 +35,7 @@ public class LoginController {
 			return "signup";
 		}
 	}
+	
 	@RequestMapping(path = "signuppage.do", method = RequestMethod.GET)
 	public String signup() {
 			return "signuppage";

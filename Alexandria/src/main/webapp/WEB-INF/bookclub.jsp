@@ -12,7 +12,7 @@
 <c:choose>
     <c:when test="${empty bookClub}">
        No Club Found.<br>
-       <a href="home.do">Return to Menu</a>
+       <a href="home.do">Return Home</a>
     </c:when>
     <c:otherwise>
         <div>
@@ -71,26 +71,34 @@
 
  
 
-	<c:choose>
-	<c:when test="${not empty sessionScope.loggedInUser and not empty loggedInUser.favoriteBooks and myClub == true}">
-	<h4>Your Favorites</h4>
-	<c:forEach var="favorite" items="${loggedInUser.favoriteBooks}">
+	<h4>Club Member Favorites</h4>
+	<c:forEach var="book" items="${bookClub.clubBooks}">
 	<div>
 				<ul>
-					<li>Title: ${favorite.title}</li>
+					<li>Title: ${book.title}</li>
 				</ul>
-				<a href="showById.do?id=${favorite.id}"><img src="${favorite.coverUrl}" width="150"></a>
+				<a href="showById.do?id=${book.id}"><img src="${book.coverUrl}" width="150"></a>
+				
+				<c:if test="${sessionScope.loggedInUser.id == bookClub.owner.id }">
 				<form action="deleteFavoriteBook.do" method="POST">
-				<input type="hidden" value="${favorite.id}" name="bookId">
+				<input type="hidden" value="${book.id}" name="bookId">
+				
 		<input type="submit" value="Remove From Favorites">
 	</form>
+				</c:if>
 				</div>
 	</c:forEach>
-	</c:when>
-	</c:choose>
+	
+	<h3>Club Owner</h3>
+	Owner: ${bookClub.owner.username}
+	
+	<h3>Club Members</h3>
+	<c:forEach var="member" items="${bookClub.clubMembers}">
+	<ul>
+					<li>Member: ${member.username}</li>
+				</ul>
 
-
-
+	</c:forEach>
 
 
 
@@ -101,6 +109,13 @@
 	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
 	<button type="submit" role="button" class="search-btn-submit">Join Club!</button>
 	</form>
+	
+	
+	<form action="leaveClub.do" method="POST">
+	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
+	<button type="submit" role="button" class="search-btn-submit">Leave Club :'( </button>
+	</form>
+	
  
   </c:when>
  </c:choose>
