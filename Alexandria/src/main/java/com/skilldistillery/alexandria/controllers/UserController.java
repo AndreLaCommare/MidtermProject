@@ -160,6 +160,22 @@ public class UserController {
 		}
 		return "bookclub";
 	}
+	
+	@PostMapping(path="leaveClub.do")
+	public String leaveClub(HttpSession session, Integer clubId, Model model) {
+		User user = (User) session.getAttribute("loggedInUser");
+		if (user != null) {
+			try {
+				Club club = userDao.leaveClub(clubId, user.getId());
+				model.addAttribute("bookClub", club);
+				session.setAttribute("loggedInUser", userDao.findUserById(user.getId()));
+			}catch (RuntimeException e) {
+				System.err.println(e);
+			}
+		}
+		
+		return "bookclub";
+	}
 
 	@PostMapping(path = "addBookToFavorites.do")
 	public String addBookToFavorites(HttpSession session, Integer bookId, Model model, String option) {

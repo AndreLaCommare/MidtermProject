@@ -257,4 +257,16 @@ public class UserDaoImpl implements UserDAO {
 		}
 
 	}
+
+	@Override
+	public Club leaveClub(int clubId, int userId) {
+		
+		Club club = em.find(Club.class, clubId);
+		User user = em.find(User.class, userId);
+		
+		if (club.getClubMembers().contains(user)) {
+			club.getClubMembers().remove(user);
+		}
+		return club;
+	}
 }
