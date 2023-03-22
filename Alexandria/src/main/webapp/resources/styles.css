@@ -226,6 +226,9 @@ body {
 	font-family: "Nanum Myeongjo";
 	font-size: 20px;
 	margin-bottom: 10px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
 }
 .home-input-lname{
 	height: 25px;
@@ -233,6 +236,9 @@ body {
 	font-family: "Nanum Myeongjo";
 	font-size: 20px;
 	margin-bottom: 10px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
 }
 .home-input-email{
 	height: 25px;
@@ -240,6 +246,9 @@ body {
 	font-family: "Nanum Myeongjo";
 	font-size: 20px;
 	margin-bottom: 10px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
 }
 .home-input-username{
 	height: 25px;
@@ -247,6 +256,9 @@ body {
 	font-family: "Nanum Myeongjo";
 	font-size: 20px;
 	margin-bottom: 10px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
 }
 .home-input-password{
 	height: 25px;
@@ -254,6 +266,9 @@ body {
 	font-family: "Nanum Myeongjo";
 	font-size: 20px;
 	margin-bottom: 10px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
 }
 .home-signup-submit-btn{
 	align-content: center;
@@ -269,6 +284,9 @@ body {
 	border-style: solid;
 	border-width: 3px;
 	border-color: black;
+}
+.home-signup-submit-btn:hover{
+	background: #BCBCBC;
 }
 /* RIGHT SIDE HOME PG END */
 .cover {
@@ -479,8 +497,7 @@ body {
 	border-width: 3px;
 	border-color: black;
 }
-
-.login-container{
+.login-container, .signup-container{
 	font-family: "Nanum Myeongjo";
 	border-radius: 20px 20px 20px 20px;
 	font-size: 60px;
@@ -499,8 +516,11 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 }
+.signup-container{
+	height: 340px !important;
+}
 
-.login-title{
+.login-title, .signup-title{
 	position: relative;
 	top: -100px;
 	font-weight: 800 !important;
@@ -512,6 +532,102 @@ body {
 	color: black;
 	text-shadow: 10px 5px 5px 362C1B;
 
+}
+.signup-input-fname{
+	top: -180px;
+	height: 40px;
+	left: -30px;
+	position: relative;
+	width: 200px;
+	font-size: 30px;
+	margin-left: 30px;
+	font-family: "Nanum Myeongjo";
+	border-radius: 10px;
+	box-shadow:10px 5px 5px black;
+	background-color: #f4f4f8;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+}
+.signup-input-lname{
+	top: -180px;
+	height: 40px;
+	left: -30px;
+	position: relative;
+	width: 200px;
+	font-size: 30px;
+	margin-left: 30px;
+	font-family: "Nanum Myeongjo";
+	border-radius: 10px;
+	box-shadow:10px 5px 5px black;
+	background-color: #f4f4f8;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+}
+.signup-input-email{
+	top: -180px;
+	height: 40px;
+	left: -30px;
+	position: relative;
+	width: 460px;
+	font-size: 30px;
+	margin-left: 30px;
+	font-family: "Nanum Myeongjo";
+	border-radius: 10px;
+	box-shadow:10px 5px 5px black;
+	background-color: #f4f4f8;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+}
+.signup-input-username{
+	top: -175px;
+	height: 40px;
+	left: -30px;
+	position: relative;
+	width: 200px;
+	font-size: 30px;
+	margin-left: 30px;
+	font-family: "Nanum Myeongjo";
+	border-radius: 10px;
+	box-shadow:10px 5px 5px black;
+	background-color: #f4f4f8;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+}
+.signup-input-password{
+	top: -175px;
+	height: 40px;
+	left: -30px;
+	position: relative;
+	width: 200px;
+	font-size: 30px;
+	margin-left: 30px;
+	font-family: "Nanum Myeongjo";
+	border-radius: 10px;
+	box-shadow:10px 5px 5px black;
+	background-color: #f4f4f8;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+}
+.signup-btn-submit{
+	border-radius: 15px 15px 15px 15px;
+	position: relative;
+	height: auto;
+	width: 200px;
+	display:block;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	top: -153px;
+	left: 140px;
+	box-shadow:10px 5px 5px black;
+}
+.signup-btn-submit:hover{
+	background: #BCBCBC;
 }
 
 .login-input-user{
