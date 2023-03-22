@@ -38,12 +38,15 @@
 				<label for="name">First Name</label> <input type="text" name="firstName" value="${update.firstName}" required/>
 				<label for="name">Last Name</label> <input type="text" name="lastName" value="${update.lastName}" required/>
 				<label for="name">About Me</label> <input type="text" name="aboutMe" value="${update.aboutMe}" required/>
-				<c:if test="${not empty update.imageUrl}">
+				<%-- <c:choose> --%>
+			<%-- 	<c:when test="${not empty update.imageUrl}"> --%>
 				Profile Pic Image URL: <input type="text" name="imageUrl" value="${update.imageUrl}"/>	
+<%-- 				</c:when>
 				<c:otherwise>
 				Profile Pic Image URL: <input type="text" name="imageUrl"  value =""/>	
 				</c:otherwise>
-				</c:if>
+				
+				</c:choose> --%>
 				<label for="image">Upload From Local Files:</label> <input type="file" name="image" id="Upload Image">
 				<input type="submit" value="Upload">
 				<input class="btn btn-dark" type="submit" value="Submit"/>
