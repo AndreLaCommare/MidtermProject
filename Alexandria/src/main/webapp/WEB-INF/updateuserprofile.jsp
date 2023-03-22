@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Update User Profile</title>
-<jsp:include page="bootstrapHead.jsp" />
+<jsp:include page="navbar.jsp"/>
+<link rel="icon" type="image/x-icon" href="/resources/logo.png">
+<link rel="stylesheet" href="resources/styles.css"/>
 
 <style>
     .vertical-form {

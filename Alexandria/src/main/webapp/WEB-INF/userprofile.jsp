@@ -6,12 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>User Profile</title>
-<jsp:include page="bootstrapHead.jsp" />
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 <link rel="stylesheet" href="resources/styles.css"/>
+<jsp:include page="navbar.jsp"/>
 </head>
 <body>
-<jsp:include page="navbar.jsp"/>
 
 	<c:choose>
 		<c:when test="${not empty sessionScope.loggedInUser}">
@@ -71,7 +70,6 @@
     margin-bottom: 10px;
   }
 </style>
-	
-	<jsp:include page="bootstrapFoot.jsp" />
+
 </body>
 </html>

@@ -134,6 +134,9 @@ body {
 	position: relative;
 	top: -1px;
 }
+.profile-btn:hover{
+	background: #867c45;
+}
 
 #home-back-img {
 	position: relative;

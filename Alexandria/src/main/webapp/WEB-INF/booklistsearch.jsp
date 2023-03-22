@@ -8,15 +8,9 @@
 <title>Search Results</title>
  <link rel="icon" type="image/x-icon" href="resources/logo.png">
  <link rel="stylesheet" href="resources/styles.css"/>
+<jsp:include page="navbar.jsp"/>
 </head>
 <body>
-<div id = "header">
-    <a href="home.do" style="padding: 0; margin: 0;"><img class=logo src="resources/logo.png"></a><h2 class="sitename"><strong>Alexandria</strong></h2>
-    <a class="login-btn" href="loginpage.do" role="button">Log In</a>
-    <a class="signin-btn" href="signuppage.do" role="button">Sign Up</a>
-    <a class="trending-btn">Trending</a>
-    <a class="search-btn" href="searchpage.do">Search</a>
-</div>
 	<div class="booklist-container">
 	<c:choose>
 

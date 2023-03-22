@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Book Club</title>
+<link rel="stylesheet" href="resources/styles.css"/>
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
+<jsp:include page="navbar.jsp"/>
 </head>
 <body>
 <c:choose>
