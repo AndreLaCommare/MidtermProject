@@ -70,7 +70,7 @@
  
 
  
----------------------------------------------
+
 	<c:choose>
 	<c:when test="${not empty sessionScope.loggedInUser and not empty loggedInUser.favoriteBooks and myClub == true}">
 	<h4>Your Favorites</h4>
@@ -88,7 +88,7 @@
 	</c:forEach>
 	</c:when>
 	</c:choose>
-------------------------------------------------
+
 
 
 
@@ -97,7 +97,7 @@
 
  <c:choose>
  <c:when test="${not empty sessionScope.loggedInUser and loggedInUser.id != bookClub.owner.id}">
- 	<form action="JoinClub.do" method="POST">
+ 	<form action="joinClub.do" method="POST">
 	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
 	<button type="submit" role="button" class="search-btn-submit">Join Club!</button>
 	</form>
