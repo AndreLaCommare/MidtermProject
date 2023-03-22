@@ -5,9 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Book Details</title>
+<title>${book.title} Details</title>
+<link rel="icon" type="image/x-icon" href="/resources/logo.png">
+<link rel="stylesheet" href="resources/styles.css"/>
 </head>
 <body>
+<div id = "header">
+    <a href="home.do" style="padding: 0; margin: 0;"><img class=logo src="resources/logo.png"></a><h2 class="sitename"><strong>Alexandria</strong></h2>
+    <a class="login-btn" href="loginpage.do" role="button">Log In</a>
+    <a class="signin-btn" href="signuppage.do" role="button">Sign Up</a>
+    <a class="trending-btn">Trending</a>
+    <a class="search-btn" href="searchpage.do">Search</a>
+</div>
 
 
 	<c:choose>
@@ -17,26 +26,27 @@
 		</c:when>
 		<c:otherwise>
 			<div>
-				<h2>${book.title}</h2>
-
-				<img src="${book.coverUrl }" width="150" height="150"><br>
-				<p>Description: ${book.description	}</p>
-				<p>Page Count: ${book.pages }</p>
-				<p>Publication Year: ${book.publishedYear }</p>
-				<p>Price: ${book.price}</p>
-				<p>Language ${book.language}</p>
-				<p>Written By: ${book.author}</p>
+				<h2 class="single-book-title">${book.title}</h2>
+				
+				<img src="${book.coverUrl }" class="single-book-cover">
+				<ul class="single-book-container">
+				<li class="single-book-desc">Description: ${book.description}</li><br>
+				<li class="single-book-pages">Page Count: ${book.pages }</li><br>
+				<li class="single-book-year">Publication Year: ${book.publishedYear }</li><br>
+				<li class="single-book-lang">Language: ${book.language}</li><br>
+				<li class="single-book-author">Author: ${book.author}</li>
+				</ul>
+				</div>
 				<br>
 
 				<c:if test="${not empty book.bookComments }">
 
-					<div>
 						Comments:
-						<div class="commentList">
+						<div class="comment-list">
 							<c:forEach var="bookComment" items="${book.bookComments }">
 
 
-								<div class ="bookComment">
+								<div class ="book-comment">
 								<p class ="commentInfo"> Comment ID: ${bookComment.id} User: ${bookComment.user.username} Posted On: ${bookComment.commentDate}
 								
 								<c:if test="${not empty bookComment.parentComment }">
@@ -45,7 +55,7 @@
 								In Reply To: ${bookComment.parentComment.id }
 								</c:if>
 								</p>
-								<p>${bookComment.bookComment } </p>
+								<p class="book-comment-child">${bookComment.bookComment } </p>
 								
 								<c:if test="${not empty sessionScope.loggedInUser }">
 										<form action="replyComment.do" method="GET">
@@ -65,24 +75,13 @@
 
 							</c:forEach>
 						</div>
-
-					</div>
-
-
-
 				</c:if>
-
 				<c:set var="haveReviewed" value="${false }"></c:set>
-
-
-
 
 				<c:if test="${not empty book.reviews }">
 
 					<h2>Reviews:</h2>
 					<c:forEach var="review" items="${book.reviews }">
-
-
 
 						<c:choose>
 							<c:when test="${sessionScope.loggedInUser.id == review.user.id }">
@@ -144,13 +143,6 @@
 						</form>
 					</c:when>
 
-					<c:otherwise>
-						<h4>Log In To Write A Review</h4>
-						<form action="home.do" method="GET">
-							<input type="submit" value="Go to Home">
-						</form>
-
-					</c:otherwise>
 				</c:choose>
 
 
@@ -161,36 +153,28 @@
 				Leave a Comment:
 
 				<form action="comment.do" method="post">
-
-							<input type="text" id="bookComment" name="bookComment"> <br>
-
-							<input type="hidden" name="book.id" value="${book.id}"> <input
-								type="submit" value="Publish Comment">
-						</form>
+							<input type="text" id="bookComment" name="bookComment">
+							<br>
+							<input type="hidden" name="book.id" value="${book.id}">
+							<input type="submit" value="Publish Comment">
+				</form>
+				
 						<form action="addbooktofavorites.do" method="POST">
-							<input type="hidden" name="bookId" value="${book.id}"> <input
-								type="submit" value="Add to Favorites">
+						<input type="hidden" name="bookId" value="${book.id}">
+						<input type="submit" value="Add to Favorites">
 						</form>
 					</c:when>
 					<c:otherwise>
-						<h4>Log In To Write A Review and Leave a Comment</h4>
+					<div class="single-book-prompt-user-login">
+						<h4>Log In to write a review or leave a comment</h4>
 
-						<form action="account.do" method="GET">
-							<input type="submit" value="Return to Profile">
+						<form action="signuppage.do" method="GET">
+						<input type="submit" value="Sign Up" class="single-book-signup-btn">
 						</form>
-
-
-
+						</div>
+							<!--USER IS NOT LOGGED IN FLOW END  -->
 					</c:otherwise>
 				</c:choose>
-
-
-				<form action="account.do" method="GET">
-					<input type="submit" value="Return to Profile">
-				</form>
-
-
-			</div>
 
 		</c:otherwise>
 	</c:choose>
