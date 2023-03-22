@@ -16,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 public class Club {
 	
@@ -32,6 +34,7 @@ public class Club {
 	private User owner;
 	
 	@Column(name="create_date")
+	@CreationTimestamp
 	private LocalDateTime createDate;
 	
 	@Column(name="image_url")

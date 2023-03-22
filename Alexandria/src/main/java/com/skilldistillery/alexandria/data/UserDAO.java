@@ -23,22 +23,17 @@ public interface UserDAO {
 
 	User createUser(User user);
 
-	List<Book> findBooksByTitle(String title);
+	
 
-//	List<Book> findBooksByGenre(String genre);
-	List<Book> findBooksByAuthor(String author);
-
-	List<Book> findBooksByLanguage(String language);
-
-	List<Book> findBooksByDescription(String description);
-
-	Book findBookByISBN(String isbn);
+	
 
 	Club createBookClub(Club bookClub);
 
 	boolean deleteBookClub(int id);
 
 	Club findClubById(int userId);
+	
+	Club updateBookClub(Club bookClub, int userId);
 
 	BookReview writeReview(BookReview review, int userId);
 
@@ -46,7 +41,7 @@ public interface UserDAO {
 
 	BookReview bookReviewExistsForUser(int bookId, int userId);
 
-	Book findBookById(int id);
+	
 
 
 	BookComment writeComment(BookComment comment, int userId);
