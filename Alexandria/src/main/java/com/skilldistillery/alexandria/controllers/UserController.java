@@ -86,11 +86,11 @@ public class UserController {
 		if (book != null) {
 			model.addAttribute("book", book);
 		}
-	if(session.getAttribute("loggedInUser")== null) {
-		return "showSingleBook";
-	} else {
-		refreshLoggedInUser(session);
-		return "showSingleBook";
+		if (session.getAttribute("loggedInUser") == null) {
+			return "showSingleBook";
+		} else {
+			refreshLoggedInUser(session);
+			return "showSingleBook";
 		}
 	}
 
@@ -98,12 +98,21 @@ public class UserController {
 	public String findById(Integer id, Model model, HttpSession session) {
 		Book book = bookDao.findBookById(id);
 		model.addAttribute("book", book);
-		if(session.getAttribute("loggedInUser")== null) {
+		if (session.getAttribute("loggedInUser") == null) {
 			return "showSingleBook";
 		} else {
-		refreshLoggedInUser(session);
-		return "showSingleBook";
+			refreshLoggedInUser(session);
+			return "showSingleBook";
 		}
+	}
+
+	@GetMapping(path = "findBookForHomepage.do")
+	public ModelAndView findBookForHomepage(Integer id) {
+		ModelAndView mv = new ModelAndView();
+		Book book = bookDao.findBookById(id);
+		mv.addObject("book", book);
+		mv.setViewName("showSingleBook");
+		return mv;
 	}
 
 	@GetMapping(path = "createClub.do")
@@ -164,7 +173,7 @@ public class UserController {
 	@PostMapping(path = "addBookToFavorites.do")
 	public String addBookToFavorites(HttpSession session, Integer bookId, Model model, String option) {
 		User user = (User) session.getAttribute("loggedInUser");
-		if(Character.isDigit(option.charAt(0))) {
+		if (Character.isDigit(option.charAt(0))) {
 			Club club = clubDao.addBookToClub(Integer.parseInt(option), bookId);
 			model.addAttribute("bookClub", club);
 			return "bookclub";

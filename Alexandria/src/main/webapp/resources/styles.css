@@ -386,8 +386,8 @@ body {
 
 #home-cover5 {
 	/*solitude*/
-	position: inherit;
-	left: 20px;
+	position: absolute;
+	left: 440px;
 	top: 790px;
 	background-size: cover;
 }
