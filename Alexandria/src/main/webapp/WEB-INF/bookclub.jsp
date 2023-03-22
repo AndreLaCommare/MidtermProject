@@ -109,6 +109,13 @@
 	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
 	<button type="submit" role="button" class="search-btn-submit">Join Club!</button>
 	</form>
+	
+	
+	<form action="leaveClub.do" method="POST">
+	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
+	<button type="submit" role="button" class="search-btn-submit">Leave Club :'( </button>
+	</form>
+	
  
   </c:when>
  </c:choose>
