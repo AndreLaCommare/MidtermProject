@@ -108,16 +108,19 @@ public class UserController {
 	}
 
 	@PostMapping(path = "createBookClub.do")
-	public String createBookClub(Model model, Club bookClub) {
-
+	public String createBookClub(Model model, Club bookClub, HttpSession session) {
+		User user = (User) session.getAttribute("loggedInUser");
 		try {
 			bookClub = userDao.createBookClub(bookClub);
+			session.setAttribute("loggedInUser", userDao.findUserById(user.getId()));
+			System.out.println(bookClub);
 		} catch (RuntimeException e) {
 			System.err.println(e);
 		}
 		if (bookClub != null) {
 			model.addAttribute("bookClub", bookClub);
-			return "bookclub";
+			return "redirect:findClubById.do?clubId=" + bookClub.getId();
+			
 		} else {
 			return "error";
 		}
@@ -129,7 +132,24 @@ public class UserController {
 		bookClub = userDao.updateBookClub(bookClub, loggedInUser.getId());
 		model.addAttribute("bookClub", bookClub);
 		return "bookclub";
+	}
+	
+	@PostMapping(path = "joinClub.do")
+	public String joinClub(HttpSession session, Integer clubId, Model model) {
+		User user = (User) session.getAttribute("loggedInUser");
 		
+		if (user != null) {
+			try {
+				Club club = userDao.joinClub(clubId, user.getId());
+				model.addAttribute("bookClub", club);
+				session.setAttribute("loggedInUser", userDao.findUserById(user.getId()));
+			} catch (RuntimeException e) {
+				System.err.println(e);
+			}
+		} else {
+			return "signuppage";
+		}
+		return "bookclub";
 	}
 
 	@PostMapping(path = "addbooktofavorites.do")
@@ -140,6 +160,8 @@ public class UserController {
 			try {
 				Book book = userDao.addToFavorites(bookId, user.getId());
 				model.addAttribute("book", book);
+				session.setAttribute("loggedInUser", userDao.findUserById(user.getId()));
+
 			} catch (RuntimeException e) {
 				System.err.println(e);
 			}
