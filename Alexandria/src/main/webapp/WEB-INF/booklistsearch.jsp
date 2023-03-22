@@ -6,9 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Search Results</title>
+ <link rel="icon" type="image/x-icon" href="resources/logo.png">
+ <link rel="stylesheet" href="resources/styles.css"/>
 </head>
 <body>
-	<h1>IN BOOKLISTSEARCH</h1>
+<div id = "header">
+    <a href="home.do" style="padding: 0; margin: 0;"><img class=logo src="resources/logo.png"></a><h2 class="sitename"><strong>Alexandria</strong></h2>
+    <a class="login-btn" href="loginpage.do" role="button">Log In</a>
+    <a class="signin-btn" href="signuppage.do" role="button">Sign Up</a>
+    <a class="trending-btn">Trending</a>
+    <a class="search-btn" href="searchpage.do">Search</a>
+</div>
+	<div class="booklist-container">
 	<c:choose>
 
 		<c:when test="${empty books}">
@@ -18,16 +27,19 @@
 		<c:otherwise>
 			<c:forEach var="book" items="${books}">
 			
-				<div>
+				<div class="book-details" id="book-details">
 				<ul>
-					<li>Title: ${book.title}</li>
+					<li class="booklist-title">Title: ${book.title}</li>
+					<br>
+					<li class="booklist-author">Author: ${book.author}</li>
 				</ul>
-				<a href="showById.do?id=${book.id}"><img src="${book.coverUrl}" width="150"></a>
+				<a href="showById.do?id=${book.id}"><img src="${book.coverUrl}" class="booklist-cover"></a>
 				</div>
 
 			</c:forEach>
 		</c:otherwise>
 
 	</c:choose>
+	</div>
 </body>
 </html>
