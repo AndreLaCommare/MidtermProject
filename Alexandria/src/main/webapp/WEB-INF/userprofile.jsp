@@ -14,43 +14,40 @@
 
 	<c:choose>
 		<c:when test="${not empty sessionScope.loggedInUser}">
-			<h2>Your Account Details</h2>
-			<h3>User name: ${sessionScope.loggedInUser.username} (id: ${loggedInUser.id})</h3>
+		<div class="profile-name-username-container">
+			<h2 class="profile-name">${loggedInUser.firstName} ${loggedInUser.lastName}</h2>
+			<p class="profile-username">"${sessionScope.loggedInUser.username}" "#Id: ${loggedInUser.id}"</p>
+			</div>
 			<br>
-
-			<h4>${loggedInUser.firstName} ${loggedInUser.lastName}</h4>
-			<img src="${sessionScope.loggedInUser.imageUrl}" alt="Profile Picture" width="200">
+			
+			<img src="${sessionScope.loggedInUser.imageUrl}" alt="Profile Picture" class="profile-pic">
 			<br>
-			<h6>About Me:</h6>
-			<p>${sessionScope.loggedInUser.aboutMe}</p>
+			<h6 class="profile-about-title">About Me:</h6>
+			<p class="profile-about-desc">${sessionScope.loggedInUser.aboutMe}</p>
 	
 		</c:when>
 			<c:otherwise>
-				<h2>Not Logged In</h2>
+				<h2 class="profile-nonuser">Not Logged In</h2>
 			</c:otherwise>
 	</c:choose>
 
 	<c:choose>
 	<c:when test="${not empty sessionScope.loggedInUser and not empty loggedInUser.favoriteBooks }">
-	<h4>Your Favorites</h4>
+	<h4 class="profile-fav-title">Your Favorites</h4>
 	<c:forEach var="favorite" items="${loggedInUser.favoriteBooks}">
 	<div>
-				<ul>
-					<li>Title: ${favorite.title}</li>
+				<ul class="fav-list">
+				<li>Title: ${favorite.title}</li>
 				</ul>
 				<a href="showById.do?id=${favorite.id}"><img src="${favorite.coverUrl}" width="150"></a>
 				<form action="deleteFavoriteBook.do" method="POST">
 				<input type="hidden" value="${favorite.id}" name="bookId">
-		<input type="submit" value="Remove From Favorites">
-	</form>
-				</div>
+				<input type="submit" value="Remove From Favorites">
+				</form>
+	</div>
 	</c:forEach>
 	</c:when>
 	</c:choose>
-
-	<form action="searchPage.do" method="GET">
-		 <input type="submit" value="Search">
-	</form>
 	
 	<form action="createClub.do" method="GET">
 		<input type="submit" value="Create A Book Club!">
@@ -64,12 +61,6 @@
 	<form action="logout.do" method="GET">
 		<input type="submit" value="Log out">
 	</form>
-	
-<style>
-  form {
-    margin-bottom: 10px;
-  }
-</style>
 
 </body>
 </html>
