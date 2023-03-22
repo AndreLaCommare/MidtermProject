@@ -88,9 +88,17 @@
 				</c:if>
 				</div>
 	</c:forEach>
+	
+	<h3>Club Owner</h3>
+	Owner: ${bookClub.owner.username}
+	
+	<h3>Club Members</h3>
+	<c:forEach var="member" items="${bookClub.clubMembers}">
+	<ul>
+					<li>Member: ${member.username}</li>
+				</ul>
 
-
-
+	</c:forEach>
 
 
 
