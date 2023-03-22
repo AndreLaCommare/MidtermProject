@@ -85,21 +85,25 @@ public class UserController {
 		Book book = bookDao.findBookByISBN(isbn);
 		if (book != null) {
 			model.addAttribute("book", book);
-//		User user = (User) session.getAttribute("loggedInUser");
-
-//		model.addAttribute("review", userDao.bookReviewExistsForUser(book.getId(), user.getId()));
 		}
+	if(session.getAttribute("loggedInUser")== null) {
+		return "showSingleBook";
+	} else {
 		refreshLoggedInUser(session);
 		return "showSingleBook";
-
+		}
 	}
 
 	@GetMapping(path = "showById.do")
 	public String findById(Integer id, Model model, HttpSession session) {
 		Book book = bookDao.findBookById(id);
 		model.addAttribute("book", book);
+		if(session.getAttribute("loggedInUser")== null) {
+			return "showSingleBook";
+		} else {
 		refreshLoggedInUser(session);
 		return "showSingleBook";
+		}
 	}
 
 	@GetMapping(path = "createClub.do")
