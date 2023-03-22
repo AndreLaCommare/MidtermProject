@@ -8,9 +8,10 @@
 <title>User Profile</title>
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 <link rel="stylesheet" href="resources/styles.css"/>
-<jsp:include page="navbar.jsp"/>
+<link rel="stylesheet" href="resources/userProfile.css"/>
 </head>
 <body>
+<jsp:include page="navbar.jsp"/>
 
 	<c:choose>
 		<c:when test="${not empty sessionScope.loggedInUser}">
@@ -48,19 +49,17 @@
 	</c:forEach>
 	</c:when>
 	</c:choose>
-	
+	<div class=user-functions-container>
 	<form action="createClub.do" method="GET">
-		<input type="submit" value="Create A Book Club!">
+		<input type="submit" value="Create A Book Club!" class="create-club-btn">
 	</form>
-
 	<form action="updateuserprofile.do" method="GET">
 		<input type="hidden" name="userId" value="${loggedInUser.id}" />
-		<input type="submit" value="Update Profile">
+		<input type="submit" value="Update Profile" class="update-profile-btn">
 	</form>
-
 	<form action="logout.do" method="GET">
-		<input type="submit" value="Log out">
+		<input type="submit" value="Log out" class="log-out-btn">
 	</form>
-
+</div>
 </body>
 </html>

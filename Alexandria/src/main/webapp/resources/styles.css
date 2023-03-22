@@ -783,13 +783,13 @@ body {
 	font-family: "Bebas Neue";
 	font-size: 30px;
 	position: relative;
-	width:230px;
-	margin-right: 0 !important;
+	width:100%;
+	margin: 0;
 }
 .profile-pic{
 	margin-left: 20px;
 	position: relative;
-	top: -170px;
+	top: -160px;
 	height: 160px;
 	width: 160px;
 	border-radius: 70px 70px 70px 70px;
@@ -801,6 +801,7 @@ body {
 	font-size: 30px;
 	top: -200px;
 	left: 15px;
+	width: 100%;
 }
 .profile-about-desc{
 	position: relative;
@@ -810,4 +811,19 @@ body {
 	margin-right: 1px;
 	left: 15px;
 	top: -265px;
+	width: 100%;
+}
+.profile-name-username-container{
+	margin-right: 10px;
+}
+.user-functions-container{
+	background-color: rgba(244, 244, 248, 0.52);
+	border-radius: 20px 20px 20px 20px;
+	width: 300px;
+	text-align: center;
+	padding: 10px;
+	box-shadow:3px 5px 5px black;
+	position: relative;
+	left: 20px;
+	
 }
