@@ -35,7 +35,6 @@
 				</ul>
 				<a href="showById.do?id=${book.id}"><img src="${book.coverUrl}" class="booklist-cover"></a>
 				</div>
-
 			</c:forEach>
 		</c:otherwise>
 
