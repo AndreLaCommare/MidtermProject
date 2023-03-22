@@ -61,6 +61,39 @@
  
  </c:when>
  </c:choose>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+---------------------------------------------
+	<c:choose>
+	<c:when test="${not empty sessionScope.loggedInUser and not empty loggedInUser.favoriteBooks and myClub == true}">
+	<h4>Your Favorites</h4>
+	<c:forEach var="favorite" items="${loggedInUser.favoriteBooks}">
+	<div>
+				<ul>
+					<li>Title: ${favorite.title}</li>
+				</ul>
+				<a href="showById.do?id=${favorite.id}"><img src="${favorite.coverUrl}" width="150"></a>
+				<form action="deleteFavoriteBook.do" method="POST">
+				<input type="hidden" value="${favorite.id}" name="bookId">
+		<input type="submit" value="Remove From Favorites">
+	</form>
+				</div>
+	</c:forEach>
+	</c:when>
+	</c:choose>
+------------------------------------------------
+
+
+
+
+
 
  <c:choose>
  <c:when test="${not empty sessionScope.loggedInUser and loggedInUser.id != bookClub.owner.id}">
@@ -71,8 +104,6 @@
  
   </c:when>
  </c:choose>
- 
- 
  
  <form action="home.do" method="GET">
  <button type="submit" role="button" class="search-btn-submit">Return Home</button>

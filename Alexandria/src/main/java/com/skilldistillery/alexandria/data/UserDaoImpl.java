@@ -51,6 +51,7 @@ public class UserDaoImpl implements UserDAO {
 			e.printStackTrace();
 			user = null;
 		}
+		user.getClubMemberships().size();
 		return user;
 	}
 
