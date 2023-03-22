@@ -15,7 +15,7 @@
     <a class="profile-btn" href="account.do" role="button">Profile</a>
     <a class="home-btn" href="home.do" role="button">Home</a>
     <a class="trending-btn" href="" role="button">Trending</a>
-    <a class="search-btn" href="searchpage.do" role="button">Search</a>
+    <a class="search-btn" href="searchPage.do" role="button">Search</a>
     </c:if>
     
 </div>

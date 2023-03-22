@@ -123,4 +123,15 @@ public class BookDaoImpl implements BookDAO {
 		return book;
 	}
 
+	@Override
+	public List<Book> clubFavorites(int clubId) {
+		String jpql = "SELECT b FROM Book b JOIN b.usersWithFavBooks fav JOIN fav.clubMemberships cm WHERE cm.id = :clubId AND b MEMBER OF b.usersWithFavBooks";
+		List<Book> books = null;
+		
+			books =  em.createQuery(jpql, Book.class).setParameter("clubId", clubId).getResultList();
+			
+			System.out.println(books);
+		return books;
+	}
+
 }

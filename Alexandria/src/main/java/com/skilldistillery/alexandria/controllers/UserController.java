@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.alexandria.data.BookDAO;
+import com.skilldistillery.alexandria.data.ClubDAO;
 import com.skilldistillery.alexandria.data.UserDAO;
 import com.skilldistillery.alexandria.entities.Book;
 import com.skilldistillery.alexandria.entities.BookComment;
@@ -23,9 +24,11 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userDao;
-	
+
 	@Autowired
 	private BookDAO bookDao;
+	@Autowired
+	private ClubDAO clubDao;
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
@@ -81,19 +84,21 @@ public class UserController {
 	public String findByISBN(String isbn, Model model, HttpSession session) {
 		Book book = bookDao.findBookByISBN(isbn);
 		if (book != null) {
-		model.addAttribute("book", book);
+			model.addAttribute("book", book);
 //		User user = (User) session.getAttribute("loggedInUser");
 
 //		model.addAttribute("review", userDao.bookReviewExistsForUser(book.getId(), user.getId()));
 		}
+		refreshLoggedInUser(session);
 		return "showSingleBook";
-		
+
 	}
 
 	@GetMapping(path = "showById.do")
-	public String findById(Integer id, Model model) {
+	public String findById(Integer id, Model model, HttpSession session) {
 		Book book = bookDao.findBookById(id);
 		model.addAttribute("book", book);
+		refreshLoggedInUser(session);
 		return "showSingleBook";
 	}
 
@@ -120,12 +125,12 @@ public class UserController {
 		if (bookClub != null) {
 			model.addAttribute("bookClub", bookClub);
 			return "redirect:findClubById.do?clubId=" + bookClub.getId();
-			
+
 		} else {
 			return "error";
 		}
 	}
-	
+
 	@PostMapping(path = "UpdateClub.do")
 	public String updateBookClub(Model model, Club bookClub, HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
@@ -133,11 +138,11 @@ public class UserController {
 		model.addAttribute("bookClub", bookClub);
 		return "bookclub";
 	}
-	
+
 	@PostMapping(path = "joinClub.do")
 	public String joinClub(HttpSession session, Integer clubId, Model model) {
 		User user = (User) session.getAttribute("loggedInUser");
-		
+
 		if (user != null) {
 			try {
 				Club club = userDao.joinClub(clubId, user.getId());
@@ -153,9 +158,13 @@ public class UserController {
 	}
 
 	@PostMapping(path = "addBookToFavorites.do")
-	public String addBookToFavorites(HttpSession session, Integer bookId, Model model) {
+	public String addBookToFavorites(HttpSession session, Integer bookId, Model model, String option) {
 		User user = (User) session.getAttribute("loggedInUser");
-
+		if(Character.isDigit(option.charAt(0))) {
+			Club club = clubDao.addBookToClub(Integer.parseInt(option), bookId);
+			model.addAttribute("bookClub", club);
+			return "bookclub";
+		}
 		if (user != null) {
 			try {
 				Book book = userDao.addToFavorites(bookId, user.getId());
@@ -168,19 +177,19 @@ public class UserController {
 		} else {
 			return "signuppage";
 		}
+		refreshLoggedInUser(session);
 		return "showSingleBook";
 	}
-	
 
 	@PostMapping(path = "DeleteClub.do")
-	public ModelAndView deleteClub( int clubId) {
+	public ModelAndView deleteClub(int clubId) {
 		boolean isDeleted = userDao.deleteBookClub(clubId);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bookClub", isDeleted);
 		mv.setViewName("userprofile");
 		return mv;
 	}
-	
+
 	@PostMapping(path = "deleteFavoriteBook.do")
 	public String removeFromFavorites(HttpSession session, Integer bookId, Model model) {
 		User user = (User) session.getAttribute("loggedInUser");
@@ -188,33 +197,34 @@ public class UserController {
 			try {
 				userDao.removeFromFavorites(bookId, user.getId());
 				session.setAttribute("loggedInUser", userDao.findUserById(user.getId()));
-				
-			}catch (RuntimeException e) {
+
+			} catch (RuntimeException e) {
 				System.err.println(e);
 			}
-		}else {
+		} else {
 			return "signuppage";
 		}
 		return "userprofile";
 	}
-	
-	
 
 	@GetMapping(path = "findClubById.do")
 	public String findClubById(Integer clubId, Model model, HttpSession session) {
 		boolean myClub = false;
 		Club club = userDao.findClubById(clubId);
 		User user = (User) session.getAttribute("loggedInUser");
-		if (club.getOwner().getId() == user.getId()) {
-			myClub = true;
-		} else {
-			for (Club fav : user.getClubMemberships()) {
-				if (fav.getId() == clubId) {
-					myClub = true;
+		if (user != null) {
+
+			if (club.getOwner().getId() == user.getId()) {
+				myClub = true;
+			} else {
+				for (Club fav : user.getClubMemberships()) {
+					if (fav.getId() == clubId) {
+						myClub = true;
+					}
 				}
 			}
 		}
-		
+		bookDao.clubFavorites(clubId);
 		model.addAttribute("myClub", myClub);
 		model.addAttribute("bookClub", club);
 		return "bookclub";
@@ -246,7 +256,7 @@ public class UserController {
 
 					model.addAttribute("book", review.getBook());
 					model.addAttribute("review", review);
-
+					refreshLoggedInUser(session);
 					return "showSingleBook";
 
 				}
@@ -273,6 +283,7 @@ public class UserController {
 
 				model.addAttribute("book", comment.getBook());
 				model.addAttribute("bookComment", comment);
+				refreshLoggedInUser(session);
 				return "showSingleBook";
 			} else {
 				return "error";
@@ -305,6 +316,7 @@ public class UserController {
 		review = userDao.updateBookReview(review, loggedInUser.getId());
 		model.addAttribute("review", review);
 		model.addAttribute("book", bookDao.findBookById(review.getBook().getId()));
+		refreshLoggedInUser(session);
 		return "showSingleBook";
 	}
 
@@ -318,9 +330,15 @@ public class UserController {
 
 			model.addAttribute("bookComment", comment);
 			model.addAttribute("book", bookDao.findBookById(comment.getBook().getId()));
+			refreshLoggedInUser(session);
 			return "showSingleBook";
 		}
 		return "loginpage";
+	}
+
+	public void refreshLoggedInUser(HttpSession session) {
+		session.setAttribute("loggedInUser",
+				userDao.findUserById(((User) session.getAttribute("loggedInUser")).getId()));
 	}
 
 }

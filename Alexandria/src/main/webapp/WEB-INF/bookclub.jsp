@@ -71,23 +71,23 @@
 
  
 
-	<c:choose>
-	<c:when test="${not empty sessionScope.loggedInUser and not empty loggedInUser.favoriteBooks and myClub == true}">
 	<h4>Club Member Favorites</h4>
-	<c:forEach var="favorite" items="${loggedInUser.favoriteBooks}">
+	<c:forEach var="book" items="${bookClub.clubBooks}">
 	<div>
 				<ul>
-					<li>Title: ${favorite.title}</li>
+					<li>Title: ${book.title}</li>
 				</ul>
-				<a href="showById.do?id=${favorite.id}"><img src="${favorite.coverUrl}" width="150"></a>
+				<a href="showById.do?id=${book.id}"><img src="${book.coverUrl}" width="150"></a>
+				
+				<c:if test="${sessionScope.loggedInUser.id == bookClub.owner.id }">
 				<form action="deleteFavoriteBook.do" method="POST">
-				<input type="hidden" value="${favorite.id}" name="bookId">
+				<input type="hidden" value="${book.id}" name="bookId">
+				
 		<input type="submit" value="Remove From Favorites">
 	</form>
+				</c:if>
 				</div>
 	</c:forEach>
-	</c:when>
-	</c:choose>
 
 
 

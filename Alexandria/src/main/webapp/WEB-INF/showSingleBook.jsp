@@ -167,10 +167,22 @@
 							<input type="hidden" name="book.id" value="${book.id}"> <input
 								type="submit" value="Publish Comment">
 						</form>
+						
+						
 						<form action="addBookToFavorites.do" method="POST">
-							<input type="hidden" name="bookId" value="${book.id}"> <input
-								type="submit" value="Add to Favorites">
+							<input type="hidden" name="bookId" value="${book.id}">
+							 <input type="submit" value="Add to Favorites">
+							 <select name="option">   
+							 <option value="loggedInUser">My Favorites</option>
+							 <c:forEach var="club" items="${sessionScope.loggedInUser.ownedClubs }">
+							 <option value="${club.id }" >${club.name }</option>
+							 
+							 </c:forEach>
+							 
+							   </select>
 						</form>
+						
+						
 					</c:when>
 					<c:otherwise>
 						<h4>Log In To Write A Review and Leave a Comment</h4>

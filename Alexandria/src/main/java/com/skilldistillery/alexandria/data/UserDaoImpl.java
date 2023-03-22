@@ -72,6 +72,7 @@ public class UserDaoImpl implements UserDAO {
 		if (user != null) {
 			user.getFavoriteBooks().size();
 			user.getClubMemberships().size();
+			user.getOwnedClubs().size();
 		}
 		return user;
 	}
