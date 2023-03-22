@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +10,7 @@
     <link rel="stylesheet" href="resources/styles.css"/>
 </head>
 <body>
-<div id = "header">
-    <img class=logo src="resources/logo.png"><a class="sitename"><h2><strong>Alexandria</strong></h2></a>
-    <a class="login-btn" href="loginpage.do" role="button">  Log In</a>
-    <a class="signin-btn" href="signuppage.do" role="button">  Sign Up  </a>
-    <a class="trending-btn" href="" role="button">  Trending  </a>
-    <a class="search-btn" href="searchpage.do" role="button">Search</a>
-</div>
+<jsp:include page="navbar.jsp"/>
 <div id="home-left">
 <div id="home-back-img"></div>
 <div id="home-alexandria-greeting"><h1>Welcome to Alexandria</h1></div>
@@ -26,23 +23,10 @@
 <div id="home-cover4"><img src="resources/hpcover.jpg" class="cover"></div>
 <div id="home-cover5"><img src="resources/solitudecover.png" class="cover"></div>
 </div>
-    <h1 class="home-signup-title">Sign Up</h1>
-    <div class="home-signup-container">
-    <form action="signup.do" method="POST">
-		<input type="text" placeholder="First Name" class="home-input-fname" name="firstName"> 
-		<input type="text" placeholder="Last Name" class="home-input-lname" name="lastName"/>
-		<br>
-		<input type="text" placeholder="Email" class="home-input-email" name="email"/>
-		<br>
-		<input type="text" placeholder="Username" class="home-input-username" name="username"/> 
-		<input type="password" placeholder="Password" class="home-input-password" name="password"/> 
-			<button type="submit" role="button" class="home-signup-submit-btn"><img src="resources/loginicon.svg"></button>
-	</form>
 <div id="home-right-background">
 <div id="home-right">
-    
-	
-	</div>
+
+    <h1>Sign Up</h1>
 </div>
 </div>
 </body>

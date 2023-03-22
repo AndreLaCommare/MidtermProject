@@ -28,7 +28,8 @@ public class LoginController {
 		User user = userdao.getUserByUserNameAndPassword(username, password);
 		if (user != null) {
 			session.setAttribute("loggedInUser", user);
-			return "userprofile";
+//			return "userprofile";
+			return "home";
 		} else {
 
 			return "signup";
