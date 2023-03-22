@@ -16,7 +16,7 @@
     <a class="login-btn" href="loginpage.do" role="button">Log In</a>
     <a class="signin-btn" href="signuppage.do" role="button">Sign Up</a>
     <a class="trending-btn">Trending</a>
-    <a class="search-btn" href="searchpage.do">Search</a>
+    <a class="search-btn" href="searchPage.do">Search</a>
 </div>
 
 <div id=searchimg>
