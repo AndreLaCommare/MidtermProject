@@ -44,11 +44,11 @@ public class UserController {
 		return "home";
 	}
 
-	@GetMapping(path = "finduserbyid.do")
-	public String findUserById(Integer id, Model model) {
-		User user = userDao.findUserById(id);
+	@GetMapping(path = "findUserById.do")
+	public String findUserById(Integer userId, Model model) {
+		User user = userDao.findUserById(userId);
 		model.addAttribute("user", user);
-		return "userbyid";
+		return "otherUserProfile";
 	}
 
 	@GetMapping(path = "searchPage.do")

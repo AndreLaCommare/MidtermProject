@@ -41,12 +41,12 @@
 
 
 								<div class ="book-comment">
-								<p class ="commentInfo"> Comment ID: ${bookComment.id} User: ${bookComment.user.username} Posted On: ${bookComment.commentDate}
+								<p class ="commentInfo"><a href="findUserById.do?userId=${bookComment.user.id }"> ${bookComment.user.username}</a> Posted On: ${bookComment.commentDate}
 								
 								<c:if test="${not empty bookComment.parentComment }">
 								
 								
-								In Reply To: ${bookComment.parentComment.id }
+								In Reply To: <a href="findUserById.do?userId=${bookComment.parentComment.user.id }">${bookComment.parentComment.user.username }</a>
 								</c:if>
 								</p>
 								<p class="book-comment-child">${bookComment.bookComment } </p>
@@ -154,21 +154,12 @@
 							<input type="submit" value="Publish Comment">
 				</form>
 				
-						<form action="addbooktofavorites.do" method="POST">
-						<input type="hidden" name="bookId" value="${book.id}">
-						<input type="submit" value="Add to Favorites">
 
-
-							<input type="text" id="bookComment" name="bookComment"> <br>
-
-							<input type="hidden" name="book.id" value="${book.id}"> <input
-								type="submit" value="Publish Comment">
-						</form>
 						
 						
 						<form action="addBookToFavorites.do" method="POST">
 							<input type="hidden" name="bookId" value="${book.id}">
-							 <input type="submit" value="Add to Favorites">
+							 <input type="submit" value="Add to List">
 							 <select name="option">   
 							 <option value="loggedInUser">My Favorites</option>
 							 <c:forEach var="club" items="${sessionScope.loggedInUser.ownedClubs }">
