@@ -8,26 +8,11 @@
 <title>User Profile</title>
 <jsp:include page="bootstrapHead.jsp" />
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
-
+<link rel="stylesheet" href="resources/styles.css"/>
 </head>
-
-<style>
-  body {
-    padding-top: 20px;
-    padding-left: 20px;
-  }
-  
-  form {
-    margin-bottom: 10px;
-  }
-</style>
-
 <body>
+<jsp:include page="navbar.jsp"/>
 
-  <div class="navbar">
-    <a href="home.do">Home</a>
-  </div>
-  
 	<c:choose>
 		<c:when test="${not empty sessionScope.loggedInUser}">
 			<h2>Your Account Details</h2>
@@ -80,6 +65,12 @@
 	<form action="logout.do" method="GET">
 		<input type="submit" value="Log out">
 	</form>
+	
+<style>
+  form {
+    margin-bottom: 10px;
+  }
+</style>
 	
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
