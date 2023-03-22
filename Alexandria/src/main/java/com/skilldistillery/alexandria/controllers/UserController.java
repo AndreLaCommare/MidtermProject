@@ -48,36 +48,36 @@ public class UserController {
 		return "userbyid";
 	}
 
-	@GetMapping(path = "searchpage.do")
+	@GetMapping(path = "searchPage.do")
 	public String searchPage() {
 		return "search";
 	}
 
-	@GetMapping(path = "bookbytitle.do")
+	@GetMapping(path = "bookByTitle.do")
 	public String findBookByKeyword(String title, Model model) {
 		model.addAttribute("books", bookDao.findBooksByTitle(title));
 		return "booklistsearch";
 	}
 
-	@GetMapping(path = "bookbyauthor.do")
+	@GetMapping(path = "bookByAuthor.do")
 	public String findByAuthor(String author, Model model) {
 		model.addAttribute("books", bookDao.findBooksByAuthor(author));
 		return "booklistsearch";
 	}
 
-	@GetMapping(path = "bookbylanguage.do")
+	@GetMapping(path = "bookByLanguage.do")
 	public String findByLanguage(String language, Model model) {
 		model.addAttribute("books", bookDao.findBooksByLanguage(language));
 		return "booklistsearch";
 	}
 
-	@GetMapping(path = "bookbydescription.do")
+	@GetMapping(path = "bookByDescription.do")
 	public String findByDescription(String description, Model model) {
 		model.addAttribute("books", bookDao.findBooksByDescription(description));
 		return "booklistsearch";
 	}
 
-	@GetMapping(path = "bookbyisbn.do")
+	@GetMapping(path = "bookByIsbn.do")
 	public String findByISBN(String isbn, Model model, HttpSession session) {
 		Book book = bookDao.findBookByISBN(isbn);
 		if (book != null) {
@@ -152,7 +152,7 @@ public class UserController {
 		return "bookclub";
 	}
 
-	@PostMapping(path = "addbooktofavorites.do")
+	@PostMapping(path = "addBookToFavorites.do")
 	public String addBookToFavorites(HttpSession session, Integer bookId, Model model) {
 		User user = (User) session.getAttribute("loggedInUser");
 

@@ -12,7 +12,7 @@
 <c:choose>
     <c:when test="${empty bookClub}">
        No Club Found.<br>
-       <a href="home.do">Return to Menu</a>
+       <a href="home.do">Return Home</a>
     </c:when>
     <c:otherwise>
         <div>
@@ -73,7 +73,7 @@
 
 	<c:choose>
 	<c:when test="${not empty sessionScope.loggedInUser and not empty loggedInUser.favoriteBooks and myClub == true}">
-	<h4>Your Favorites</h4>
+	<h4>Club Member Favorites</h4>
 	<c:forEach var="favorite" items="${loggedInUser.favoriteBooks}">
 	<div>
 				<ul>
