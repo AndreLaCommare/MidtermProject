@@ -49,7 +49,7 @@
 	</c:when>
 	</c:choose>
 
-	<form action="searchpage.do" method="GET">
+	<form action="searchPage.do" method="GET">
 		 <input type="submit" value="Search">
 	</form>
 	

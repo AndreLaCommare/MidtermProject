@@ -23,32 +23,32 @@
 <div id="search-blk">
 
 
-	<form action="bookbytitle.do" method="GET">
+	<form action="bookByTitle.do" method="GET">
 	<input type="text" placeholder="Title" name="title" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
-	<form action="bookbyauthor.do" method="GET">
+	<form action="bookByAuthor.do" method="GET">
 	<input type="text" placeholder="Author" name="author" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
-	<form action="bookbylanguage.do" method="GET">
+	<form action="bookByLanguage.do" method="GET">
 	<input type="text" placeholder="Language" name="language" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
-	<form action="bookbydescription.do" method="GET">
+	<form action="bookByDescription.do" method="GET">
 	<input type="text" placeholder="Description" name="description" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
-	<form action="bookbygenre.do" method="GET">
+	<!-- <form action="bookbygenre.do" method="GET">
 	<input type="text" placeholder="Genre" name="genre" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
-	<br>
-	<form action="bookbyisbn.do" method="GET">
+	<br> -->
+	<form action="bookByIsbn.do" method="GET">
 	<input type="text" placeholder="ISBN" name="isbn"  class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
