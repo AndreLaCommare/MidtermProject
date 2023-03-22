@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Book List</title>
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
+<jsp:include page="navbar.jsp"/>
+<link rel="stylesheet" href="resources/styles.css"/>
 </head>
 <body>
 <c:choose>
