@@ -32,8 +32,10 @@ public class UserDaoImpl implements UserDAO {
 		try {
 			user = em.createQuery(jpql, User.class).setParameter("name", user.getUsername())
 					.setParameter("pass", user.getPassword()).getSingleResult();
+			user.getClubMemberships().size();
+			user.getFavoriteBooks().size();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			user = null;
 		}
@@ -47,11 +49,12 @@ public class UserDaoImpl implements UserDAO {
 		try {
 			user = em.createQuery(jpql, User.class).setParameter("name", username).setParameter("pass", password)
 					.getSingleResult();
+			user.getClubMemberships().size();
+			user.getFavoriteBooks().size();
 		} catch (Exception e) {
 			e.printStackTrace();
 			user = null;
 		}
-		user.getClubMemberships().size();
 		return user;
 	}
 
@@ -68,6 +71,7 @@ public class UserDaoImpl implements UserDAO {
 		User user = em.find(User.class, userId);
 		if (user != null) {
 			user.getFavoriteBooks().size();
+			user.getClubMemberships().size();
 		}
 		return user;
 	}
@@ -95,6 +99,15 @@ public class UserDaoImpl implements UserDAO {
 		em.flush();
 		System.out.println("in book club");
 		return bookClub;
+	}
+	@Override
+	public Club joinClub(int clubId, int userId) {
+		User user = em.find(User.class, userId);
+		Club club = em.find(Club.class, clubId);
+		
+		user.addClub(club);
+		em.flush();
+		return club;
 	}
 
 	@Override

@@ -22,7 +22,7 @@
 	<h2 class="login-title">Log In</h2>
 	<form action="login.do" method="POST">
 	<input type="text" placeholder="Username" name ="username" class="login-input-user">
-	<input type="password" placeholder="Password" name ="password" class="login-input-password">
+	<input type="password" placeholder="Password" name ="password" class="login-input-password"></form>
 	<button type="submit" role="button" class="login-btn-submit"><img src="resources/loginicon.svg" class="login-btn-icon"></button>
 	</div>
 </body>
