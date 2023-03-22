@@ -33,13 +33,18 @@
 			<form action="updateduserprofile.do" method="POST">
 				<input type="hidden" name="userId" value="${update.id}" />
 				<input type="hidden" name="id" value="${update.id}" />
-				<label for="name">User Name</label> <input type="text" name="username" value="${update.username}"/>
-				<label for="name">Password</label> <input type="password" name="password" value="${update.password}"/>
-				<label for="name"></label> <input type="text" name="firstName" placeholder="First Name"/>
-				<label for="name"></label> <input type="text" name="lastName" placeholder="Last Name"/>
-				<label for="name"></label> <input type="text" name="aboutMe" placeholder="About Me"/>
-				<label for="name">Profile Picture</label> <input type="text" name="imageUrl" placeholder="Image URL"/>	
-				<label for="image">Upload Profile Picture:</label> <input type="file" name="image" id="Upload Image">
+				<label for="name">User Name</label> <input type="text" name="username" value="${update.username}" required/>
+				<label for="name">Password</label> <input type="password" name="password" value="${update.password}" required/>
+				<label for="name">First Name</label> <input type="text" name="firstName" value="${update.firstName}" required/>
+				<label for="name">Last Name</label> <input type="text" name="lastName" value="${update.lastName}" required/>
+				<label for="name">About Me</label> <input type="text" name="aboutMe" value="${update.aboutMe}" required/>
+				<c:if test="${not empty update.imageUrl}">
+				Profile Pic Image URL: <input type="text" name="imageUrl" value="${update.imageUrl}"/>	
+				<c:otherwise>
+				Profile Pic Image URL: <input type="text" name="imageUrl"  value =""/>	
+				</c:otherwise>
+				</c:if>
+				<label for="image">Upload From Local Files:</label> <input type="file" name="image" id="Upload Image">
 				<input type="submit" value="Upload">
 				<input class="btn btn-dark" type="submit" value="Submit"/>
 			</form>
