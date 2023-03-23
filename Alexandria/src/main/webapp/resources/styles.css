@@ -6,8 +6,8 @@
 
 
 html {
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	background-color: #8f7394;
 	background-size: cover;
 }
@@ -856,9 +856,9 @@ left:-13px;
 	width: 500px;
 	height:600px;
 	justify-content: center;
-	position: relative;
-	top: -840px;
-	left: 310px;
+	position: absolute;
+	top: 150px;
+	left: 800px;
 }
 .fav-list-container{
 	position: relative;
@@ -913,9 +913,8 @@ left:-13px;
 	font-size: 20px;
 	height: 100px;
 	width: 110px;
-	position: relative;
-	float: left;
-	top: -325px;
+	position: absolute;
+	top: -314px;
 	left: -20px;
 }
 .create-club-btn:hover{
@@ -926,8 +925,7 @@ left:-13px;
 	margin:0;
 }
 .update-profile-btn{
-	position: relative;
-	float:left;
+	position: absolute;
 	background: rgb(45,195,193);
 	background: linear-gradient(45deg, rgba(45,195,193,1) 0%, rgba(253,187,45,1) 100%);
 	border-radius: 20px 20px 20px 20px;
@@ -936,8 +934,8 @@ left:-13px;
 	font-size: 20px;
 	height: 100px;
 	width: 110px;
-	top:-325px;
-	left: -20px;
+	top:-314px;
+	left: 100px;
 }
 .logout-btn{
 	border-radius: 20px 20px 20px 20px;
