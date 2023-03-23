@@ -11,6 +11,7 @@
     </c:if>
     
      <c:if test="${not empty sessionScope.loggedInUser}">
+    <a href="logout.do"><img class="logout-icon" src="resources/logouticon.svg"></a>
     <a class="profile-btn" href="account.do" role="button">Profile</a>
     <a class="search-btn" href="searchPage.do" role="button">Search</a>
     </c:if>
