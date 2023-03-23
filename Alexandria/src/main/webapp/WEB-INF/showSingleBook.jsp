@@ -4,12 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>${book.title} Details</title>
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 <link rel="stylesheet" href="resources/styles.css"/>
 <jsp:include page="navbar.jsp"/>
 </head>
+
 <body>
 
 
@@ -35,13 +37,13 @@
 
 				<c:if test="${not empty book.bookComments }">
 
-						Comments:
+						<h2 class="comment-title">Comments:</h2>
 						<div class="comment-list">
 							<c:forEach var="bookComment" items="${book.bookComments }">
 
 
 								<div class ="book-comment">
-								<p class ="commentInfo"><a href="findUserById.do?userId=${bookComment.user.id }"> ${bookComment.user.username}</a> Posted On: ${bookComment.commentDate}
+								<p class ="comment-info"><a href="findUserById.do?userId=${bookComment.user.id }"> ${bookComment.user.username}</a> Posted On: ${bookComment.commentDate}
 								
 								<c:if test="${not empty bookComment.parentComment }">
 								
@@ -125,7 +127,7 @@
   <form action="review.do" method="post">
 
 							<label for="rating">Score out of 10:</label> <input type="number"
-								name="rating"> <br> <label for="review"></label><br>
+								name="rating" required> <br> <label for="review"></label><br>
 
 
 							<textarea id="review" name="review" rows="4" cols="50"></textarea>
@@ -187,3 +189,4 @@
 
 		</c:otherwise>
 	</c:choose>
+	</body>

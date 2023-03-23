@@ -294,18 +294,13 @@ public class UserController {
 
 	@PostMapping(path = "review.do")
 	public String writeAReview(Model model, BookReview review, HttpSession session) {
-		System.out.println("#################################################################################");
+	
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
-		System.out.println(loggedInUser);
-		System.out.println(review);
-		System.out.println(userDao);
+	
 		if (loggedInUser != null) {
 
 			try {
-				System.out.println("calling dao");
-
-				System.out.println(loggedInUser);
-				System.out.println(loggedInUser.getId());
+				
 				review = userDao.writeReview(review, loggedInUser.getId());
 				System.out.println(review);
 
