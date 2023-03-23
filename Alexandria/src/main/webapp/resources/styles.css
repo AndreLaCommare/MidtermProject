@@ -6,8 +6,8 @@
 
 
 html {
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	background-color: #8f7394;
 	background-size: cover;
 }
