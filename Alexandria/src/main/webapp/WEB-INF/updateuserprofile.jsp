@@ -6,53 +6,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Update User Profile</title>
-<jsp:include page="navbar.jsp"/>
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 <link rel="stylesheet" href="resources/styles.css"/>
-
-<style>
-    .vertical-form {
-        display: block;
-    }
-    
-    form label,
-    form input[type="text"],
-    form input[type="password"],
-    form input[type="file"],
-    form input[type="submit"] {
-      display: block;
-      margin-bottom: 10px;
-    }
-</style>
+<jsp:include page="navbar.jsp"/>
 
 </head>
 <body>
-	<div class="container-fluid">
-		<div>
-			<h1>Update Forms</h1>
+	<div class="update-profile-form-container">
+			<h1 class="update-profile-title">Edit profile</h1>
 			<form action="updateduserprofile.do" method="POST">
 				<input type="hidden" name="userId" value="${update.id}" />
 				<input type="hidden" name="id" value="${update.id}" />
-				<label for="name">User Name</label> <input type="text" name="username" value="${update.username}" required/>
-				<label for="name">Password</label> <input type="password" name="password" value="${update.password}" required/>
-				<label for="name">First Name</label> <input type="text" name="firstName" value="${update.firstName}" required/>
-				<label for="name">Last Name</label> <input type="text" name="lastName" value="${update.lastName}" required/>
-				<label for="name">About Me</label> <input type="text" name="aboutMe" value="${update.aboutMe}" required/>
-				<%-- <c:choose> --%>
-			<%-- 	<c:when test="${not empty update.imageUrl}"> --%>
-				Profile Pic Image URL: <input type="text" name="imageUrl" value="${update.imageUrl}"/>	
-<%-- 				</c:when>
-				<c:otherwise>
-				Profile Pic Image URL: <input type="text" name="imageUrl"  value =""/>	
-				</c:otherwise>
 				
-				</c:choose> --%>
-				<label for="image">Upload From Local Files:</label> <input type="file" name="image" id="Upload Image">
-				<input type="submit" value="Upload">
-				<input class="btn btn-dark" type="submit" value="Submit"/>
+				<h4 class="update-username-title">Username:</h4> <input type="text" name="username" value="${update.username}" required class="update-username"/>
+				
+				<h4 class="update-password-title">Password:</h4><input type="password" name="password" value="${update.password}" required class="update-password"/>
+			
+				<h4 class="update-fname-title">First Name:</h4><input type="text" name="firstName" value="${update.firstName}" required class="update-fname"/>
+			
+				<h4 class="update-lname-title">Last Name:</h4><input type="text" name="lastName" value="${update.lastName}" required class="update-lname"/>
+				
+				<h4 class="update-about-title">About Me:</h4><input type="text" name="aboutMe" value="${update.aboutMe}" required class="update-about"/>
+			
+				<h4 class="update-pic-title">Profile Picture URL:</h4><input type="text" name="imageUrl" value="${update.imageUrl}" class="update-pic"/>	
+				<br>
+				<button type="submit" role="button" class="update-submit-btn"><img src="resources/checkicon.svg" class="update-submit-btn-icon"></button>
+				
 			</form>
 		</div>
-	</div>
 	
 	<br>
 </body>
