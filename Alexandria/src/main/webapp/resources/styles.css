@@ -856,9 +856,9 @@ left:-13px;
 	width: 500px;
 	height:600px;
 	justify-content: center;
-	position: relative;
-	top: -840px;
-	left: 310px;
+	position: absolute;
+	top: 150px;
+	left: 800px;
 }
 .fav-list-container{
 	position: relative;
@@ -914,7 +914,6 @@ left:-13px;
 	height: 100px;
 	width: 110px;
 	position: absolute;
-	float: left;
 	top: -314px;
 	left: -20px;
 }
@@ -927,7 +926,6 @@ left:-13px;
 }
 .update-profile-btn{
 	position: absolute;
-	float:left;
 	background: rgb(45,195,193);
 	background: linear-gradient(45deg, rgba(45,195,193,1) 0%, rgba(253,187,45,1) 100%);
 	border-radius: 20px 20px 20px 20px;
