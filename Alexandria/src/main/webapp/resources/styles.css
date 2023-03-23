@@ -899,10 +899,7 @@ left:-13px;
 	position: absolute;
 	top: 590px;
 	left: 800px;
-	border-top:thick;
-	border-top-style: solid;
-	border-top-color: black;
-	padding-top: 25px;
+	padding-top: 10px;
 }
 
 	
@@ -1035,7 +1032,8 @@ left:-13px;
 	left: 110px;
 }
 .create-club-btn:hover{
-	background-color: #458C45;
+	background: rgb(42,117,1);
+	background: linear-gradient(45deg, rgba(42,117,1,1) 0%, rgba(187,171,45,1) 100%);
 }
 .create-text, .update-text, .logout-text{
 	padding: 0;
@@ -1054,6 +1052,10 @@ left:-13px;
 	top:420px;
 	left: 0px;
 }
+.update-profile-btn:hover{
+	background: rgb(39,167,165);
+	background: linear-gradient(45deg, rgba(39,167,165,1) 0%, rgba(215,159,39,1) 100%);
+}
 .logout-btn{
 	border-radius: 20px 20px 20px 20px;
 	font-family: "Bebas Neue";
@@ -1061,5 +1063,66 @@ left:-13px;
 	width: 100px;
 }
 
+.update-profile-form-container{
+	border-image: linear-gradient(#f6b73c, #4d9f0c) 30 !important;
+  	border: 4px solid transparent;
+	border-style: solid;
+	border-width: 5px;
+	position: relative;
+	top: 10px;
+	background-color: rgba(244, 244, 248, 0.52);
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	width: 800px;
+	padding-bottom: 10px;
+	
+}
 
+.update-profile-title{
+	font-family: "Bebas Neue";
+	font-size: 50px;
+}
+.update-username-title, .update-password-title, .update-fname-title, .update-lname-title, .update-about-title, .update-pic-title{
+	font-family: "Bebas Neue";
+	font-size: 30px;
+	margin-bottom: 5px;
+	margin-top: 30px;
+}
+.update-username, .update-password, .update-fname, .update-about, .update-lname, .update-submit-btn{
+	font-family: "Nanum Myeongjo";
+	border-radius: 20px 20px 20px 20px;
+	height: 30px;
+	width: 200px;
+	font-size: 20px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+.update-pic{
+	font-family: "Nanum Myeongjo";
+	border-radius: 20px 20px 20px 20px;
+	height: 30px;
+	width: 500px;
+	font-size: 20px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+
+.update-submit-btn{
+	background: rgb(101,227,108);
+	background: linear-gradient(130deg, rgba(101,227,108,1) 0%, rgba(125,184,241,1) 100%);
+	margin-top: 10px;
+	position: relative;
+	width: 200px;
+	height: 40px;
+}
+.update-submit-btn:hover{
+	background: rgb(73,164,78);
+	background: linear-gradient(130deg, rgba(73,164,78,1) 0%, rgba(80,116,150,1) 100%);
+}
+.update-submit-btn-icon{
+	height: 35px;
+	width: 35px;
+}
 
