@@ -816,11 +816,30 @@ left:-13px;
 	border-radius: 70px 70px 70px 70px;
 	box-shadow:-10px 10px 5px black;
 }
+.other-profile-pic{
+	margin-left: 20px;
+	position: relative;
+	top: -580px !important;
+	left: 20px;
+	height: 160px;
+	width: 160px;
+	border-radius: 70px 70px 70px 70px;
+	box-shadow:-10px 10px 5px black;
+	top: -500px;
+}
 .profile-about-title{
 	position: relative;
 	font-family: "Bebas Neue";
 	font-size: 35px;
 	top: -390px;
+	left: 35px;
+	width: 100%;
+}
+.other-profile-about-title{
+	position: relative;
+	font-family: "Bebas Neue";
+	font-size: 35px;
+	top: -40px;
 	left: 35px;
 	width: 100%;
 }
@@ -832,6 +851,16 @@ left:-13px;
 	margin-right: 1px;
 	left: 35px;
 	top: -450px;
+	width: 500px;
+}
+.other-profile-about-desc{
+	position: relative;
+	font-family: "Nanum Myeongjo";
+	font-size: 20px;
+	width: 120px;
+	margin-right: 1px;
+	left: 35px;
+	top: -100px;
 	width: 500px;
 }
 .profile-name-username-container{
