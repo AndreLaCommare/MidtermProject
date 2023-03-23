@@ -88,6 +88,12 @@ public class UserController {
 		model.addAttribute("books", bookDao.findBooksByDescription(description));
 		return "booklistsearch";
 	}
+	
+	@GetMapping(path = "findByUsername.do")
+	public String findByUsername(String username, Model model) {
+		model.addAttribute("user", userDao.findUserByUsername(username));
+		return "otherUserProfile";
+	}
 
 	@GetMapping(path = "bookByIsbn.do")
 	public String findByISBN(String isbn, Model model, HttpSession session) {

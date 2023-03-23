@@ -57,4 +57,6 @@ public interface UserDAO {
 	
 	Club leaveClub(int clubId, int userId);
 
+	User findUserByUsername(String username);
+
 }
