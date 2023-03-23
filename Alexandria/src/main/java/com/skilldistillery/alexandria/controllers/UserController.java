@@ -1,5 +1,8 @@
 package com.skilldistillery.alexandria.controllers;
 
+import java.util.Collections;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +44,12 @@ public class UserController {
 //		model.addAttribute("SMOKETEST", u);
 		// DEBUG
 
+		List<Book> books = bookDao.findAllBooks();
+		Collections.shuffle(books);
+		books = books.subList(0, 5);
+		System.out.println("*****************Books**************");
+		System.out.println(books);
+		model.addAttribute("booksToDisplay", books);
 		return "home";
 	}
 
