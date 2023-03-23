@@ -6,7 +6,6 @@
 
 
 html {
-	margin: 0;
 	height: 100vh;
 	width: 100vw;
 	background-color: #8f7394;
@@ -21,20 +20,24 @@ body {
 	width: 100vw;
     height: 100vh;
 	padding: 0;
-	margin: 0;
 	overflow: auto;
+	margin-top: 0;
+	margin-left: 0;
 }
 
 #header:visited, #header {
+	margin-top:0;
 	padding: 0;
 	margin: 0;
 	text-overflow: inherit;
 	height: 40px;
 	width: 100%;
-	background-color: #420041;
+background: rgb(249,175,0);
+background: linear-gradient(117deg, rgba(249,175,0,1) 5%, rgba(56,0,54,1) 30%);
 	color: #F4F4F8;
 	display: inline-block;
 	text-decoration: none;
+	
 }
 
 .logo {
@@ -78,7 +81,7 @@ body {
 }
 
 .signin-btn:hover, .login-btn:hover {
-	background: #867c45;
+	background: #A47300;
 }
 
 .trending-btn, .search-btn, .signin-btn, .login-btn:visited {
@@ -130,12 +133,29 @@ body {
 	border-spacing: 5px;
 	color: #F4F4F8;
 	font-size: 25px;
-	background: #c4b564;
+	background: #CB8F00;
 	position: relative;
 	top: -1px;
 }
+.profile-btn{
+left:-13px;
+}
+.logout-icon{
+	position: relative;
+	float: right;
+	top:4px;
+	left:-5px;
+	height: 32px;
+	width: 32px;
+	border-radius: 12px 12px 12px 12px;
+	background-color: #CB8F00;
+	padding: 0;
+}
+.logout-icon:hover{
+	background: #A47300;
+}
 .profile-btn:hover{
-	background: #867c45;
+	background: #A47300;
 }
 
 #home-back-img {
@@ -199,7 +219,7 @@ body {
 	text-align: center;
 	position: absolute;
 	top: 60px;
-	left: 950px;
+	left: 910px;
 	font-family: "Nanum Myeongjo";
 	padding: 20px;
 	border-color: black;
@@ -214,7 +234,7 @@ body {
 	width: 200px;
 	position: absolute;
 	top: 180px;
-	left: 985px;
+	left: 945px;
 	background: rgba(244, 244, 248, 0.52);
 	padding: 35px;
 	border-radius: 20px 0px 20px 0px;
@@ -766,3 +786,165 @@ body {
 .book-comment-child{
 	font-family: "Nanum Myeongjo";
 }
+
+.profile-name{
+	font-family: "Bebas Neue";
+	font-size: 40px !important;
+	border-bottom: thick solid black;
+	width: 500px;
+	margin-left: 200px;
+	padding-left: 30px;
+	position: relative;
+	left: 20px;
+}
+.profile-username{
+	top:-30px;
+	left: 245px;
+	font-family: "Bebas Neue";
+	font-size: 30px;
+	position: relative;
+	width:100%;
+	margin: 0;
+}
+.profile-pic{
+	margin-left: 20px;
+	position: relative;
+	top: -150px;
+	left: 20px;
+	height: 160px;
+	width: 160px;
+	border-radius: 70px 70px 70px 70px;
+	box-shadow:-10px 10px 5px black;
+}
+.profile-about-title{
+	position: relative;
+	font-family: "Bebas Neue";
+	font-size: 35px;
+	top: -200px;
+	left: 35px;
+	width: 100%;
+}
+.profile-about-desc{
+	position: relative;
+	font-family: "Nanum Myeongjo";
+	font-size: 20px;
+	width: 120px;
+	margin-right: 1px;
+	left: 35px;
+	top: -250px;
+	width: 500px;
+}
+.profile-name-username-container{
+	margin-right: 10px;
+}
+.user-functions-container{
+	margin-top: 10px;
+	/* background-color: rgba(244, 244, 248, 0.52); */
+	border-radius: 20px 20px 20px 20px;
+	width: 300px;
+	text-align: center;
+	padding: 10px;
+	/* box-shadow:3px 5px 5px black; */
+	position: relative;
+	left: 530px;
+	height: 173px;
+	top: -365px;
+}
+.fav-scroll{
+	float: right;
+	overflow-y:auto;
+	width: 500px;
+	height:600px;
+	justify-content: center;
+	position: relative;
+	top: -840px;
+	left: 310px;
+}
+.fav-list-container{
+	position: relative;
+	background: rgb(11,3,161);
+	background: linear-gradient(42deg, rgba(11,3,161,1) 0%, rgba(130,57,185,1) 100%);
+	text-align: center;
+	border-radius: 10px 10px 10px 10px;
+	width: 450px;
+	height: 350px;
+	display: inline-block;
+	float: left;
+	margin: 5px;
+	padding-bottom: 10px;
+	justify-content: center;
+}
+.profile-fav-title{
+	float: right;
+	width: 300px;
+	top:-983px;
+	position: relative;
+	left: -100px;
+	font-family: "Bebas Neue";
+	font-size: 40px;
+	text-align: center;
+	border-bottom: thick;
+	border-bottom-color: black;
+	border-bottom-style: solid;
+}
+.profile-fav-book-title{
+	position: relative;
+	text-align: center;
+	left: -20px;
+	list-style: none;
+	font-family: "Bebas Neue";
+	font-size: 30px;
+	color: #F4F4F8;
+}
+.fav-cover{
+	height: 230px !important;
+	width: 180px !important;
+	background-color: rgba(244, 244, 248, 0.52);
+	padding: 7px;
+	border-radius: 5px 5px 5px 5px;
+	
+}
+.create-club-btn{
+	background: rgb(59,161,3);
+	background: linear-gradient(42deg, rgba(59,161,3,1) 0%, rgba(221,202,52,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+	margin-bottom: 5px;
+	font-family: "Bebas Neue";
+	font-size: 20px;
+	height: 100px;
+	width: 110px;
+	position: relative;
+	float: left;
+	top: -325px;
+	left: -20px;
+}
+.create-club-btn:hover{
+	background-color: #458C45;
+}
+.create-text, .update-text, .logout-text{
+	padding: 0;
+	margin:0;
+}
+.update-profile-btn{
+	position: relative;
+	float:left;
+	background: rgb(45,195,193);
+	background: linear-gradient(45deg, rgba(45,195,193,1) 0%, rgba(253,187,45,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+	margin-bottom: 5px;
+	font-family: "Bebas Neue";
+	font-size: 20px;
+	height: 100px;
+	width: 110px;
+	top:-325px;
+	left: -20px;
+}
+.logout-btn{
+	border-radius: 20px 20px 20px 20px;
+	font-family: "Bebas Neue";
+	font-size: 20px;
+	width: 100px;
+}
+
+
+

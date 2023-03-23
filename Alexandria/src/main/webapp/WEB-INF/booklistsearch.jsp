@@ -8,9 +8,9 @@
 <title>Search Results</title>
  <link rel="icon" type="image/x-icon" href="resources/logo.png">
  <link rel="stylesheet" href="resources/styles.css"/>
-<jsp:include page="navbar.jsp"/>
 </head>
 <body>
+<jsp:include page="navbar.jsp"/>
 	<div class="booklist-container">
 	<c:choose>
 
