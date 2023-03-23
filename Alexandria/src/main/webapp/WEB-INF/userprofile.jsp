@@ -58,5 +58,17 @@
 	</c:forEach>
 	</c:when>
 	</c:choose>
+	
+	<c:choose>
+	<c:when test="${not empty sessionScope.loggedInUser and not empty loggedInUser.ownedClubs }">
+	<c:forEach var="ownedClub" items="${loggedInUser.ownedClubs}">
+	
+	
+	
+	
+	</c:forEach>
+	</c:when>
+	</c:choose>
+	
 </body>
 </html>
