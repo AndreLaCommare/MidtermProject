@@ -819,7 +819,7 @@ left:-13px;
 .other-profile-pic{
 	margin-left: 20px;
 	position: relative;
-	top: -580px !important;
+	top: -140px !important;
 	left: 20px;
 	height: 160px;
 	width: 160px;
@@ -831,7 +831,7 @@ left:-13px;
 	position: relative;
 	font-family: "Bebas Neue";
 	font-size: 35px;
-	top: -390px;
+	top: -420px;
 	left: 35px;
 	width: 100%;
 }
@@ -839,7 +839,7 @@ left:-13px;
 	position: relative;
 	font-family: "Bebas Neue";
 	font-size: 35px;
-	top: -40px;
+	top: -200px;
 	left: 35px;
 	width: 100%;
 }
@@ -850,7 +850,7 @@ left:-13px;
 	width: 120px;
 	margin-right: 1px;
 	left: 35px;
-	top: -450px;
+	top: -500px;
 	width: 500px;
 }
 .other-profile-about-desc{
@@ -860,7 +860,7 @@ left:-13px;
 	width: 120px;
 	margin-right: 1px;
 	left: 35px;
-	top: -100px;
+	top: -280px;
 	width: 500px;
 }
 .profile-name-username-container{

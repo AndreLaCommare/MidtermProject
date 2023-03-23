@@ -17,16 +17,16 @@
 		<div class="profile-name-username-container">
 			<h2 class="profile-name">${user.firstName} ${user.lastName}</h2>
 			<p class="profile-username">"${user.username}" "#Id: ${user.id}"</p>
-			<br>
+			<img src="${user.imageUrl}" alt="Profile Picture" class="other-profile-pic">
+			<h6 class="other-profile-about-title">About Me:</h6>
+			<p class="other-profile-about-desc">${user.aboutMe}</p>
+			
 			</div>
 		</c:when>
 			<c:otherwise>
 				<h2 class="error-msg">User Not Found</h2>
 			</c:otherwise>
 	</c:choose>
-			<h6 class="other-profile-about-title">About Me:</h6>
-			<p class="other-profile-about-desc">${user.aboutMe}</p>
-			<img src="${user.imageUrl}" alt="Profile Picture" class="other-profile-pic">
 	<div class="fav-scroll">
 	<h4 class="profile-fav-title">${user.firstName}'s Picks</h4>
 	<c:choose>
