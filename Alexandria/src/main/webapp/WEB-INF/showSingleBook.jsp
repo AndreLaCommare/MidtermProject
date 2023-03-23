@@ -4,14 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>${book.title} Details</title>
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 <link rel="stylesheet" href="resources/styles.css"/>
 <jsp:include page="navbar.jsp"/>
 </head>
-
 <body>
 
 
