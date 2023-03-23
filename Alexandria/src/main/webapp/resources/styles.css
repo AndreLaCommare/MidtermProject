@@ -375,7 +375,7 @@ left:-13px;
 	width: 630px;
 }
 
-#home-cover1 {
+#home-cover0 {
 	/*aristotle*/
 	position: absolute;
 	left: 45px;
@@ -383,7 +383,7 @@ left:-13px;
 	background-size: cover;
 }
 
-#home-cover2 {
+#home-cover1 {
 	/*camus*/
 	position: absolute;
 	left: 305px;
@@ -391,7 +391,7 @@ left:-13px;
 	background-size: cover;
 }
 
-#home-cover3 {
+#home-cover2 {
 	/*cristo*/
 	position: absolute;
 	left: 560px;
@@ -399,7 +399,7 @@ left:-13px;
 	background-size: cover;
 }
 
-#home-cover4 {
+#home-cover3 {
 	/*hp*/
 	position: absolute;
 	left: 170px;
@@ -407,7 +407,7 @@ left:-13px;
 	background-size: cover;
 }
 
-#home-cover5 {
+#home-cover4 {
 	/*solitude*/
 	position: absolute;
 	left: 440px;

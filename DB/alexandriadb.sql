@@ -563,7 +563,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `alexandriaDB`;
-INSERT INTO `club` (`id`, `name`, `description`, `owner_id`, `create_date`, `image_url`) VALUES (1, 'Alexandria', 'Book club', 1, '2023-03-17', NULL);
+INSERT INTO `club` (`id`, `name`, `description`, `owner_id`, `create_date`, `image_url`) VALUES (1, 'Alexandria', 'Book club', 1, '2023-03-17', 'https://ih1.redbubble.net/image.4641961840.0716/fposter,medium,wall_texture,product,750x1000.jpg');
 
 COMMIT;
 

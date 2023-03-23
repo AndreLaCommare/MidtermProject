@@ -20,4 +20,6 @@ public interface BookDAO {
 	Book findBookByISBN(String isbn);
 	
 	List<Book> clubFavorites(int clubId);
+	
+	List<Book> findAllBooks();
 }

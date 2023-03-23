@@ -133,5 +133,11 @@ public class BookDaoImpl implements BookDAO {
 			System.out.println(books);
 		return books;
 	}
+	
+	@Override
+	public List<Book> findAllBooks() {
+		String jpql = "SELECT b FROM Book b";
+		return em.createQuery(jpql, Book.class).getResultList();
+	}
 
 }
