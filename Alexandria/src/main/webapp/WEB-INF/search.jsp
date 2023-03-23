@@ -36,6 +36,11 @@
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
+	<form action="findByUsername.do" method="GET">
+	<input type="text" placeholder="Username" name="username" class="search-input">
+	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
+	</form>
+	<br>
 	<!-- <form action="bookbygenre.do" method="GET">
 	<input type="text" placeholder="Genre" name="genre" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
