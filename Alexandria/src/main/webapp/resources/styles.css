@@ -809,7 +809,7 @@ left:-13px;
 .profile-pic{
 	margin-left: 20px;
 	position: relative;
-	top: -150px;
+	top: -360px;
 	left: 20px;
 	height: 160px;
 	width: 160px;
@@ -820,7 +820,7 @@ left:-13px;
 	position: relative;
 	font-family: "Bebas Neue";
 	font-size: 35px;
-	top: -200px;
+	top: -390px;
 	left: 35px;
 	width: 100%;
 }
@@ -831,7 +831,7 @@ left:-13px;
 	width: 120px;
 	margin-right: 1px;
 	left: 35px;
-	top: -250px;
+	top: -450px;
 	width: 500px;
 }
 .profile-name-username-container{
@@ -915,7 +915,7 @@ left:-13px;
 	height: 100px;
 	width: 110px;
 	position: absolute;
-	top: 0px;
+	top: 420px;
 	left: 110px;
 }
 .create-club-btn:hover{
@@ -935,7 +935,7 @@ left:-13px;
 	font-size: 20px;
 	height: 100px;
 	width: 110px;
-	top:0px;
+	top:420px;
 	left: 0px;
 }
 .logout-btn{

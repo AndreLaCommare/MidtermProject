@@ -17,13 +17,6 @@
 		<div class="profile-name-username-container">
 			<h2 class="profile-name">${loggedInUser.firstName} ${loggedInUser.lastName}</h2>
 			<p class="profile-username">"${sessionScope.loggedInUser.username}" "#Id: ${loggedInUser.id}"</p>
-			</div>
-			<br>
-			
-			<img src="${sessionScope.loggedInUser.imageUrl}" alt="Profile Picture" class="profile-pic">
-			<br>
-			<h6 class="profile-about-title">About Me:</h6>
-			<p class="profile-about-desc">${sessionScope.loggedInUser.aboutMe}</p>
 	<div class=user-functions-container>
 	<form action="createClub.do" method="GET" class="create-club-form">
 	<button type="submit" role="button" class="create-club-btn"><p class="create-text">Create Club</p><img src="resources/createclubicon.svg"></button>
@@ -34,6 +27,13 @@
 	<input type="hidden" name="userId" value="${loggedInUser.id}"/>
 	</form>
 	</div>
+			</div>
+			<br>
+			
+			<img src="${sessionScope.loggedInUser.imageUrl}" alt="Profile Picture" class="profile-pic">
+			<br>
+			<h6 class="profile-about-title">About Me:</h6>
+			<p class="profile-about-desc">${sessionScope.loggedInUser.aboutMe}</p>
 		</c:when>
 			<c:otherwise>
 				<h2 class="profile-nonuser">Not Logged In</h2>
