@@ -14,46 +14,33 @@
 
 	<c:choose>
 		<c:when test="${not empty user}">
-			<h2>Account Details</h2>
-			<h3>User name: ${user.username} (id: ${user.id})</h3>
-			<br>
-
-			<h4>${user.firstName} ${user.lastName}</h4>
-			<img src="${user.imageUrl}" alt="Profile Picture" width="200">
-			<br>
-			<h6>About Me:</h6>
-			<p>${user.aboutMe}</p>
-	
+		<div class="profile-name-username-container">
+			<h2 class="profile-name">${user.firstName} ${user.lastName}</h2>
+			<p class="profile-username">"${user.username}" "#Id: ${user.id}"</p>
+			<img src="${user.imageUrl}" alt="Profile Picture" class="other-profile-pic">
+			<h6 class="other-profile-about-title">About Me:</h6>
+			<p class="other-profile-about-desc">${user.aboutMe}</p>
+			
+			</div>
 		</c:when>
 			<c:otherwise>
-				<h2>User Not Found</h2>
+				<h2 class="error-msg">User Not Found</h2>
 			</c:otherwise>
 	</c:choose>
-
+	<div class="fav-scroll">
+	<h4 class="profile-fav-title">${user.firstName}'s Picks</h4>
 	<c:choose>
 	<c:when test="${not empty user and not empty user.favoriteBooks }">
-	<h4>Your Favorites</h4>
 	<c:forEach var="favorite" items="${user.favoriteBooks}">
-	<div>
-				<ul>
-					<li>Title: ${favorite.title}</li>
+	<div class="fav-list-container">
+				<ul class="fav-list">
+				<li class="profile-fav-book-title">${favorite.title}</li>
 				</ul>
-				<a href="showById.do?id=${favorite.id}"><img src="${favorite.coverUrl}" width="150"></a>
-				
+				<a href="showById.do?id=${favorite.id}"><img src="${favorite.coverUrl}" class="fav-cover"></a>
 				</div>
 	</c:forEach>
 	</c:when>
 	</c:choose>
-
-	<form action="searchPage.do" method="GET">
-		 <input type="submit" value="Search">
-	</form>
-	
-<style>
-  form {
-    margin-bottom: 10px;
-  }
-</style>
-
+	</div>
 </body>
 </html>

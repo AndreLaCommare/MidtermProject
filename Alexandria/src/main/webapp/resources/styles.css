@@ -6,8 +6,8 @@
 
 
 html {
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	background-color: #8f7394;
 	background-size: cover;
 }
@@ -375,7 +375,7 @@ left:-13px;
 	width: 630px;
 }
 
-#home-cover1 {
+#home-cover0 {
 	/*aristotle*/
 	position: absolute;
 	left: 45px;
@@ -383,7 +383,7 @@ left:-13px;
 	background-size: cover;
 }
 
-#home-cover2 {
+#home-cover1 {
 	/*camus*/
 	position: absolute;
 	left: 305px;
@@ -391,7 +391,7 @@ left:-13px;
 	background-size: cover;
 }
 
-#home-cover3 {
+#home-cover2 {
 	/*cristo*/
 	position: absolute;
 	left: 560px;
@@ -399,7 +399,7 @@ left:-13px;
 	background-size: cover;
 }
 
-#home-cover4 {
+#home-cover3 {
 	/*hp*/
 	position: absolute;
 	left: 170px;
@@ -407,7 +407,7 @@ left:-13px;
 	background-size: cover;
 }
 
-#home-cover5 {
+#home-cover4 {
 	/*solitude*/
 	position: absolute;
 	left: 440px;
@@ -809,14 +809,33 @@ left:-13px;
 .profile-pic{
 	margin-left: 20px;
 	position: relative;
-	top: -150px;
+	top: -360px;
 	left: 20px;
 	height: 160px;
 	width: 160px;
 	border-radius: 70px 70px 70px 70px;
 	box-shadow:-10px 10px 5px black;
 }
+.other-profile-pic{
+	margin-left: 20px;
+	position: relative;
+	top: -140px !important;
+	left: 20px;
+	height: 160px;
+	width: 160px;
+	border-radius: 70px 70px 70px 70px;
+	box-shadow:-10px 10px 5px black;
+	top: -500px;
+}
 .profile-about-title{
+	position: relative;
+	font-family: "Bebas Neue";
+	font-size: 35px;
+	top: -420px;
+	left: 35px;
+	width: 100%;
+}
+.other-profile-about-title{
 	position: relative;
 	font-family: "Bebas Neue";
 	font-size: 35px;
@@ -831,7 +850,17 @@ left:-13px;
 	width: 120px;
 	margin-right: 1px;
 	left: 35px;
-	top: -250px;
+	top: -500px;
+	width: 500px;
+}
+.other-profile-about-desc{
+	position: relative;
+	font-family: "Nanum Myeongjo";
+	font-size: 20px;
+	width: 120px;
+	margin-right: 1px;
+	left: 35px;
+	top: -280px;
 	width: 500px;
 }
 .profile-name-username-container{
@@ -848,7 +877,7 @@ left:-13px;
 	position: relative;
 	left: 530px;
 	height: 173px;
-	top: -365px;
+	top: -495px;
 }
 .fav-scroll{
 	float: right;
@@ -856,12 +885,13 @@ left:-13px;
 	width: 500px;
 	height:600px;
 	justify-content: center;
-	position: relative;
-	top: -840px;
-	left: 310px;
+	position: absolute;
+	top: 80px;
+	left: 800px;
 }
 .fav-list-container{
 	position: relative;
+	top: -110px;
 	background: rgb(11,3,161);
 	background: linear-gradient(42deg, rgba(11,3,161,1) 0%, rgba(130,57,185,1) 100%);
 	text-align: center;
@@ -877,9 +907,9 @@ left:-13px;
 .profile-fav-title{
 	float: right;
 	width: 300px;
-	top:-983px;
-	position: relative;
-	left: -100px;
+	top:-60px!important;
+	position: relative!important;
+	left: -123px!important;
 	font-family: "Bebas Neue";
 	font-size: 40px;
 	text-align: center;
@@ -914,9 +944,8 @@ left:-13px;
 	height: 100px;
 	width: 110px;
 	position: absolute;
-	float: left;
-	top: -314px;
-	left: -20px;
+	top: 420px;
+	left: 110px;
 }
 .create-club-btn:hover{
 	background-color: #458C45;
@@ -927,7 +956,6 @@ left:-13px;
 }
 .update-profile-btn{
 	position: absolute;
-	float:left;
 	background: rgb(45,195,193);
 	background: linear-gradient(45deg, rgba(45,195,193,1) 0%, rgba(253,187,45,1) 100%);
 	border-radius: 20px 20px 20px 20px;
@@ -936,8 +964,8 @@ left:-13px;
 	font-size: 20px;
 	height: 100px;
 	width: 110px;
-	top:-314px;
-	left: 100px;
+	top:420px;
+	left: 0px;
 }
 .logout-btn{
 	border-radius: 20px 20px 20px 20px;
