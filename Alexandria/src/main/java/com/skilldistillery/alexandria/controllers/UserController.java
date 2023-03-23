@@ -161,9 +161,21 @@ public class UserController {
 
 	@PostMapping(path = "UpdateClub.do")
 	public String updateBookClub(Model model, Club bookClub, HttpSession session) {
-		User loggedInUser = (User) session.getAttribute("loggedInUser");
-		bookClub = userDao.updateBookClub(bookClub, loggedInUser.getId());
-		model.addAttribute("bookClub", bookClub);
+		
+		User user = (User) session.getAttribute("loggedInUser");
+		if (user != null) {
+			
+		try {
+			bookClub = userDao.updateBookClub(bookClub, user.getId());
+			model.addAttribute("bookClub", bookClub);
+			session.setAttribute("loggedInUser", userDao.findUserById(user.getId()));
+		} catch (RuntimeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}else {
+			return "signuppage";
+		}
 		return "bookclub";
 	}
 
@@ -226,8 +238,9 @@ public class UserController {
 	}
 
 	@PostMapping(path = "DeleteClub.do")
-	public ModelAndView deleteClub(Integer clubId) {
+	public ModelAndView deleteClub(Integer clubId, HttpSession session) {
 		boolean isDeleted = userDao.deleteBookClub(clubId);
+		refreshLoggedInUser(session);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bookClub", isDeleted);
 		mv.setViewName("userprofile");

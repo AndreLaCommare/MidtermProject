@@ -70,14 +70,16 @@
 	<c:forEach var="ownedClub" items="${loggedInUser.ownedClubs}">
 	<div class="owned-list-container">
 	<ul class="owned-list">
-				<li class="profile-owned-club-name">${ownedClub.name}
-				<a href="findClubById.do?clubId=${ownedClub.id}"><img src="${ownedClub.imageURL}" class="club-cover"></a>
-				<form action="DeleteClub.do" method="POST">
-	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
-	<button type="submit" role="button" class="search-btn-submit">Delete Club</button>
-	</form>
-				</li>
+				<li class="profile-owned-club-name">${ownedClub.name}</li>
 				</ul>
+				<a href="findClubById.do?clubId=${ownedClub.id}"><img src="${ownedClub.imageURL}" class="club-cover"></a>
+				
+	
+				
+				<form action="DeleteClub.do" method="POST">
+	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${ownedClub.id}">
+	<button type="submit" role="button" class="delete-club-btn-submit"><img src="resources/removeicon.svg"></button>
+	</form>
 	
 	</div>
 	</c:forEach>
