@@ -848,7 +848,7 @@ left:-13px;
 	position: relative;
 	left: 530px;
 	height: 173px;
-	top: -365px;
+	top: -180px;
 }
 .fav-scroll{
 	float: right;
@@ -857,11 +857,12 @@ left:-13px;
 	height:600px;
 	justify-content: center;
 	position: absolute;
-	top: 150px;
+	top: 80px;
 	left: 800px;
 }
 .fav-list-container{
 	position: relative;
+	top: -110px;
 	background: rgb(11,3,161);
 	background: linear-gradient(42deg, rgba(11,3,161,1) 0%, rgba(130,57,185,1) 100%);
 	text-align: center;
@@ -877,9 +878,9 @@ left:-13px;
 .profile-fav-title{
 	float: right;
 	width: 300px;
-	top:-983px;
-	position: relative;
-	left: -100px;
+	top:-60px!important;
+	position: relative!important;
+	left: -123px!important;
 	font-family: "Bebas Neue";
 	font-size: 40px;
 	text-align: center;

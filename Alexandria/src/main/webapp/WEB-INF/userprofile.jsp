@@ -40,8 +40,8 @@
 			</c:otherwise>
 	</c:choose>
 
-	<h4 class="profile-fav-title">${loggedInUser.firstName}'s Picks</h4>
 	<div class="fav-scroll">
+	<h4 class="profile-fav-title">${loggedInUser.firstName}'s Picks</h4>
 	<c:choose>
 	<c:when test="${not empty sessionScope.loggedInUser and not empty loggedInUser.favoriteBooks }">
 	<c:forEach var="favorite" items="${loggedInUser.favoriteBooks}">
@@ -58,5 +58,6 @@
 	</c:forEach>
 	</c:when>
 	</c:choose>
+	</div>
 </body>
 </html>
