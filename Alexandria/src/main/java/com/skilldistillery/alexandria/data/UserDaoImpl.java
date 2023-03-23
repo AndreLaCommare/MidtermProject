@@ -76,6 +76,18 @@ public class UserDaoImpl implements UserDAO {
 		}
 		return user;
 	}
+	
+	@Override
+	public User findUserByUsername(String username) {
+		
+		username = "%" + username + "%";
+		String jpql = "SELECT u FROM User u WHERE u.username LIKE :user";
+		User user = em.createQuery(jpql, User.class).setParameter("user", username).getSingleResult();
+		System.out.println("**************************************");
+		System.out.println(user);
+		System.out.println("************************************");
+		return user;
+	}
 
 	@Override
 	public User updateUser(int userId, User updatedUser) {
