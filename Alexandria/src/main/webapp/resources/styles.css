@@ -848,7 +848,7 @@ left:-13px;
 	position: relative;
 	left: 530px;
 	height: 173px;
-	top: -180px;
+	top: -495px;
 }
 .fav-scroll{
 	float: right;
@@ -915,8 +915,8 @@ left:-13px;
 	height: 100px;
 	width: 110px;
 	position: absolute;
-	top: -314px;
-	left: -20px;
+	top: 0px;
+	left: 110px;
 }
 .create-club-btn:hover{
 	background-color: #458C45;
@@ -935,8 +935,8 @@ left:-13px;
 	font-size: 20px;
 	height: 100px;
 	width: 110px;
-	top:-314px;
-	left: 100px;
+	top:0px;
+	left: 0px;
 }
 .logout-btn{
 	border-radius: 20px 20px 20px 20px;
