@@ -63,16 +63,26 @@
 	
 
 	</div>
+	<div class="owned-scroll">
+	<h4 class="profile-owned-title">${loggedInUser.firstName}'s Clubs</h4>
 	<c:choose>
 	<c:when test="${not empty sessionScope.loggedInUser and not empty loggedInUser.ownedClubs }">
 	<c:forEach var="ownedClub" items="${loggedInUser.ownedClubs}">
+	<div class="owned-list-container">
+	<ul class="owned-list">
+				<li class="profile-owned-club-name">${ownedClub.name}
+				<a href="findClubById.do?clubId=${ownedClub.id}"><img src="${ownedClub.imageURL}" class="club-cover"></a>
+				<form action="DeleteClub.do" method="POST">
+	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${bookClub.id}">
+	<button type="submit" role="button" class="search-btn-submit">Delete Club</button>
+	</form>
+				</li>
+				</ul>
 	
-	
-	
-	
+	</div>
 	</c:forEach>
 	</c:when>
 	</c:choose>
-
+</div>
 </body>
 </html>

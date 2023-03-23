@@ -883,11 +883,25 @@ left:-13px;
 	float: right;
 	overflow-y:auto;
 	width: 500px;
-	height:600px;
+	height:500px;
 	justify-content: center;
 	position: absolute;
 	top: 80px;
 	left: 800px;
+}
+.owned-scroll{
+	float: right;
+	overflow-y:auto;
+	width: 460px;
+	height:600px;
+	justify-content: center;
+	position: absolute;
+	top: 590px;
+	left: 800px;
+	border-top:thick;
+	border-top-style: solid;
+	border-top-color: black;
+	padding-top: 25px;
 }
 .fav-list-container{
 	position: relative;
@@ -898,6 +912,21 @@ left:-13px;
 	border-radius: 10px 10px 10px 10px;
 	width: 450px;
 	height: 350px;
+	display: inline-block;
+	float: left;
+	margin: 5px;
+	padding-bottom: 10px;
+	justify-content: center;
+}
+.owned-list-container{
+	position: relative;
+	top: -110px;
+	background: rgb(11,3,161);
+	background: linear-gradient(42deg, rgba(11,3,161,1) 0%, rgba(130,57,185,1) 100%);
+	text-align: center;
+	border-radius: 10px 10px 10px 10px;
+	width: 450px;
+	height: 165px;
 	display: inline-block;
 	float: left;
 	margin: 5px;
@@ -917,6 +946,19 @@ left:-13px;
 	border-bottom-color: black;
 	border-bottom-style: solid;
 }
+.profile-owned-title{
+	float: right;
+	width: 300px;
+	top:-60px!important;
+	position: relative!important;
+	left: -85px!important;
+	font-family: "Bebas Neue";
+	font-size: 40px;
+	text-align: center;
+	border-bottom: thick;
+	border-bottom-color: black;
+	border-bottom-style: solid;
+}
 .profile-fav-book-title{
 	position: relative;
 	text-align: center;
@@ -926,9 +968,29 @@ left:-13px;
 	font-size: 30px;
 	color: #F4F4F8;
 }
+.profile-owned-club-name{
+	position: relative;
+	text-align: center;
+	float: right;
+	left: -20px;
+	list-style: none;
+	font-family: "Bebas Neue";
+	font-size: 65px;
+	color: #F4F4F8;
+}
 .fav-cover{
 	height: 230px !important;
 	width: 180px !important;
+	background-color: rgba(244, 244, 248, 0.52);
+	padding: 7px;
+	border-radius: 5px 5px 5px 5px;
+	
+}
+.club-cover{
+	height: 130px !important;
+	margin-left: 10px;
+	float: left;
+	width: 80px !important;
 	background-color: rgba(244, 244, 248, 0.52);
 	padding: 7px;
 	border-radius: 5px 5px 5px 5px;

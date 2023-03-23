@@ -226,7 +226,7 @@ public class UserController {
 	}
 
 	@PostMapping(path = "DeleteClub.do")
-	public ModelAndView deleteClub(int clubId) {
+	public ModelAndView deleteClub(Integer clubId) {
 		boolean isDeleted = userDao.deleteBookClub(clubId);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bookClub", isDeleted);
