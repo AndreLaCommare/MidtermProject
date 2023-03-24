@@ -6,9 +6,8 @@
 
 
 html {
-	margin: 0;
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	background-color: #8f7394;
 	background-size: cover;
 }
@@ -21,20 +20,24 @@ body {
 	width: 100vw;
     height: 100vh;
 	padding: 0;
-	margin: 0;
 	overflow: auto;
+	margin-top: 0;
+	margin-left: 0;
 }
 
 #header:visited, #header {
+	margin-top:0;
 	padding: 0;
 	margin: 0;
 	text-overflow: inherit;
 	height: 40px;
 	width: 100%;
-	background-color: #420041;
+background: rgb(249,175,0);
+background: linear-gradient(117deg, rgba(249,175,0,1) 5%, rgba(56,0,54,1) 30%);
 	color: #F4F4F8;
 	display: inline-block;
 	text-decoration: none;
+	
 }
 
 .logo {
@@ -78,7 +81,7 @@ body {
 }
 
 .signin-btn:hover, .login-btn:hover {
-	background: #867c45;
+	background: #A47300;
 }
 
 .trending-btn, .search-btn, .signin-btn, .login-btn:visited {
@@ -130,9 +133,29 @@ body {
 	border-spacing: 5px;
 	color: #F4F4F8;
 	font-size: 25px;
-	background: #c4b564;
+	background: #CB8F00;
 	position: relative;
 	top: -1px;
+}
+.profile-btn{
+left:-13px;
+}
+.logout-icon{
+	position: relative;
+	float: right;
+	top:4px;
+	left:-5px;
+	height: 32px;
+	width: 32px;
+	border-radius: 12px 12px 12px 12px;
+	background-color: #CB8F00;
+	padding: 0;
+}
+.logout-icon:hover{
+	background: #A47300;
+}
+.profile-btn:hover{
+	background: #A47300;
 }
 
 #home-back-img {
@@ -196,7 +219,7 @@ body {
 	text-align: center;
 	position: absolute;
 	top: 60px;
-	left: 950px;
+	left: 910px;
 	font-family: "Nanum Myeongjo";
 	padding: 20px;
 	border-color: black;
@@ -211,7 +234,7 @@ body {
 	width: 200px;
 	position: absolute;
 	top: 180px;
-	left: 985px;
+	left: 945px;
 	background: rgba(244, 244, 248, 0.52);
 	padding: 35px;
 	border-radius: 20px 0px 20px 0px;
@@ -352,7 +375,7 @@ body {
 	width: 630px;
 }
 
-#home-cover1 {
+#home-cover0 {
 	/*aristotle*/
 	position: absolute;
 	left: 45px;
@@ -360,7 +383,7 @@ body {
 	background-size: cover;
 }
 
-#home-cover2 {
+#home-cover1 {
 	/*camus*/
 	position: absolute;
 	left: 305px;
@@ -368,7 +391,7 @@ body {
 	background-size: cover;
 }
 
-#home-cover3 {
+#home-cover2 {
 	/*cristo*/
 	position: absolute;
 	left: 560px;
@@ -376,7 +399,7 @@ body {
 	background-size: cover;
 }
 
-#home-cover4 {
+#home-cover3 {
 	/*hp*/
 	position: absolute;
 	left: 170px;
@@ -384,10 +407,10 @@ body {
 	background-size: cover;
 }
 
-#home-cover5 {
+#home-cover4 {
 	/*solitude*/
-	position: inherit;
-	left: 20px;
+	position: absolute;
+	left: 440px;
 	top: 790px;
 	background-size: cover;
 }
@@ -581,6 +604,7 @@ body {
 	border-width: 3px;
 	border-color: black;
 }
+
 .signup-input-username{
 	top: -175px;
 	height: 40px;
@@ -685,3 +709,870 @@ body {
 	height: 35px;
 	width: 35px;
 }
+/* START SINGLE BOOK PAGE */
+.single-book-title{
+	position: relative;
+	font-family: "Nanum Myeongjo";
+	font-size: 30px;
+	background-color: rgba(244, 244, 248, 0.52);
+	font-variant: small-caps;
+	border-radius: 10px 10px 10px 10px;
+	text-align: center;
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+	line-height: 50px;
+}
+.single-book-cover{
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgba(244, 244, 248, 0.52);
+	padding: 15px;
+	position: relative;
+	text-align: center;
+	display: block;
+	border-radius: 10px 10px 10px 10px;
+	box-shadow:10px 5px 5px black;
+}
+.single-book-container{
+	position: relative;
+	font-family: "Nanum Myeongjo";
+	font-size: 22px;
+	margin-right: 30px;
+	margin-left: 30px;
+	background-color: rgba(244, 244, 248, 0.52) !important;
+	border-radius: 10px 10px 10px 10px;
+	padding: 20px;
+	list-style: none;
+	border-color: black;
+	border-style: solid;
+}
+.single-book-prompt-user-login{
+	background-color: rgba(244, 244, 248, 0.52) !important;
+	font-family: "Nanum Myeongjo";
+	font-size: 20px;
+	border-radius: 10px 10px 10px 10px;
+	margin-left: 30px;
+	margin-right: 30px;
+	padding-left: 30px;
+	width: 250px;
+	padding: 10px;
+	border-color: black;
+	border-style: solid;
+}
+
+.single-book-signup-btn{
+	position: relative;
+	left: 75px;
+	font-family: "Nanum Myeongjo";
+	font-size: 22px;
+	background-color: #53A753;
+	border-radius: 7px 7px 7px 7px;
+	border-style: solid;
+	border-color: black;
+}
+.single-book-signup-btn:hover{
+	background-color: #478F47;
+}
+
+.single-book-user-features{
+	background-color: rgba(244, 244, 248, 0.52) !important;
+	border-radius: 10px 10px 10px 10px;
+}
+.book-comment{
+	font-family: "Nanum Myeongjo";
+}
+.book-comment-child{
+	font-family: "Nanum Myeongjo";
+}
+
+.profile-name{
+	font-family: "Bebas Neue";
+	font-size: 40px !important;
+	border-bottom: thick solid black;
+	width: 500px;
+	margin-left: 200px;
+	padding-left: 30px;
+	position: relative;
+	left: 20px;
+}
+.profile-username{
+	top:-30px;
+	left: 245px;
+	font-family: "Bebas Neue";
+	font-size: 30px;
+	position: relative;
+	width:100%;
+	margin: 0;
+}
+.profile-pic{
+	margin-left: 20px;
+	position: relative;
+	top: -360px;
+	left: 20px;
+	height: 160px;
+	width: 160px;
+	border-radius: 70px 70px 70px 70px;
+	box-shadow:-10px 10px 5px black;
+}
+.other-profile-pic{
+	margin-left: 20px;
+	position: relative;
+	top: -140px !important;
+	left: 20px;
+	height: 160px;
+	width: 160px;
+	border-radius: 70px 70px 70px 70px;
+	box-shadow:-10px 10px 5px black;
+	top: -500px;
+}
+.profile-about-title{
+	position: relative;
+	font-family: "Bebas Neue";
+	font-size: 35px;
+	top: -420px;
+	left: 35px;
+	width: 100%;
+}
+.other-profile-about-title{
+	position: relative;
+	font-family: "Bebas Neue";
+	font-size: 35px;
+	top: -200px;
+	left: 35px;
+	width: 100%;
+}
+.profile-about-desc{
+	position: relative;
+	font-family: "Nanum Myeongjo";
+	font-size: 20px;
+	width: 120px;
+	margin-right: 1px;
+	left: 35px;
+	top: -500px;
+	width: 500px;
+}
+.other-profile-about-desc{
+	position: relative;
+	font-family: "Nanum Myeongjo";
+	font-size: 20px;
+	width: 120px;
+	margin-right: 1px;
+	left: 35px;
+	top: -280px;
+	width: 500px;
+}
+.profile-name-username-container{
+	margin-right: 10px;
+}
+.user-functions-container{
+	margin-top: 10px;
+	/* background-color: rgba(244, 244, 248, 0.52); */
+	border-radius: 20px 20px 20px 20px;
+	width: 300px;
+	text-align: center;
+	padding: 10px;
+	/* box-shadow:3px 5px 5px black; */
+	position: relative;
+	left: 530px;
+	height: 173px;
+	top: -495px;
+}
+.fav-scroll{
+	float: right;
+	overflow-y:auto;
+	width: 500px;
+	height:500px;
+	justify-content: center;
+	position: absolute;
+	top: 80px;
+	left: 800px;
+}
+.owned-scroll{
+	float: right;
+	overflow-y:auto;
+	width: 460px;
+	height:200px;
+	padding-bottom: 0px;
+	justify-content: center;
+	position: absolute;
+	top: 590px;
+	left: 800px;
+	padding-top: 10px;
+}
+
+	
+
+.fav-list-container{
+	position: relative;
+	top: -110px;
+	background: rgb(11,3,161);
+	background: linear-gradient(42deg, rgba(11,3,161,1) 0%, rgba(130,57,185,1) 100%);
+	text-align: center;
+	border-radius: 10px 10px 10px 10px;
+	width: 450px;
+	height: 330px;
+	display: inline-block;
+	float: left;
+	margin: 5px;
+	padding-bottom: 10px;
+	justify-content: center;
+}
+
+.owned-list-container{
+	position: relative;
+	top: -110px;
+	background: rgb(11,3,161);
+	background: linear-gradient(42deg, rgba(11,3,161,1) 0%, rgba(130,57,185,1) 100%);
+	text-align: center;
+	border-radius: 10px 10px 10px 10px;
+	width: 450px;
+	height: 165px;
+	display: inline-block;
+	float: left;
+	margin: 5px;
+	padding-bottom: 10px;
+	justify-content: space-between;
+}
+.profile-fav-title{
+	float: right;
+	width: 300px;
+	top:-60px!important;
+	position: relative!important;
+	left: -123px!important;
+	font-family: "Bebas Neue";
+	font-size: 40px;
+	text-align: center;
+	border-bottom: thick;
+	border-bottom-color: black;
+	border-bottom-style: solid;
+}
+.profile-owned-title{
+	float: right;
+	width: 300px;
+	top:-60px!important;
+	position: relative!important;
+	left: -85px!important;
+	font-family: "Bebas Neue";
+	font-size: 40px;
+	text-align: center;
+	border-bottom: thick;
+	border-bottom-color: black;
+	border-bottom-style: solid;
+}
+.profile-fav-book-title{
+	position: relative;
+	text-align: center;
+	left: -20px;
+	list-style: none;
+	font-family: "Bebas Neue";
+	font-size: 30px;
+	color: #F4F4F8;
+}
+.profile-owned-club-name{
+	position: relative;
+	text-align: center;
+	max-width:300px;
+	word-wrap: break-word;
+	height: auto;
+	
+	
+	left: 90px;
+	list-style: none;
+	font-family: "Bebas Neue";
+	font-size: 65px;
+	color: #F4F4F8;
+}
+.fav-cover{
+	height: 210px !important;
+	width: 160px !important;
+	background-color: rgba(244, 244, 248, 0.52);
+	padding: 7px;
+	border-radius: 5px 5px 5px 5px;
+}
+.user-remove-book-fav{
+	background: rgb(249,234,15);
+	background: linear-gradient(130deg, rgba(249,234,15,1) 0%, rgba(244,75,75,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+}
+
+.user-leave-club-btn{
+	position:relative;
+	float: left;
+	left: 388px;
+	height:20px;
+	width: 70px;
+	background: rgb(249,234,15);
+	background: linear-gradient(130deg, rgba(249,234,15,1) 0%, rgba(244,75,75,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+}
+.new-user-join-club-btn{
+	position:relative;
+	float: left;
+	left: 388px;
+	height:20px;
+	width: 70px;
+	border-radius: 15px 15px 15px;
+	background: rgb(101,227,108);
+	background: linear-gradient(130deg, rgba(101,227,108,1) 0%, rgba(125,184,241,1) 100%);	
+}
+.new-user-join-club-btn:hover{
+	background: rgb(73,164,78);
+	background: linear-gradient(130deg, rgba(73,164,78,1) 0%, rgba(80,116,150,1) 100%);
+}
+.new-user-join-club-icon{
+	height: 12px;
+	width:25px;
+}
+.club-leave-icon{
+	height: 10px;
+	width:15px;
+}
+ .user-leave-club-btn:hover{
+background: rgb(210,198,15);
+	background: linear-gradient(130deg, rgba(210,198,15,1) 0%, rgba(214,66,66,1) 100%);
+}
+.user-remove-book-fav:hover, .delete-club-btn-submit:hover{
+	background: rgb(210,198,15);
+	background: linear-gradient(130deg, rgba(210,198,15,1) 0%, rgba(214,66,66,1) 100%);
+}
+.user-remove-icon{
+	height: 30px;
+	width: 30px;
+}
+.club-cover{
+	height: 130px !important;
+	margin-left: 10px;
+	float: left;
+	top: -95px;
+	position: relative;
+	left: 10px;
+	width: 80px !important;
+	background-color: rgba(244, 244, 248, 0.52);
+	padding: 7px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+.delete-club-btn-submit{
+	border-radius: 50px 50px 50px 50px;
+	background: rgb(249,234,15);
+	background: linear-gradient(130deg, rgba(249,234,15,1) 0%, rgba(244,75,75,1) 100%);
+	position: relative;
+	float: right;
+	top: 7px;
+}
+
+.create-club-btn{
+	background: rgb(59,161,3);
+	background: linear-gradient(42deg, rgba(59,161,3,1) 0%, rgba(221,202,52,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+	margin-bottom: 5px;
+	font-family: "Bebas Neue";
+	font-size: 20px;
+	height: 100px;
+	width: 110px;
+	position: absolute;
+	top: 420px;
+	left: 110px;
+}
+.create-club-btn:hover{
+	background: rgb(42,117,1);
+	background: linear-gradient(45deg, rgba(42,117,1,1) 0%, rgba(187,171,45,1) 100%);
+}
+.create-text, .update-text, .logout-text{
+	padding: 0;
+	margin:0;
+}
+.update-profile-btn{
+	position: absolute;
+	background: rgb(45,195,193);
+	background: linear-gradient(45deg, rgba(45,195,193,1) 0%, rgba(253,187,45,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+	margin-bottom: 5px;
+	font-family: "Bebas Neue";
+	font-size: 20px;
+	height: 100px;
+	width: 110px;
+	top:420px;
+	left: 0px;
+}
+.update-profile-btn:hover{
+	background: rgb(39,167,165);
+	background: linear-gradient(45deg, rgba(39,167,165,1) 0%, rgba(215,159,39,1) 100%);
+}
+.logout-btn{
+	border-radius: 20px 20px 20px 20px;
+	font-family: "Bebas Neue";
+	font-size: 20px;
+	width: 100px;
+}
+
+.update-profile-form-container{
+	border-image: linear-gradient(#f6b73c, #4d9f0c) 30 !important;
+  	border: 4px solid transparent;
+	border-style: solid;
+	border-width: 5px;
+	position: relative;
+	top: 10px;
+	background-color: rgba(244, 244, 248, 0.52);
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	width: 800px;
+	padding-bottom: 10px;
+	
+}
+
+.update-profile-title{
+	font-family: "Bebas Neue";
+	font-size: 50px;
+}
+.update-username-title, .update-password-title, .update-fname-title, .update-lname-title, .update-about-title, .update-pic-title{
+	font-family: "Bebas Neue";
+	font-size: 30px;
+	margin-bottom: 5px;
+	margin-top: 30px;
+}
+.update-username, .update-password, .update-fname, .update-about, .update-lname, .update-submit-btn{
+	font-family: "Nanum Myeongjo";
+	border-radius: 20px 20px 20px 20px;
+	height: 30px;
+	width: 200px;
+	font-size: 20px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+.update-pic{
+	font-family: "Nanum Myeongjo";
+	border-radius: 20px 20px 20px 20px;
+	height: 30px;
+	width: 500px;
+	font-size: 20px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+
+.update-submit-btn{
+	background: rgb(101,227,108);
+	background: linear-gradient(130deg, rgba(101,227,108,1) 0%, rgba(125,184,241,1) 100%);
+	margin-top: 10px;
+	position: relative;
+	width: 200px;
+	height: 40px;
+}
+.update-submit-btn:hover{
+	background: rgb(73,164,78);
+	background: linear-gradient(130deg, rgba(73,164,78,1) 0%, rgba(80,116,150,1) 100%);
+}
+.update-submit-btn-icon{
+	height: 35px;
+	width: 35px;
+}
+
+.create-book-club-title, .club-name-title, .club-pic-title,.club-description-title{
+	font-family:"Bebas Neue";
+	font-size: 35px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 8px;
+}
+.create-book-club-title{
+	background-color: rgba(244, 244, 248, 0.52);
+	border-radius: 15px 15px 15px 15px;
+	width: 300px;
+	height:35px;
+	border-color: #F6B73C;
+	border-style: solid;
+	border-top-width: 3px;
+	border-left-width: 3px;
+	border-right-width: 3px;
+	border-bottom-width: 3px;
+	padding: 4px;
+}
+
+.club-name-title{
+	margin-top: 0 !important;
+}
+
+.club-pic-input{
+	width: 650px !important;
+}
+
+.create-club-container{
+	background-color: rgba(244, 244, 248, 0.52);
+	height: 430px;
+	width: 800px;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	border-image: linear-gradient(#f6b73c, #380036) 30 !important;
+  	border: 4px solid transparent;
+	border-style: solid;
+}
+
+.club-name-input,.club-pic-input,.club-desc-input{
+	border-radius: 15px 15px 15px 15px;
+	height: 30px;
+	width: 400px;
+	font-family: "Nanum Myeongjo";
+	padding-left: 15px;
+	font-size: 25px;
+}
+
+.book-create-submit{
+	border-radius: 15px 15px 15px;
+	background: rgb(101,227,108);
+	background: linear-gradient(130deg, rgba(101,227,108,1) 0%, rgba(125,184,241,1) 100%);	
+}
+
+.book-create-submit:hover{
+	background: rgb(73,164,78);
+	background: linear-gradient(130deg, rgba(73,164,78,1) 0%, rgba(80,116,150,1) 100%);
+}
+
+.book-create-submit-icon{
+	padding-top: 2px;
+}
+
+.book-club-container{
+	margin-top: 20px;
+	background-color: rgba(244, 244, 248, 0.52);
+	width: 400px;
+	margin-left: 30px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-image: linear-gradient(#f6b73c, #4d9f0c) 30 !important;
+  	border: 4px solid transparent;
+  	margin-bottom: 5px;
+  	margin-right: 0;
+  	display: inline-block;
+}
+.book-club-cover{
+	display: flex;
+	height: 250px;
+	width: 250px;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	border-image: linear-gradient(#85FFBD, #FFFB7D) 30 !important;
+  	border: 6px solid transparent;
+}
+
+.book-club-name{
+	text-align: center;
+	font-family: "Bebas Neue";
+	font-size: 40px;
+	margin-bottom: 0;
+}
+.book-club-id{
+	text-align: center;
+	font-family: "Bebas Neue";
+	font-size: 20px;
+	margin-top: 0;
+}
+
+.book-club-desc{
+	padding-left: 20px;
+	font-family: "Nanum Myeongjo";
+	margin-top: 0;
+	font-size: 25px;
+	margin-bottom: 10px;
+	word-wrap: break-word;
+}
+
+.club-owner-name-title, .club-owner-about-title, .club-owner-pic-title{
+	font-family: "Bebas Neue";
+	margin-left: 30px;
+	font-size: 30px;
+	margin-top: 0;
+	margin-bottom: 0;
+	color: #DBDBDF;
+}
+.club-owner-name-input,.club-owner-desc-input{
+	border-radius: 20px 20px 20px 20px;
+	padding-left: 10px;
+	height: 20px;
+	width: 200px;
+	margin-left: 30px;
+	margin-top: 0;
+	margin-bottom: 20px;
+	font-family: "Nanum Myeongjo"
+}
+
+.club-owner-pic-input{
+	border-radius: 20px 20px 20px 20px;
+	padding-left: 10px;
+	height: 20px;
+	width: 300px;
+	margin-left: 30px;
+	font-family: "Nanum Myeongjo";
+	margin-bottom: 10px;
+}
+.club-owner-options{
+	font-family: "Bebas Neue";
+	font-size: 30px;
+	margin-top: 10px;
+	margin-left: 30px;
+	margin-bottom: 10px;
+	border-bottom: 3px solid #DBDBDF;
+	width: 300px;
+	padding-left: 20px;
+	color: #DBDBDF;
+}
+
+.club-owner-functions-container{
+	background-color: rgba(52, 46, 55, 0.75);
+	border-radius: 20px 20px 20px 20px;
+	margin-left: 30px;
+	width: 400px;
+	padding-top: 5px;
+	height: 355px;
+	margin-right: 0;
+	display: inline-block;
+}
+
+.owner-update-club-btn{
+	background: rgb(45,195,193);
+	background: linear-gradient(45deg, rgba(45,195,193,1) 0%, rgba(253,187,45,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+	margin-bottom: 5px;
+	font-family: "Bebas Neue";
+	font-size: 20px;
+	height: 60px;
+	width: 200px;
+	box-sizing: border-box;
+	float:left;
+}
+.owner-update-club-btn:hover{
+	background: rgb(42,117,1);
+	background: linear-gradient(45deg, rgba(42,117,1,1) 0%, rgba(187,171,45,1) 100%);
+}
+.club-owner-update-icon{
+	padding:0;
+	margin:0;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	top: -46px;
+	left: 60px;
+}
+
+.owner-delete-club-btn{
+	border-radius: 20px 20px 20px 20px;
+	font-family: "Bebas Neue";
+	width:200px;
+	height: 60px;
+}
+.owner-update-club-title{
+	font-size: 40px;
+	margin: 0;
+	position: relative;
+	top: 5px;
+	left: -40px;
+}
+.owner-delete-club-btn{
+	font-size: 30px;
+	margin: 0;
+	position: relative;
+	background: rgb(249,234,15);
+	background: linear-gradient(130deg, rgba(249,234,15,1) 0%, rgba(244,75,75,1) 100%);
+}
+
+.owner-delete-club-btn:hover{
+	background: rgb(210,198,15);
+	background: linear-gradient(130deg, rgba(210,198,15,1) 0%, rgba(214,66,66,1) 100%);
+}
+.owner-delete-club-title{
+	position: relative;
+	margin:0;
+	top: 10px;
+	left: -20px;
+}
+
+.owner-delete-club-icon{
+	position: relative;
+	top: -33px;
+	left: 70px;	
+}
+
+.club-right-side{
+	float: right;
+	position: relative;
+	top:-400px;
+	margin:0;
+	height: auto;
+}
+.club-member-favs{
+	font-family: "Bebas Neue";
+	font-size: 35px;
+	text-align: center;
+	border-bottom: 4px solid black;
+	width: 400px;
+	position: relative;
+	margin-bottom: 10px;
+	position: relative;
+	top: -120px;
+
+}
+.club-book-list{
+	float: right;
+    overflow-y: auto;
+    width: 500px;
+    height: 500px;
+    justify-content: center;
+    position: absolute;
+    top: 80px;
+    left: 800px;
+}
+
+.club-book-scroll-container{
+	overflow-y:auto;
+	width: 460px;
+	height:250px;
+	padding-bottom: 0px;
+	justify-content: center;
+	padding-top: 10px;
+	left:-30px;
+	position: relative;
+	top: -130px;
+}
+
+.club-book-scroll{
+	background: rgb(11,3,161);
+	background: linear-gradient(42deg, rgba(11,3,161,1) 0%, rgba(130,57,185,1) 100%);
+	border-radius: 10px 10px 10px 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	margin-right: 5px;
+}
+.club-book-cover{
+	height: 210px !important;
+	width: 160px !important;
+	background-color: rgba(244, 244, 248, 0.52);
+	padding: 7px;
+	border-radius: 5px 5px 5px 5px;
+	margin-left: 20px;
+}
+
+.club-owner-remove-book-btn{
+	background: rgb(249,234,15);
+	background: linear-gradient(130deg, rgba(249,234,15,1) 0%, rgba(244,75,75,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+}
+.club-owner-remove-book-icon{
+	height: 30px;
+	width: 30px;
+}
+
+.club-book-title{
+	position: relative;
+	text-align: center;
+	left: -70px;
+	top: 10px;
+	list-style: none;
+	font-family: "Bebas Neue";
+	font-size: 30px;
+	color: #F4F4F8;
+	float: right;
+	margin-right: auto;
+	margin-left: auto;
+	width: 100px;
+}
+
+.club-owner-name{
+	font-family: "Bebas Neue";
+	font-size: 25px;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	margin-left: 35px;
+}
+.club-remove-book-btn{
+	background: rgb(249,234,15);
+	background: linear-gradient(130deg, rgba(249,234,15,1) 0%, rgba(244,75,75,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+	position: relative;
+	top: 5px;
+	left: 80px !important;
+}
+.club-remove-book-btn:hover{
+	background: rgb(210,198,15);
+	background: linear-gradient(130deg, rgba(210,198,15,1) 0%, rgba(214,66,66,1) 100%);
+}
+.club-members-title{
+	position: relative;
+	top: -130px;
+	font-family: "Bebas Neue";
+	font-size: 35px;
+	border-bottom: thick solid black;
+	width: 200px;
+	text-align: center;
+	left: 90px;
+	margin-bottom: 4px;
+}
+.club-members-member{
+	position: relative;
+	top:-130px;
+}
+
+.club-members-list{
+	list-style: none;
+	font-family: "Bebas Neue";
+	font-size: 30px;
+	position: relative;
+	text-align: center;
+}
+
+.club-members-member{
+	position: relative;
+	top:-37px;
+	text-align: center;
+	color: #F4F4F8;
+	left: -20px;
+	/*  */
+		background: rgb(11,3,161);
+	background: linear-gradient(42deg, rgba(11,3,161,1) 0%, rgba(130,57,185,1) 100%);
+}
+
+.club-members-scroll{
+	overflow-y:auto;
+	width: 460px;
+	height:100px;
+	padding-bottom: 0px;
+	justify-content: center;
+	padding-top: 10px;
+	left:-30px;
+	position: relative;
+	top: -130px;
+}
+
+.club-members-names{
+	border-radius: 10px 10px 10px 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	margin-right: 5px;
+	text-align: center;
+	height: 20px;
+	width: 300px;
+	position: relative;
+	left: 70px;
+	/*  */
+}
+.club-member-icon{
+	background: #f4f4f8;
+	border-radius: 50px 50px 50px 50px;
+	padding: 0;
+	height: 50px;
+	width: 50px;
+	position: relative;
+}
+
+
+
+

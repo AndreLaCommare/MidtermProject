@@ -54,5 +54,9 @@ public interface UserDAO {
 	boolean removeFromFavorites(int bookId, int userId);
 
 	Club joinClub(int clubId, int userId);
+	
+	Club leaveClub(int clubId, int userId);
+
+	User findUserByUsername(String username);
 
 }

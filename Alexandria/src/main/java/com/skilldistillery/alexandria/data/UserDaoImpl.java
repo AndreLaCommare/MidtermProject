@@ -72,7 +72,18 @@ public class UserDaoImpl implements UserDAO {
 		if (user != null) {
 			user.getFavoriteBooks().size();
 			user.getClubMemberships().size();
+			user.getOwnedClubs().size();
 		}
+		return user;
+	}
+	
+	@Override
+	public User findUserByUsername(String username) {
+		
+		username = "%" + username + "%";
+		String jpql = "SELECT u FROM User u WHERE u.username LIKE :user";
+		User user = em.createQuery(jpql, User.class).setParameter("user", username).getSingleResult();
+	
 		return user;
 	}
 
@@ -155,7 +166,7 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public BookReview writeReview(BookReview review, int userId) {
-		System.out.println("#################################################################################");
+		
 		BookReviewId reviewId = new BookReviewId();
 		reviewId.setBookId(review.getBook().getId());
 		reviewId.setUserId(userId);
@@ -168,9 +179,8 @@ public class UserDaoImpl implements UserDAO {
 		review.setBook(reviewed);
 		em.persist(review);
 		em.flush();
-		System.out.println(review);
-		System.out.println(review.getBook());
-		System.out.println("in write review");
+		review.getBook().getBookComments().sort(BookDaoImpl.COMMENT_COMPARATOR);
+		
 		return review;
 	}
 
@@ -240,7 +250,7 @@ public class UserDaoImpl implements UserDAO {
 	public Club updateBookClub(Club bookClub, int userId) {
 		// TODO Auto-generated method stub
 
-		bookClub.setOwner(em.find(User.class, userId));
+		//bookClub.setOwner(em.find(User.class, userId));
 
 		Club updatedClub = em.find(Club.class, bookClub.getId());
 		if (updatedClub.getOwner().getId() == userId) {
@@ -255,5 +265,17 @@ public class UserDaoImpl implements UserDAO {
 			return null;
 		}
 
+	}
+
+	@Override
+	public Club leaveClub(int clubId, int userId) {
+		
+		Club club = em.find(Club.class, clubId);
+		User user = em.find(User.class, userId);
+		
+		if (club.getClubMembers().contains(user)) {
+			club.getClubMembers().remove(user);
+		}
+		return club;
 	}
 }

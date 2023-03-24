@@ -8,47 +8,45 @@
 <title>Search</title>
 <link rel="icon" type="image/x-icon" href="/resources/logo.png">
 <link rel="stylesheet" href="resources/styles.css"/>
+<jsp:include page="navbar.jsp"/>
 </head>
 <body>
-
-<div id = "header">
-    <a href="home.do" style="padding: 0; margin: 0;"><img class=logo src="resources/logo.png"></a><h2 class="sitename"><strong>Alexandria</strong></h2>
-    <a class="login-btn" href="loginpage.do" role="button">Log In</a>
-    <a class="signin-btn" href="signuppage.do" role="button">Sign Up</a>
-    <a class="trending-btn">Trending</a>
-    <a class="search-btn" href="searchpage.do">Search</a>
-</div>
 
 <div id=searchimg>
 <div id="search-blk">
 
 
-	<form action="bookbytitle.do" method="GET">
+	<form action="bookByTitle.do" method="GET">
 	<input type="text" placeholder="Title" name="title" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
-	<form action="bookbyauthor.do" method="GET">
+	<form action="bookByAuthor.do" method="GET">
 	<input type="text" placeholder="Author" name="author" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
-	<form action="bookbylanguage.do" method="GET">
+	<form action="bookByLanguage.do" method="GET">
 	<input type="text" placeholder="Language" name="language" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
-	<form action="bookbydescription.do" method="GET">
+	<form action="bookByDescription.do" method="GET">
 	<input type="text" placeholder="Description" name="description" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
-	<form action="bookbygenre.do" method="GET">
-	<input type="text" placeholder="Genre" name="genre" class="search-input">
+	<form action="findByUsername.do" method="GET">
+	<input type="text" placeholder="Username" name="username" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
-	<form action="bookbyisbn.do" method="GET">
+	<!-- <form action="bookbygenre.do" method="GET">
+	<input type="text" placeholder="Genre" name="genre" class="search-input">
+	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
+	</form>
+	<br> -->
+	<form action="bookByIsbn.do" method="GET">
 	<input type="text" placeholder="ISBN" name="isbn"  class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>

@@ -18,4 +18,8 @@ public interface BookDAO {
 	Book findBookById(int id);
 	
 	Book findBookByISBN(String isbn);
+	
+	List<Book> clubFavorites(int clubId);
+	
+	List<Book> findAllBooks();
 }
