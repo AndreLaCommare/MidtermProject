@@ -996,6 +996,43 @@ left:-13px;
 	background: linear-gradient(130deg, rgba(249,234,15,1) 0%, rgba(244,75,75,1) 100%);
 	border-radius: 20px 20px 20px 20px;
 }
+
+.user-leave-club-btn{
+	position:relative;
+	float: left;
+	left: 388px;
+	height:20px;
+	width: 70px;
+	background: rgb(249,234,15);
+	background: linear-gradient(130deg, rgba(249,234,15,1) 0%, rgba(244,75,75,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+}
+.new-user-join-club-btn{
+	position:relative;
+	float: left;
+	left: 388px;
+	height:20px;
+	width: 70px;
+	border-radius: 15px 15px 15px;
+	background: rgb(101,227,108);
+	background: linear-gradient(130deg, rgba(101,227,108,1) 0%, rgba(125,184,241,1) 100%);	
+}
+.new-user-join-club-btn:hover{
+	background: rgb(73,164,78);
+	background: linear-gradient(130deg, rgba(73,164,78,1) 0%, rgba(80,116,150,1) 100%);
+}
+.new-user-join-club-icon{
+	height: 12px;
+	width:25px;
+}
+.club-leave-icon{
+	height: 10px;
+	width:15px;
+}
+ .user-leave-club-btn:hover{
+background: rgb(210,198,15);
+	background: linear-gradient(130deg, rgba(210,198,15,1) 0%, rgba(214,66,66,1) 100%);
+}
 .user-remove-book-fav:hover, .delete-club-btn-submit:hover{
 	background: rgb(210,198,15);
 	background: linear-gradient(130deg, rgba(210,198,15,1) 0%, rgba(214,66,66,1) 100%);
@@ -1450,7 +1487,7 @@ left:-13px;
 .club-owner-name{
 	font-family: "Bebas Neue";
 	font-size: 25px;
-	position: relative;
+	position: absolute;
 	margin: 0;
 	padding: 0;
 	margin-left: 35px;
