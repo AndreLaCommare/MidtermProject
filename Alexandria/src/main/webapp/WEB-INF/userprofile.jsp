@@ -75,7 +75,7 @@
 				
 				<form action="DeleteClub.do" method="POST">
 	<input type="hidden" placeholder="Club ID" name="clubId" class="search-input" value= "${ownedClub.id}">
-	<button type="submit" role="button" class="delete-club-btn-submit"><img src="resources/removeicon.svg"></button>
+	<button type="submit" role="button" class="delete-club-btn-submit"><img src="resources/removeicon.svg" class="delete-club-btn-icon"></button>
 	</form>
 	
 	</div>
