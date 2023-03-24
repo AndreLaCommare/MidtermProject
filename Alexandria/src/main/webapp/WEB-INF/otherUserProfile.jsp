@@ -42,5 +42,26 @@
 	</c:when>
 	</c:choose>
 	</div>
+	
+	<div class="owned-scroll">
+	<h4 class="profile-owned-title">${user.firstName}'s Clubs</h4>
+	<c:choose>
+	<c:when test="${not empty user and not empty user.ownedClubs }">
+	<c:forEach var="ownedClub" items="${user.ownedClubs}">
+	<div class="owned-list-container">
+	<ul class="owned-list">
+				<li class="profile-owned-club-name">${ownedClub.name}</li>
+				</ul>
+				<a href="findClubById.do?clubId=${ownedClub.id}"><img src="${ownedClub.imageURL}" class="club-cover"></a>
+				
+	
+				
+				
+	
+	</div>
+	</c:forEach>
+	</c:when>
+	</c:choose>
+</div>
 </body>
 </html>

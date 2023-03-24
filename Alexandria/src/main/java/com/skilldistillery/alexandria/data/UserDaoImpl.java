@@ -168,7 +168,7 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public BookReview writeReview(BookReview review, int userId) {
-		System.out.println("#################################################################################");
+		
 		BookReviewId reviewId = new BookReviewId();
 		reviewId.setBookId(review.getBook().getId());
 		reviewId.setUserId(userId);
@@ -181,9 +181,8 @@ public class UserDaoImpl implements UserDAO {
 		review.setBook(reviewed);
 		em.persist(review);
 		em.flush();
-		System.out.println(review);
-		System.out.println(review.getBook());
-		System.out.println("in write review");
+		review.getBook().getBookComments().sort(BookDaoImpl.COMMENT_COMPARATOR);
+		
 		return review;
 	}
 
