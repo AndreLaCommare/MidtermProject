@@ -52,15 +52,12 @@
 				<a href="showById.do?id=${favorite.id}"><img src="${favorite.coverUrl}" class="fav-cover"></a>
 				<form action="deleteFavoriteBook.do" method="POST">
 				<input type="hidden" value="${favorite.id}" name="bookId">
-				<input type="submit" value="Remove From Favorites">
+				<button type="submit" role="button" class="user-remove-book-fav"><img src="resources/removeicon.svg" class="user-remove-icon"></button>
 				</form>
 	</div>
 	</c:forEach>
 	</c:when>
 	</c:choose>
-
-	
-	
 
 	</div>
 	<div class="owned-scroll">
