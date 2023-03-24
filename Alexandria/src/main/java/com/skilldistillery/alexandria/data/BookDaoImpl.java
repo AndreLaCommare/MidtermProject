@@ -39,7 +39,7 @@ public class BookDaoImpl implements BookDAO {
 			// c1 is a reply
 			if (c1.getParentComment().getId() == c2.getId()) {
 				// c1 is a direct reply to c2
-				result = -1;
+				result = 1;
 			} else {
 				if (c2.getParentComment() == null) {
 					
