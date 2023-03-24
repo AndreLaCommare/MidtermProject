@@ -85,29 +85,57 @@
 			</div>
 			</div>
 			<c:choose>
-				<c:when
-					test="${not empty sessionScope.loggedInUser and loggedInUser.id != bookClub.owner.id} ">
+			<c:when test="${ empty bookClub.clubMembers and not empty sessionScope.loggedInUser }">
+				<form action="joinClub.do" method="POST">
+					<input type="hidden" placeholder="Club ID" name="clubId" value="${bookClub.id}">
+					<button type="submit" role="button" class="new-user-join-club-btn">Join<img src="resources/checkicon.svg" class="new-user-join-club-icon"></button>
+					</form>
 					
-					<c:forEach var="clubMember" items="${bookClub.clubMembers}">
-					<c:choose>
-					<c:when test="${sessionScope.loggedInUser.id == bookClub.clubMember.id}">
+					
+					
+					
+			</c:when>
+			<c:otherwise>
+			
+			
+			<c:forEach var="clubMember" items="${bookClub.clubMembers}">
+			<c:choose>
+				<c:when
+					test="${ loggedInUser.id != bookClub.owner.id and loggedInUser.id != clubMember.id} ">
+					
+					
+					<form action="joinClub.do" method="POST">
+					<input type="hidden" placeholder="Club ID" name="clubId" value="${bookClub.id}">
+					<button type="submit" role="button" class="new-user-join-club-btn">Join<img src="resources/checkicon.svg" class="new-user-join-club-icon"></button>
+					</form>
+					
+					
 					
 
+					
+
+				</c:when>
+			</c:choose>
 					<form action="leaveClub.do" method="POST">
 					<input type="hidden" placeholder="Club ID" name="clubId" value="${bookClub.id}">
 					<button type="submit" role="button" class="user-leave-club-btn">Leave<img src="resources/removeicon.svg" class="club-leave-icon"></button>
 					</form>
 					
-					</c:when>
-					</c:choose>
 					</c:forEach>
-
-					<form action="joinClub.do" method="POST">
-					<input type="hidden" placeholder="Club ID" name="clubId" value="${bookClub.id}">
-					<button type="submit" role="button" class="new-user-join-club-btn">Join<img src="resources/checkicon.svg" class="new-user-join-club-icon"></button>
-					</form>
-				</c:when>
+			
+			
+			
+			</c:otherwise>
 			</c:choose>
+			
+			<c:if test ="${empty sessionScope.loggedInUser }">
+			
+			Log In or SignUp to Join a Club!
+			</c:if>
+			
+			
+					
+			
 		</div>
 		</c:otherwise>
 	</c:choose>
