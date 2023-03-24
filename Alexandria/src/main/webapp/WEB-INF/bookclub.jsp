@@ -26,7 +26,7 @@
 			</div>
 			
 			<c:choose>
-			<c:when test="${ empty bookClub.clubMembers and not empty sessionScope.loggedInUser }">
+			<c:when test="${ empty bookClub.clubMembers and not empty sessionScope.loggedInUser  and  loggedInUser.id != bookClub.owner.id }">
 				<form action="joinClub.do" method="POST">
 					<input type="hidden" placeholder="Club ID" name="clubId" value="${bookClub.id}">
 					<button type="submit" role="button" class="new-user-join-club-btn">Join<img src="resources/checkicon.svg" class="new-user-join-club-icon"></button>
