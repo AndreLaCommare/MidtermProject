@@ -59,9 +59,6 @@
 	</c:when>
 	</c:choose>
 
-	
-	
-
 	</div>
 	<div class="owned-scroll">
 	<h4 class="profile-owned-title">${loggedInUser.firstName}'s Clubs</h4>
