@@ -902,9 +902,6 @@ left:-13px;
 	left: 800px;
 	padding-top: 10px;
 }
-
-	
-
 .fav-list-container{
 	position: relative;
 	top: -110px;
@@ -913,7 +910,7 @@ left:-13px;
 	text-align: center;
 	border-radius: 10px 10px 10px 10px;
 	width: 450px;
-	height: 330px;
+	height: auto;
 	display: inline-block;
 	float: left;
 	margin: 5px;
@@ -1527,6 +1524,9 @@ background: rgb(210,198,15);
 	font-size: 30px;
 	position: relative;
 	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	top: 15px;
 }
 
 .club-members-member{
@@ -1534,18 +1534,19 @@ background: rgb(210,198,15);
 	top:-37px;
 	text-align: center;
 	color: #F4F4F8;
-	left: -20px;
-	/*  */
-		background: rgb(11,3,161);
+	left: -25px;
+	border-radius: 20px 20px 20px 20px;
+	
+	background: rgb(11,3,161);
 	background: linear-gradient(42deg, rgba(11,3,161,1) 0%, rgba(130,57,185,1) 100%);
 }
 
 .club-members-scroll{
 	overflow-y:auto;
-	width: 460px;
+	width: 350px;
 	height:100px;
 	padding-bottom: 0px;
-	justify-content: center;
+	
 	padding-top: 10px;
 	left:-30px;
 	position: relative;
@@ -1553,7 +1554,6 @@ background: rgb(210,198,15);
 }
 
 .club-members-names{
-	border-radius: 10px 10px 10px 10px;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	margin-bottom: 15px;
@@ -1563,7 +1563,6 @@ background: rgb(210,198,15);
 	width: 300px;
 	position: relative;
 	left: 70px;
-	/*  */
 }
 .club-member-icon{
 	background: #f4f4f8;
@@ -1573,7 +1572,128 @@ background: rgb(210,198,15);
 	width: 50px;
 	position: relative;
 }
+.own-reviews-section{
+	background-color: rgba(244,244,248, 0.52);
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 20px 20px 20px 20px;
+	height: auto;
+	width: 600px;
+	padding-left: 10px;
+	position: relative;
+	left: 50px;
+	border: 3px solid black;
+	float: left;
+	margin-right: 250px;
+}
 
+.other-users-reviews{
+	display: inline-block;
+	background-color: rgba(244,244,248, 0.52);
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 20px 20px 20px 20px;
+	height: auto;
+	width: 500px;
+	padding-left: 10px;
+	position: relative;
+	left: 30px;
+	border: 3px solid black;
+	position: relative;
+	margin-left: auto;
+	margin-bottom: 15px;
+}
 
+.own-reviews-title{
+	font-family: "Bebas Neue";
+	font-size: 35px;
+	padding: 0;
+	margin: 0;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.book-rating-title{
+	font-family: "Bebas Neue";
+	font-size: 25px;
+}
+.posted-reviews-title{
+	font-family: "Bebas Neue";
+	font-size: 25px;
 
+}
 
+.single-book-review{
+	font-family:"Nanum Myeongjo";
+	font-size: 20px;
+	margin-top: 5px;
+}
+
+.own-review-rating,.own-review-rating-input{
+	font-family: "Nanum Myeongjo";
+	
+}
+
+.own-review-rating-input{
+	border-radius: 15px 15px 15px 15px;
+}
+
+.book-review-textarea{
+	border-radius: 15px 15px 15px 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.book-submit-review-btn{
+	position: relative;
+	left: -2px;
+	top:-5px;
+	background: rgb(59,161,3);
+	background: linear-gradient(42deg, rgba(59,161,3,1) 0%, rgba(221,202,52,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+
+}
+.book-submit-review-btn:hover{
+	background: rgb(42,117,1);
+	background: linear-gradient(45deg, rgba(42,117,1,1) 0%, rgba(187,171,45,1) 100%);
+}
+
+.submit-review-icon{
+	height: 35px;
+	width: 35px;
+}
+
+.add-book-list-btn{
+	background: rgb(59,161,3);
+	background: linear-gradient(42deg, rgba(59,161,3,1) 0%, rgba(221,202,52,1) 100%);
+	border-radius: 20px 20px 20px 20px;
+	float: left;
+}
+
+.add-book-list-icon{
+	height: 35px;
+	height: 35px;
+}
+
+.list-option-bar{
+	border-radius: 10px 10px 10px 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	height: 30px;
+	width: 220px;
+	font-size: 27px;
+	position: relative;
+	top: 6px;
+	font-family: "Bebas Neue";
+}
+
+.add-book-container{
+	text-align: center;
+	border-radius: 25px 25px 25px 25px;
+	background-color: rgba(244,244,248, 0.52);
+	height: 44px;
+	width: 300px;
+	border: 3px black solid;
+	float: left;
+	position: relative;
+	top: 250px;
+	left: -815px;
+}
