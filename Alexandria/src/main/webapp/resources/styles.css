@@ -726,6 +726,8 @@ left:-13px;
 	line-height: 50px;
 }
 .single-book-cover{
+	height: 450px;
+	width: 350px;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: rgba(244, 244, 248, 0.52);
@@ -926,7 +928,7 @@ left:-13px;
 	text-align: center;
 	border-radius: 10px 10px 10px 10px;
 	width: 450px;
-	height: 165px;
+	height: 200px;
 	display: inline-block;
 	float: left;
 	margin: 5px;
@@ -969,17 +971,16 @@ left:-13px;
 	color: #F4F4F8;
 }
 .profile-owned-club-name{
+	float: right;
 	position: relative;
 	text-align: center;
-	max-width:300px;
-	word-wrap: break-word;
+	max-width:200px;
+	word-break: break-all;
 	height: auto;
-	
-	
-	left: 90px;
+	margin-right: 10px;
 	list-style: none;
 	font-family: "Bebas Neue";
-	font-size: 65px;
+	font-size: 50px;
 	color: #F4F4F8;
 }
 .fav-cover{
@@ -1015,6 +1016,11 @@ left:-13px;
 	background: rgb(101,227,108);
 	background: linear-gradient(130deg, rgba(101,227,108,1) 0%, rgba(125,184,241,1) 100%);	
 }
+
+.delete-club-btn-icon{
+	height: 30px;
+	width: 30px;
+}
 .new-user-join-club-btn:hover{
 	background: rgb(73,164,78);
 	background: linear-gradient(130deg, rgba(73,164,78,1) 0%, rgba(80,116,150,1) 100%);
@@ -1043,7 +1049,7 @@ background: rgb(210,198,15);
 	height: 130px !important;
 	margin-left: 10px;
 	float: left;
-	top: -95px;
+	
 	position: relative;
 	left: 10px;
 	width: 80px !important;
@@ -1057,8 +1063,10 @@ background: rgb(210,198,15);
 	background: rgb(249,234,15);
 	background: linear-gradient(130deg, rgba(249,234,15,1) 0%, rgba(244,75,75,1) 100%);
 	position: relative;
-	float: right;
-	top: 7px;
+	float: left;
+	top: 150px;
+	left: -60px;
+	position: relative;
 }
 
 .create-club-btn{
@@ -1330,7 +1338,11 @@ background: rgb(210,198,15);
 	padding-top: 5px;
 	height: 355px;
 	margin-right: 0;
-	display: inline-block;
+	
+	position: relative;
+	top: 30px;
+	left: 0x;
+	
 }
 
 .owner-update-club-btn{
@@ -1413,7 +1425,7 @@ background: rgb(210,198,15);
 	position: relative;
 	margin-bottom: 10px;
 	position: relative;
-	top: -120px;
+	top: -150px;
 
 }
 .club-book-list{
@@ -1436,7 +1448,7 @@ background: rgb(210,198,15);
 	padding-top: 10px;
 	left:-30px;
 	position: relative;
-	top: -130px;
+	top: -150px;
 }
 
 .club-book-scroll{
@@ -1479,7 +1491,7 @@ background: rgb(210,198,15);
 	float: right;
 	margin-right: auto;
 	margin-left: auto;
-	width: 100px;
+	width: 150px;
 }
 
 .club-owner-name{
@@ -1504,7 +1516,7 @@ background: rgb(210,198,15);
 }
 .club-members-title{
 	position: relative;
-	top: -130px;
+	top: -80px;
 	font-family: "Bebas Neue";
 	font-size: 35px;
 	border-bottom: thick solid black;
@@ -1549,8 +1561,8 @@ background: rgb(210,198,15);
 	
 	padding-top: 10px;
 	left:-30px;
-	position: relative;
-	top: -130px;
+	position: absolute;
+	top:360px;
 }
 
 .club-members-names{
@@ -1683,6 +1695,7 @@ background: rgb(210,198,15);
 	position: relative;
 	top: 6px;
 	font-family: "Bebas Neue";
+	
 }
 
 .add-book-container{
@@ -1693,7 +1706,43 @@ background: rgb(210,198,15);
 	width: 300px;
 	border: 3px black solid;
 	float: left;
+	position: absolute;
+	top: 50px;
+	left: 0px;
+}
+
+.new-review-section{
+	background-color: rgba(244,244,248, 0.52);
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 20px 20px 20px 20px;
+	height: auto;
+	width: 600px;
+	padding-left: 10px;
 	position: relative;
-	top: 250px;
-	left: -815px;
+	left: 50px;
+	border: 3px solid black;
+	float: left;
+	margin-right: 250px;
+}
+
+.new-submit-review-btn{
+	border-radius: 20px 20px 20px 20px;
+	background: rgb(59,161,3);
+	background: linear-gradient(42deg, rgba(59,161,3,1) 0%, rgba(221,202,52,1) 100%);
+}
+
+.new-submit-review-btn:hover{
+	background: rgb(42,117,1);
+	background: linear-gradient(45deg, rgba(42,117,1,1) 0%, rgba(187,171,45,1) 100%);
+}
+.new-submit-review-icon{
+	height: 40px;
+	width: 40px;
+}
+.book-review-title{
+	font-family: "Bebas Neue";
+	font-size: 35px;
+	margin-bottom: 5px;
+	margin-top: 5px;
 }
