@@ -26,7 +26,7 @@
 			</div>
 			
 			<c:choose>
-			<c:when test="${ empty bookClub.clubMembers and not empty sessionScope.loggedInUser }">
+			<c:when test="${ empty bookClub.clubMembers and not empty sessionScope.loggedInUser  and  loggedInUser.id != bookClub.owner.id }">
 				<form action="joinClub.do" method="POST">
 					<input type="hidden" placeholder="Club ID" name="clubId" value="${bookClub.id}">
 					<button type="submit" role="button" class="new-user-join-club-btn">Join<img src="resources/checkicon.svg" class="new-user-join-club-icon"></button>
@@ -38,11 +38,13 @@
 			</c:when>
 			<c:otherwise>
 			
+					
 			
-			<c:forEach var="clubMember" items="${bookClub.clubMembers}">
+			
 			<c:choose>
 				<c:when
-					test="${ loggedInUser.id != bookClub.owner.id and loggedInUser.id != clubMember.id} ">
+					test="${ myClub != true} ">
+					
 					
 					
 					<form action="joinClub.do" method="POST">
@@ -57,21 +59,22 @@
 
 				</c:when>
 			</c:choose>
-			<c:if test="${loggedInUser.id != bookClub.owner.id }">
-					<form action="leaveClub.do" method="POST">
+			<form action="joinClub.do" method="POST">
+					<input type="hidden" placeholder="Club ID" name="clubId" value="${bookClub.id}">
+					<button type="submit" role="button" class="new-user-join-club-btn">Join<img src="resources/checkicon.svg" class="new-user-join-club-icon"></button>
+					</form>
+			<form action="leaveClub.do" method="POST">
 					<input type="hidden" placeholder="Club ID" name="clubId" value="${bookClub.id}">
 					<button type="submit" role="button" class="user-leave-club-btn">Leave<img src="resources/removeicon.svg" class="club-leave-icon"></button>
 					</form>
-			</c:if>
 					
-					</c:forEach>
 			
 			
 			
 			</c:otherwise>
 			</c:choose>
 			
-			<h3 class="club-owner-name">Club Owner: ${bookClub.owner.username}</h3>
+			<h3 class="club-owner-name">Club Owner:<a href="findByUsername.do?username=${bookClub.owner.username }">${bookClub.owner.username}</a></h3>
 		<!-- BOOK CLUB DISPLAY FOR OWNER START -->
 			<c:choose>
 				<c:when test="${not empty sessionScope.loggedInUser and loggedInUser.id == bookClub.owner.id}">
@@ -126,7 +129,7 @@
 			<div class="club-members-names">
 			<c:forEach var="member" items="${bookClub.clubMembers}">
 				<ul class="club-members-list">
-					<li class="club-members-member">${member.username}</li>
+					<li class="club-members-member"><a href="findByUsername.do?username=${member.username }">${member.username}</a></li>
 				</ul>
 			</c:forEach>
 			</div>
@@ -135,7 +138,7 @@
 			
 			<c:if test ="${empty sessionScope.loggedInUser }">
 			
-			Log In or SignUp to Join a Club!
+			Log In or Sign Up to Join a Club!
 			</c:if>
 			
 			
