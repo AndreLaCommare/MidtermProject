@@ -15,7 +15,7 @@
 <div id=searchimg>
 <div id="search-blk">
 
-
+<h4 class="book-club-search-title">Book Search</h4>
 	<form action="bookByTitle.do" method="GET">
 	<input type="text" placeholder="Title" name="title" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
@@ -36,11 +36,6 @@
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
 	<br>
-	<form action="findByUsername.do" method="GET">
-	<input type="text" placeholder="Username" name="username" class="search-input">
-	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
-	</form>
-	<br>
 	<!-- <form action="bookbygenre.do" method="GET">
 	<input type="text" placeholder="Genre" name="genre" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
@@ -57,6 +52,13 @@
 	<input type="text" placeholder="Club ID" name="clubId" class="search-input">
 	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
 	</form>
+	<br>
+	<h4 class="book-club-search-title">User Search</h4>
+	<form action="findByUsername.do" method="GET">
+	<input type="text" placeholder="Username" name="username" class="search-input">
+	<button type="submit" role="button" class="search-btn-submit"><img src="resources/search.svg"></button>
+	</form>
+	
 </div>
 </div>
 </body>
