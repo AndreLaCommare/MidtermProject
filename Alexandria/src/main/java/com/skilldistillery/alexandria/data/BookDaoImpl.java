@@ -15,7 +15,7 @@ import com.skilldistillery.alexandria.entities.BookComment;
 @Service
 public class BookDaoImpl implements BookDAO {
 
-	private Comparator<BookComment> commentComparator = (c1, c2) -> {
+	public static final Comparator<BookComment> COMMENT_COMPARATOR = (c1, c2) -> {
 		int result = 0;
 		if (c1.getParentComment() == null) {
 			// c1 not reply comment
@@ -39,7 +39,7 @@ public class BookDaoImpl implements BookDAO {
 			// c1 is a reply
 			if (c1.getParentComment().getId() == c2.getId()) {
 				// c1 is a direct reply to c2
-				result = -1;
+				result = 1;
 			} else {
 				if (c2.getParentComment() == null) {
 					
@@ -102,7 +102,7 @@ public class BookDaoImpl implements BookDAO {
 		try {
 			book =  em.createQuery(jpql, Book.class).setParameter("isbn", isbn).getSingleResult();
 			if (book.getBookComments() != null) {
-				book.getBookComments().sort(commentComparator);
+				book.getBookComments().sort(COMMENT_COMPARATOR);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -117,7 +117,7 @@ public class BookDaoImpl implements BookDAO {
 		Book book = em.find(Book.class, id);
 
 		if (book.getBookComments() != null) {
-			book.getBookComments().sort(commentComparator);
+			book.getBookComments().sort(COMMENT_COMPARATOR);
 		}
 
 		return book;

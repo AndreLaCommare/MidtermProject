@@ -35,13 +35,13 @@
 
 				<c:if test="${not empty book.bookComments }">
 
-						Comments:
+						<h2 class="comment-title">Comments:</h2>
 						<div class="comment-list">
 							<c:forEach var="bookComment" items="${book.bookComments }">
 
 
 								<div class ="book-comment">
-								<p class ="commentInfo"><a href="findUserById.do?userId=${bookComment.user.id }"> ${bookComment.user.username}</a> Posted On: ${bookComment.commentDate}
+								<p class ="comment-info"><a href="findUserById.do?userId=${bookComment.user.id }"> ${bookComment.user.username}</a> Posted On: ${bookComment.commentDate}
 								
 								<c:if test="${not empty bookComment.parentComment }">
 								
@@ -125,7 +125,7 @@
   <form action="review.do" method="post">
 
 							<label for="rating">Score out of 10:</label> <input type="number"
-								name="rating"> <br> <label for="review"></label><br>
+								name="rating" required> <br> <label for="review"></label><br>
 
 
 							<textarea id="review" name="review" rows="4" cols="50"></textarea>
@@ -187,3 +187,4 @@
 
 		</c:otherwise>
 	</c:choose>
+	</body>
